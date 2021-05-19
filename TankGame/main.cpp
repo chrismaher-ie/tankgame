@@ -26,10 +26,7 @@ int main()
 	{
 		windowEventHandler(window, &view);
 		
-		sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
-		sf::Vector2f worldPos = window.mapPixelToCoords(pixelPos);
-
-		player.update(worldPos);
+		player.update(window);
 
 		view.setCenter(player.getPosition());
 		window.setView(view);

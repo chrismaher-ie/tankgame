@@ -6,7 +6,7 @@ class Player
 	public:
 		Player();
 		~Player();
-		void update(sf::Vector2f mouseWorldPos);
+		void update(sf::RenderWindow& window);
 		void draw(sf::RenderWindow& window);
 		sf::Vector2f getPosition();
 

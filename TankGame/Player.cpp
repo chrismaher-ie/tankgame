@@ -22,7 +22,7 @@ Player::~Player()
 {
 }
 
-void Player::update(sf::Vector2f mouseWorldPos)
+void Player::update(sf::RenderWindow& window)
 {
 	//move player based on keypress
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
@@ -38,6 +38,8 @@ void Player::update(sf::Vector2f mouseWorldPos)
 		moveBackward();
 	}
 	//twist turret to mouse
+	sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
+	sf::Vector2f mouseWorldPos = window.mapPixelToCoords(pixelPos);
 	turret.setRotation(getAngle(turret.getPosition(), mouseWorldPos));
 
 	//set turret to position 
