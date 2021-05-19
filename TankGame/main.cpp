@@ -1,15 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Player.h"
+#include "Map.h"
 
 static const float SCREENHEIGHT = 512.0f;
 static const float SCREENWIDTH =  512.0f;
 
-# define M_PI           3.14159265358979f;
+static const float M_PI = 3.14159265358979f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
-void setupMap(sf::RectangleShape* map, sf::Texture* mapTexture);
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map);
 
 int main()
 {
@@ -18,9 +19,7 @@ int main()
 
 	Player player = Player();
 
-	sf::RectangleShape map(sf::Vector2f(1200.f, 2000.f));
-	sf::Texture mapTexture;
-	setupMap(&map, &mapTexture);
+	Map map = Map();
 
 	while (window.isOpen())
 	{
@@ -28,12 +27,7 @@ int main()
 		
 		player.update(window);
 
-		view.setCenter(player.getPosition());
-		window.setView(view);
-		window.clear();
-		window.draw(map);
-		player.draw(window);
-		window.display();
+		Draw(window, view, player, map);
 	}
 
 	return 0;
@@ -60,9 +54,14 @@ void windowEventHandler(sf::RenderWindow& window, sf::View* view) {
 	}
 }
 
-void setupMap(sf::RectangleShape* map, sf::Texture* mapTexture) {
-	map->setPosition(0.f, 0.f);
-	map->setOrigin(600.0f, 1200.0f);
-	mapTexture->loadFromFile("Textures/road.jpg");
-	map->setTexture(mapTexture);
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map)
+{
+	view.setCenter(player.getPosition());
+	window.setView(view);
+	window.clear();
+	map.draw(window);
+	player.draw(window);
+	window.display();
 }
+
+

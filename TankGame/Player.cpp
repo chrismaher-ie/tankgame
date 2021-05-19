@@ -1,5 +1,5 @@
 #include "Player.h"
-# define M_PI           3.14159265358979323846f
+static const float M_PI = 3.14159265358979f;
 
 Player::Player() {
 	body = sf::RectangleShape(sf::Vector2f(size, size));
