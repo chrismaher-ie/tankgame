@@ -13,6 +13,7 @@ class BulletHandler
 		void update();
 		void draw(sf::RenderWindow& window);
 		void addBullet(sf::Vector2f pos, float rotation);
+		void deleteBulletList();
 
 	private:
 

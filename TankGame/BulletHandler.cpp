@@ -28,3 +28,8 @@ void BulletHandler::addBullet(sf::Vector2f pos, float rotation)
 	Bullet bullet = Bullet(pos, rotation, bulletTexture);
 	bulletList.push_back(bullet);
 }
+
+void BulletHandler::deleteBulletList()
+{
+	bulletList.clear();
+}
