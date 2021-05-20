@@ -4,7 +4,7 @@
 
 BulletHandler::BulletHandler()
 {
-	bulletTexture.loadFromFile("Textures/bullet2.png");
+	bulletTexture.loadFromFile("Textures/bullet.png");
 }
 
 BulletHandler::~BulletHandler()
