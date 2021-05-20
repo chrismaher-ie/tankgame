@@ -48,6 +48,7 @@ int main()
 		windowEventHandler(window, &view);
 		handler.update();
 		player.update(window);
+		player.getBulletHandler()->update();
 
 		Draw(window, view, player, map, handler, framerate.text);
 	}
@@ -83,6 +84,7 @@ void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, Bu
 	window.clear();
 	map.draw(window);
 	player.draw(window);
+	player.getBulletHandler()->draw(window);
 	handler.draw(window);
 	text.setPosition(window.mapPixelToCoords(sf::Vector2i(5, 5)));
 	window.draw(text);

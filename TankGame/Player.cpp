@@ -41,9 +41,10 @@ void Player::update(sf::RenderWindow& window)
 	sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
 	sf::Vector2f mouseWorldPos = window.mapPixelToCoords(pixelPos);
 	turret.setRotation(getAngle(turret.getPosition(), mouseWorldPos));
-
+	
 	//set turret to position 
 	turret.setPosition(body.getPosition());
+	shoot();
 }
 
 void Player::draw(sf::RenderWindow& window)
@@ -55,6 +56,18 @@ void Player::draw(sf::RenderWindow& window)
 sf::Vector2f Player::getPosition()
 {
 	return body.getPosition();
+}
+
+BulletHandler* Player::getBulletHandler()
+{
+	return &bulletHandler;
+}
+
+void Player::shoot()
+{
+	float radian_angle = turret.getRotation() / 180.f * M_PI;
+	sf::Vector2f bulletPos(turret.getPosition().x + (size/2 * std::cosf(radian_angle)), turret.getPosition().y + (size/2 *std::sinf(radian_angle)));
+	bulletHandler.addBullet(bulletPos, turret.getRotation());
 }
 
 void Player::moveForward()
