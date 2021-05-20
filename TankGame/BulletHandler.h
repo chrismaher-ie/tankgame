@@ -10,7 +10,7 @@ class BulletHandler
 
 		BulletHandler();
 		~BulletHandler();
-		void update();
+		void update(sf::FloatRect boundingBox);
 		void draw(sf::RenderWindow& window);
 		void addBullet(sf::Vector2f pos, float rotation);
 		void deleteBulletList();

@@ -17,3 +17,8 @@ void Map::draw(sf::RenderWindow & window)
 {
 	window.draw(map);
 }
+
+sf::FloatRect Map::getBoundingBox()
+{
+	return map.getGlobalBounds();
+}

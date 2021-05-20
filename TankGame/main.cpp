@@ -28,7 +28,7 @@ int main()
 	//	if (i % 100 == 0)printf("%i\n", i);
 	//}
 	Map map = Map();
-
+	sf::FloatRect boundingBox = map.getBoundingBox();
 	sf::Clock clock;
 
 
@@ -46,9 +46,9 @@ int main()
 			count = 0;
 		}
 		windowEventHandler(window, &view);
-		handler.update();
+		handler.update(boundingBox);
 		player.update(window);
-		player.getBulletHandler()->update();
+		player.getBulletHandler()->update(boundingBox);
 
 		Draw(window, view, player, map, handler, framerate.text);
 	}

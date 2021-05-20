@@ -24,3 +24,8 @@ void Bullet::draw(sf::RenderWindow & window)
 {
 	window.draw(body);
 }
+
+sf::Vector2f Bullet::getPosition()
+{
+	return body.getPosition();
+}

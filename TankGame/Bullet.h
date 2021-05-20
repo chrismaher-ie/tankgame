@@ -8,6 +8,7 @@ public:
 	~Bullet();
 	void update();
 	void draw(sf::RenderWindow& window);
+	sf::Vector2f getPosition();
 
 private:
 	float speed = 0.6f;
