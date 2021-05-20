@@ -47,6 +47,7 @@ int main()
 		}
 		windowEventHandler(window, &view);
 		handler.update(boundingBox);
+		handler.hitDetection(&player);
 		player.update(window);
 		player.getBulletHandler()->update(boundingBox);
 

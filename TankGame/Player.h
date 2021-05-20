@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "BulletHandler.h"
 
+
 class Player
 {
 	public:
@@ -11,8 +12,12 @@ class Player
 		void draw(sf::RenderWindow& window);
 		sf::Vector2f getPosition();
 		BulletHandler* getBulletHandler();
+		void takeDamage();
+		void die();
+		float getSize();
 
 	private:
+		int health = 5;
 		float speed = 0.3f;
 		float size = 40.0f;
 		sf::RectangleShape body;

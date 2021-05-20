@@ -63,6 +63,25 @@ BulletHandler* Player::getBulletHandler()
 	return &bulletHandler;
 }
 
+void Player::takeDamage()
+{
+	if (--health == 0) {
+		die();
+	}
+}
+
+void Player::die()
+{
+	body.setPosition(200.f,200.f);
+	health = 5;
+
+}
+
+float Player::getSize()
+{
+	return size;
+}
+
 void Player::shoot()
 {
 	float radian_angle = turret.getRotation() / 180.f * M_PI;

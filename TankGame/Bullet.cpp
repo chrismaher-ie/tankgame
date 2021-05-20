@@ -29,3 +29,8 @@ sf::Vector2f Bullet::getPosition()
 {
 	return body.getPosition();
 }
+
+float Bullet::getSize()
+{
+	return size;
+}
