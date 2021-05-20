@@ -4,7 +4,7 @@
 class Bullet
 {
 public:
-	Bullet(sf::Vector2f pos, float rotation, sf::Texture& mapTexture);
+	Bullet(sf::Vector2f pos, float rotation, sf::Texture& texture);
 	~Bullet();
 	void update();
 	void draw(sf::RenderWindow& window);
