@@ -10,7 +10,7 @@ public:
 	void draw(sf::RenderWindow& window);
 
 private:
-	float speed = 0.1f;
+	float speed = 0.3f;
 	float size = 19.0f;
 	sf::RectangleShape body;
 

@@ -26,10 +26,10 @@ void Player::update(sf::RenderWindow& window)
 {
 	//move player based on keypress
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
-		body.rotate(-0.1f);
+		body.rotate(-speed);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
-		body.rotate(0.1f);
+		body.rotate(speed);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
 		moveForward();
@@ -66,7 +66,7 @@ void Player::moveForward()
 void Player::moveBackward()
 {
 	float angle = body.getRotation() / 180.f * M_PI;
-	body.move(speed * std::cosf(angle), speed * std::sinf(angle));
+	body.move(-speed * std::cosf(angle), -speed * std::sinf(angle));
 }
 
 float Player::getAngle(sf::Vector2f v1, sf::Vector2f v2)

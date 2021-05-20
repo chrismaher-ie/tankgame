@@ -11,7 +11,7 @@ class Player
 		sf::Vector2f getPosition();
 
 	private:
-		float speed = 0.05f;
+		float speed = 0.3f;
 		float size = 40.0f;
 		sf::RectangleShape body;
 		sf::RectangleShape turret;
