@@ -7,7 +7,7 @@
 class EnemyHandler
 {
 public:
-	std::list<Enemy> enemyList;
+	
 
 	EnemyHandler();
 	~EnemyHandler();
@@ -15,8 +15,10 @@ public:
 	void draw(sf::RenderWindow& window);
 	void addEnemy(sf::Vector2f pos, float rotation);
 	BulletHandler* getBulletHandler();
+	std::list<Enemy>* getEnemyList();
 
 private:
+	std::list<Enemy> enemyList;
 	sf::Texture enemyTexture;
 	BulletHandler bulletHandler;
 };

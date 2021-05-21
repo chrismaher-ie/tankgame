@@ -25,6 +25,9 @@ int main()
 	Player player = Player();
 	EnemyHandler eHandler = EnemyHandler();
 	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f);
+	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f);
+	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f);
+	eHandler.addEnemy(sf::Vector2f(-75.0f, -75.0f), 0.f);
 	Map map = Map();
 	sf::FloatRect boundingBox = map.getBoundingBox();
 	sf::Clock clock;
@@ -42,6 +45,7 @@ int main()
 		eHandler.update();
 		player.update(window);
 		player.getBulletHandler()->update(boundingBox);
+		player.getBulletHandler()->hitDetection(eHandler.getEnemyList());
 
 		Draw(window, view, player, map, eHandler, framerate.text);
 	}

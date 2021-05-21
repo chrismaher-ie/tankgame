@@ -45,3 +45,8 @@ BulletHandler * EnemyHandler::getBulletHandler()
 {
 	return &bulletHandler;
 }
+
+std::list<Enemy>* EnemyHandler::getEnemyList()
+{
+	return &enemyList;
+}

@@ -34,6 +34,20 @@ sf::Vector2f Enemy::getPosition()
 	return body.getPosition();
 }
 
+bool Enemy::takeDamage()
+{
+	if (--health == 0) {
+		return true;
+	}
+	return false;
+}
+
+bool Enemy::die()
+{
+	return true;
+
+}
+
 float Enemy::getSize()
 {
 	return size;

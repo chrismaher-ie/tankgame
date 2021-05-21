@@ -10,10 +10,12 @@ public:
 	void update();
 	void draw(sf::RenderWindow& window);
 	sf::Vector2f getPosition();
+	bool takeDamage();
+	bool die();
 	float getSize();
 
 private:
-	
+	int health = 5;
 	float size = 40.0f;
 
 	float fireRate = 6.f; //bullets per second
