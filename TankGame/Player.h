@@ -20,12 +20,20 @@ class Player
 		int health = 5;
 		float speed = 0.3f;
 		float size = 40.0f;
+
+		float fireRate = 6.f; //bullets per second
+		sf::Clock fireRateClock;
+		sf::Time fireInterval = sf::seconds(1 / fireRate);
+		sf::Time fireTimeDelta = sf::seconds(0.f);
+
 		sf::RectangleShape body;
 		sf::RectangleShape turret;
 		sf::Texture bodyTexture;
 		sf::Texture turretTexture;
 		BulletHandler bulletHandler;
 
+		
+		bool canShoot();
 		void shoot();
 		void moveForward();
 		void moveBackward();

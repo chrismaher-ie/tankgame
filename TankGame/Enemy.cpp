@@ -19,7 +19,9 @@ Enemy::~Enemy()
 void Enemy::update()
 {
 	body.rotate(1.f);
-	shoot();
+
+
+	if (canShoot()) shoot();
 }
 
 void Enemy::draw(sf::RenderWindow & window)
@@ -35,6 +37,16 @@ sf::Vector2f Enemy::getPosition()
 float Enemy::getSize()
 {
 	return size;
+}
+
+bool Enemy::canShoot()
+{
+	fireTimeDelta += fireRateClock.restart();
+	if (fireTimeDelta > fireInterval) {
+		fireTimeDelta = sf::seconds(0.f);
+		return true;
+	}
+	return false;
 }
 
 void Enemy::shoot()

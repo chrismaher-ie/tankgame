@@ -44,7 +44,10 @@ void Player::update(sf::RenderWindow& window)
 	
 	//set turret to position 
 	turret.setPosition(body.getPosition());
-	shoot();
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+		if (canShoot()) shoot();
+	}
 }
 
 void Player::draw(sf::RenderWindow& window)
@@ -80,6 +83,18 @@ void Player::die()
 float Player::getSize()
 {
 	return size;
+}
+
+
+
+bool Player::canShoot()
+{
+	fireTimeDelta += fireRateClock.restart();
+	if (fireTimeDelta > fireInterval) {
+		fireTimeDelta = sf::seconds(0.f);
+		return true;
+	}
+	return false;
 }
 
 void Player::shoot()

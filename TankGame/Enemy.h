@@ -13,10 +13,20 @@ public:
 	float getSize();
 
 private:
-	void shoot();
+	
 	float size = 40.0f;
+
+	float fireRate = 6.f; //bullets per second
+	sf::Clock fireRateClock;
+	sf::Time fireInterval = sf::seconds(1 / fireRate);
+	sf::Time fireTimeDelta = sf::seconds(0.f);
+
+
 	BulletHandler* bulletHandler;
 	sf::RectangleShape body;
+
+	bool canShoot();
+	void shoot();
 
 };
 
