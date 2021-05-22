@@ -17,16 +17,18 @@ void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, En
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(static_cast<int>(SCREENHEIGHT), static_cast<int>(SCREENWIDTH)), "SFML Tutorial", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
+	sf::ContextSettings settings;
+	settings.antialiasingLevel = 8;
+	sf::RenderWindow window(sf::VideoMode(static_cast<int>(SCREENHEIGHT), static_cast<int>(SCREENWIDTH)), "SFML Tutorial", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize, settings);
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(SCREENHEIGHT, SCREENHEIGHT));
 	window.setFramerateLimit(144);
 	Framerate framerate = Framerate();
 
 	Player player = Player();
 	EnemyHandler eHandler = EnemyHandler();
-	//eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, 0);
-	//eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, 1);
-	//eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, 1);
+	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, 0);
+	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, 1);
+	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, 1);
 	eHandler.addEnemy(sf::Vector2f(-75.0f, -75.0f), 0.f, 2);
 	Map map = Map();
 	sf::FloatRect boundingBox = map.getBoundingBox();
