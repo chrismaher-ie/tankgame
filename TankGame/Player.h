@@ -22,7 +22,7 @@ class Player
 		float speed = 0.3f;
 		float size = 40.0f;
 
-		float fireRate = 6.f; //bullets per second
+		float fireRate = 1.f; //bullets per second
 		sf::Clock fireRateClock;
 		sf::Time fireInterval = sf::seconds(1 / fireRate);
 		sf::Time fireTimeDelta = sf::seconds(0.f);

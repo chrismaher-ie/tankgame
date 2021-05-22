@@ -103,7 +103,6 @@ float Enemy::getTargetLeadAngle(Player * player)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
 
 		relativeAngleRadians = (180 + worldAngle - player->getRotation()) / 180 * M_PI;
-		printf("Angle %f\n", relativeAngleRadians);
 		angleDelta = std::asin(sinf(relativeAngleRadians) / bulletSpeedRatio) * 180 / M_PI;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {

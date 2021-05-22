@@ -20,7 +20,7 @@ private:
 	float size = 40.0f;
 	int behaviour = 0;
 
-	float fireRate = 6.f; //bullets per second
+	float fireRate = 2.f; //bullets per second
 	sf::Clock fireRateClock;
 	sf::Time fireInterval = sf::seconds(1 / fireRate);
 	sf::Time fireTimeDelta = sf::seconds(0.f);
