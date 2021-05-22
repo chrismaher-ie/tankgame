@@ -36,6 +36,7 @@ class Player
 		
 		bool canShoot();
 		void shoot();
+		void missile();
 		void moveForward();
 		void moveBackward();
 		float getAngle(sf::Vector2f v1, sf::Vector2f v2);

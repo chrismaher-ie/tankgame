@@ -42,11 +42,11 @@ int main()
 
 
 		windowEventHandler(window, &view);
-		eHandler.getBulletHandler()->update(boundingBox);
+		eHandler.getBulletHandler()->update(window, boundingBox);
 		eHandler.getBulletHandler()->hitDetection(&player);
 		eHandler.update(&player);
 		player.update(window);
-		player.getBulletHandler()->update(boundingBox);
+		player.getBulletHandler()->update(window, boundingBox);
 		player.getBulletHandler()->hitDetection(eHandler.getEnemyList());
 
 		Draw(window, view, player, map, eHandler, framerate.text);

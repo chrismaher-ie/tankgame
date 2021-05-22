@@ -48,6 +48,9 @@ void Player::update(sf::RenderWindow& window)
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
 		if (canShoot()) shoot();
 	}
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)) {
+		if (canShoot()) missile();
+	}
 }
 
 void Player::draw(sf::RenderWindow& window)
@@ -107,6 +110,13 @@ void Player::shoot()
 	float radian_angle = turret.getRotation() / 180.f * M_PI;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size/2 * std::cosf(radian_angle)), turret.getPosition().y + (size/2 *std::sinf(radian_angle)));
 	bulletHandler.addBullet(bulletPos, turret.getRotation());
+}
+
+void Player::missile()
+{
+	float radian_angle = turret.getRotation() / 180.f * M_PI;
+	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
+	bulletHandler.addMissile(bulletPos, turret.getRotation());
 }
 
 void Player::moveForward()
