@@ -9,11 +9,11 @@ EnemyHandler::~EnemyHandler()
 {
 }
 
-void EnemyHandler::update()
+void EnemyHandler::update(Player * player)
 {
 	for (auto enemy_itr = enemyList.begin(); enemy_itr != enemyList.end(); ) {
 		//update enemy
-		(*enemy_itr).update();
+		enemy_itr->update(player);
 
 		//if enemy is to be destroyed, delete enemy
 		if (false) {
@@ -35,9 +35,15 @@ void EnemyHandler::draw(sf::RenderWindow & window)
 	}
 }
 
-void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation)
+void EnemyHandler::addEnemy(sf::Vector2f pos)
 {
-	Enemy enemy = Enemy(pos, rotation, enemyTexture, &bulletHandler);
+	Enemy enemy = Enemy(pos, 0.f, enemyTexture, &bulletHandler, 0);
+	enemyList.push_back(enemy);
+}
+
+void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int behaviour)
+{
+	Enemy enemy = Enemy(pos, rotation, enemyTexture, &bulletHandler, behaviour);
 	enemyList.push_back(enemy);
 }
 

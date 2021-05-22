@@ -12,6 +12,7 @@ class Player
 		void draw(sf::RenderWindow& window);
 		sf::Vector2f getPosition();
 		BulletHandler* getBulletHandler();
+		float getRotation();
 		void takeDamage();
 		void die();
 		float getSize();

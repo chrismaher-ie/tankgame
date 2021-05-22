@@ -24,10 +24,10 @@ int main()
 
 	Player player = Player();
 	EnemyHandler eHandler = EnemyHandler();
-	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f);
-	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f);
-	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f);
-	eHandler.addEnemy(sf::Vector2f(-75.0f, -75.0f), 0.f);
+	//eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, 0);
+	//eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, 1);
+	//eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, 1);
+	eHandler.addEnemy(sf::Vector2f(-75.0f, -75.0f), 0.f, 2);
 	Map map = Map();
 	sf::FloatRect boundingBox = map.getBoundingBox();
 	sf::Clock clock;
@@ -42,7 +42,7 @@ int main()
 		windowEventHandler(window, &view);
 		eHandler.getBulletHandler()->update(boundingBox);
 		eHandler.getBulletHandler()->hitDetection(&player);
-		eHandler.update();
+		eHandler.update(&player);
 		player.update(window);
 		player.getBulletHandler()->update(boundingBox);
 		player.getBulletHandler()->hitDetection(eHandler.getEnemyList());

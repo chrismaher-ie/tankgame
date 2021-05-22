@@ -11,9 +11,10 @@ public:
 
 	EnemyHandler();
 	~EnemyHandler();
-	void update(/*sf::FloatRect boundingBox*/);
+	void update(/*sf::FloatRect boundingBox*/ Player * player);
 	void draw(sf::RenderWindow& window);
-	void addEnemy(sf::Vector2f pos, float rotation);
+	void addEnemy(sf::Vector2f pos);
+	void addEnemy(sf::Vector2f pos, float rotation, int behaviour);
 	BulletHandler* getBulletHandler();
 	std::list<Enemy>* getEnemyList();
 

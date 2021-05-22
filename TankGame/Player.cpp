@@ -66,6 +66,11 @@ BulletHandler* Player::getBulletHandler()
 	return &bulletHandler;
 }
 
+float Player::getRotation()
+{
+	return body.getRotation();
+}
+
 void Player::takeDamage()
 {
 	if (--health == 0) {
