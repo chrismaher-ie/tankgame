@@ -33,7 +33,8 @@ void BulletHandler::update(sf::RenderWindow & window, sf::FloatRect boundingBox)
 
 	for (auto missile_itr = missileList.begin(); missile_itr != missileList.end(); ) {
 		//update missile
-		if (!missile_itr->update(window)) {
+		missile_itr->update(window);
+		if (missile_itr->expired) {
 			missile_itr = missileList.erase(missile_itr);
 		}
 

@@ -17,17 +17,16 @@ Missile::~Missile()
 
 
 // move explosion logic elsewhere
-bool Missile::update(sf::RenderWindow& window)
+void Missile::update(sf::RenderWindow& window)
 {
 	if (lifeTimeclock.getElapsedTime() > lifeTime) {
-		return false;
+		expired = true;
 	}
 	//TODO: make tracking speed slower
 	sf::Vector2f mouseWorldPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 	float angle = std::atan2f(mouseWorldPos.y - body.getPosition().y, mouseWorldPos.x - body.getPosition().x);
 	body.setRotation(angle * 180 / M_PI);
 	body.move(speed * std::cosf(angle), speed * std::sinf(angle));
-	return true;
 }
 
 void Missile::draw(sf::RenderWindow & window)
