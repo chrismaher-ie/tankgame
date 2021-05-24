@@ -134,6 +134,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyHandler.cpp" />
     <ClCompile Include="Framerate.cpp" />
+    <ClCompile Include="GeometryUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Missile.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyHandler.h" />
     <ClInclude Include="Framerate.h" />
+    <ClInclude Include="GeometryUtils.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Missile.h" />
     <ClInclude Include="Player.h" />

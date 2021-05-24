@@ -1,5 +1,4 @@
 #include "Player.h"
-static const float M_PI = 3.14159265358979f;
 
 Player::Player() {
 	body = sf::RectangleShape(sf::Vector2f(size, size));
@@ -40,7 +39,7 @@ void Player::update(sf::RenderWindow& window)
 	//twist turret to mouse
 	sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
 	sf::Vector2f mouseWorldPos = window.mapPixelToCoords(pixelPos);
-	turret.setRotation(getAngle(turret.getPosition(), mouseWorldPos));
+	turret.setRotation(gutils::getAngle(turret.getPosition(), mouseWorldPos));
 	
 	//set turret to position 
 	turret.setPosition(body.getPosition());
@@ -93,7 +92,21 @@ float Player::getSize()
 	return size;
 }
 
-
+float Player::getSpeed()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+		return 0.f;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+		return speed;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+		return speed * -1;
+	}
+	else {
+		return 0.f;
+	}
+}
 
 bool Player::canShoot()
 {
@@ -107,32 +120,26 @@ bool Player::canShoot()
 
 void Player::shoot()
 {
-	float radian_angle = turret.getRotation() / 180.f * M_PI;
+	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size/2 * std::cosf(radian_angle)), turret.getPosition().y + (size/2 *std::sinf(radian_angle)));
 	bulletHandler.addBullet(bulletPos, turret.getRotation());
 }
 
 void Player::fireMissile()
 {
-	float radian_angle = turret.getRotation() / 180.f * M_PI;
+	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
 	bulletHandler.addMissile(bulletPos, turret.getRotation());
 }
 
 void Player::moveForward()
 {
-	float angle = body.getRotation() / 180.f * M_PI;
+	float angle = body.getRotation() * gutils::degreesToRads;
 	body.move(speed * std::cosf(angle), speed * std::sinf(angle));
 }
 
 void Player::moveBackward()
 {
-	float angle = body.getRotation() / 180.f * M_PI;
+	float angle = body.getRotation() * gutils::degreesToRads;
 	body.move(-speed * std::cosf(angle), -speed * std::sinf(angle));
-}
-
-float Player::getAngle(sf::Vector2f v1, sf::Vector2f v2)
-{
-	float angle = std::atan2f(v2.y - v1.y, v2.x - v1.x) * 180 / M_PI;
-	return angle;
 }

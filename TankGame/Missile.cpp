@@ -1,5 +1,4 @@
 #include "Missile.h"
-static const float M_PI = 3.14159265358979f;
 
 Missile::Missile(sf::Vector2f pos, float rotation, sf::Texture& texture)
 {
@@ -27,7 +26,7 @@ void Missile::update(sf::RenderWindow& window)
 	}
 	else
 	{
-		float angle = body.getRotation() / 180.f * M_PI;
+		float angle = body.getRotation() * gutils::degreesToRads;
 		body.move(speed * std::cosf(angle), speed * std::sinf(angle));
 	}
 	
@@ -55,11 +54,9 @@ sf::Vector2f Missile::getMousPos(sf::RenderWindow & window)
 
 void Missile::moveToTarget(sf::Vector2f targetPos)
 {
-	
-	float angle = std::atan2f(targetPos.y - body.getPosition().y, targetPos.x - body.getPosition().x) * 180 / M_PI;
-	angle = fmod(angle+360.f, 360.f);
+	float angle = gutils::getAngle(body.getPosition(), targetPos);
 
-	float delta = getDelta(angle,body.getRotation());
+	float delta = gutils::getAngleDelta(angle,body.getRotation());
 
 	if (abs(delta) > turnSpeed) { 
 	
@@ -74,21 +71,6 @@ void Missile::moveToTarget(sf::Vector2f targetPos)
 		body.rotate(delta);
 	}
 	
-	float angle_r = body.getRotation() / 180 * M_PI;
+	float angle_r = body.getRotation() * gutils::degreesToRads;
 	body.move(speed * std::cosf(angle_r), speed * std::sinf(angle_r));
-}
-
-float  Missile::getDelta(float a1, float a2) {
-	
-	float delta = a1 - a2;
-	if (abs(delta) >= 180.f) {
-		if (delta > 0) {
-
-			delta -= 360.f;
-		}
-		else if (delta < 0) {
-			delta += 360.f;
-		}
-	}
-	return delta;
 }

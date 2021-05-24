@@ -9,8 +9,6 @@
 static const float SCREENHEIGHT = 512.0f;
 static const float SCREENWIDTH =  512.0f;
 
-static const float M_PI = 3.14159265358979f;
-
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
 void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& handler, sf::Text& text);

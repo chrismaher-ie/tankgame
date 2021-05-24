@@ -1,5 +1,4 @@
 #include "Bullet.h"
-static const float M_PI = 3.14159265358979f;
 
 Bullet::Bullet(sf::Vector2f pos, float rotation, sf::Texture& texture)
 {
@@ -16,7 +15,7 @@ Bullet::~Bullet()
 
 void Bullet::update()
 {
-	float angle = body.getRotation() / 180.f * M_PI;
+	float angle = body.getRotation() * gutils::degreesToRads;
 	body.move(speed * std::cosf(angle), speed * std::sinf(angle));
 }
 

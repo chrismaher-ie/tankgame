@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "GeometryUtils.h"
 #include "BulletHandler.h"
 #include "Player.h"
 
@@ -31,7 +32,5 @@ private:
 
 	bool canShoot();
 	void shoot();
-	float getAngle(sf::Vector2f v1, sf::Vector2f v2);
-	float getTargetLeadAngle(Player* player);
 };
 

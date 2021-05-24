@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "GeometryUtils.h"
 #include "BulletHandler.h"
 
 
@@ -16,6 +17,7 @@ class Player
 		void takeDamage();
 		void die();
 		float getSize();
+		float getSpeed();
 
 	private:
 		int health = 5;
@@ -39,6 +41,5 @@ class Player
 		void fireMissile();
 		void moveForward();
 		void moveBackward();
-		float getAngle(sf::Vector2f v1, sf::Vector2f v2);
 };
 
