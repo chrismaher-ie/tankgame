@@ -7,9 +7,11 @@
 class UnitTank : sf::Drawable
 {
 public:
-	UnitTank(sf::Vector2f pos, float rotation, BulletHandler* handler);
-	~UnitTank();
+	UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler* handler);
+	virtual ~UnitTank();
 
+	int getTeam();
+	int getHealth();
 	float getSize();
 	float getSpeed();
 	float getRotation();
@@ -28,6 +30,7 @@ protected:
 	int _id;
 	static int idCount;
 
+	int teamId;
 	int health = 1;
 	float size = 40.0f;
 	float speed = 0.3f;

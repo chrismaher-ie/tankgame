@@ -3,11 +3,11 @@
 int UnitTank::idCount = 0;
 
 
-UnitTank::UnitTank(sf::Vector2f pos, float rotation, BulletHandler* bullethandler)
+UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler* bullethandler)
 {
 	_id = idCount;
 	idCount++;
-
+	this->teamId = teamId;
 
 	body = sf::RectangleShape(sf::Vector2f(size, size));
 	body.setOrigin(sf::Vector2f(size / 2, size / 2));
@@ -35,6 +35,16 @@ UnitTank::UnitTank(sf::Vector2f pos, float rotation, BulletHandler* bullethandle
 
 UnitTank::~UnitTank()
 {
+}
+
+int UnitTank::getTeam()
+{
+	return teamId;
+}
+
+int UnitTank::getHealth()
+{
+	return health;
 }
 
 float UnitTank::getSize()
