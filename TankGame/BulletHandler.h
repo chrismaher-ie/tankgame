@@ -12,8 +12,8 @@ class Enemy;
 class BulletHandler
 {
 	public:
-		std::list<Bullet> bulletList;
-		std::list<Missile> missileList;
+		std::list<Bullet*> bulletList;
+		std::list<Missile*> missileList;
 		BulletHandler();
 		~BulletHandler();
 		void update(sf::RenderWindow & window, sf::FloatRect boundingBox);
