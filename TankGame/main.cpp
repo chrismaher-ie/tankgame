@@ -11,7 +11,7 @@ static const float SCREENWIDTH =  512.0f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& handler, sf::Text& text, BulletHandler* playerBulletHandler);
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& handler, sf::Text& text, BulletHandler& playerBulletHandler);
 
 int main()
 {
@@ -21,8 +21,8 @@ int main()
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(SCREENHEIGHT, SCREENHEIGHT));
 	window.setFramerateLimit(144);
 	Framerate framerate = Framerate();
-	BulletHandler* playerBulletHandler = new BulletHandler();
-	Player player = Player(playerBulletHandler);
+	BulletHandler playerBulletHandler = BulletHandler();
+	Player player = Player(sf::Vector2f(0.0f, 0.0f), 135.f, 0, playerBulletHandler, window);
 	EnemyHandler eHandler = EnemyHandler();
 	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, 0);
 	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, 1);
@@ -43,10 +43,10 @@ int main()
 		eHandler.getBulletHandler()->update(window, boundingBox);
 		eHandler.getBulletHandler()->hitDetection(&player);
 		eHandler.update(&player);
-		player.update(window);
+		player.update();
 
-		playerBulletHandler->update(window, boundingBox);
-		playerBulletHandler->hitDetection(eHandler.getEnemyList());
+		playerBulletHandler.update(window, boundingBox);
+		playerBulletHandler.hitDetection(eHandler.getEnemyList());
 
 		Draw(window, view, player, map, eHandler, framerate.text, playerBulletHandler);
 	}
@@ -75,14 +75,14 @@ void windowEventHandler(sf::RenderWindow& window, sf::View* view) {
 	}
 }
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& handler, sf::Text& text, BulletHandler* playerBulletHandler)
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& handler, sf::Text& text, BulletHandler& playerBulletHandler)
 {
 	view.setCenter(player.getPosition());
 	window.setView(view);
 	window.clear();
 	map.draw(window);
-	player.draw(window);
-	playerBulletHandler->draw(window);
+	window.draw(player);
+	playerBulletHandler.draw(window);
 	handler.draw(window);
 	handler.getBulletHandler()->draw(window);
 	text.setPosition(window.mapPixelToCoords(sf::Vector2i(5, 5)));
