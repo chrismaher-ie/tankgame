@@ -7,12 +7,11 @@
 class Player
 {
 	public:
-		Player();
+		Player(BulletHandler* playerBulletHandler);
 		~Player();
 		void update(sf::RenderWindow& window);
 		void draw(sf::RenderWindow& window);
 		sf::Vector2f getPosition();
-		BulletHandler* getBulletHandler();
 		float getRotation();
 		void takeDamage();
 		void die();
@@ -33,8 +32,7 @@ class Player
 		sf::RectangleShape turret;
 		sf::Texture bodyTexture;
 		sf::Texture turretTexture;
-		BulletHandler bulletHandler;
-
+		BulletHandler* playerBulletHandler;
 		
 		bool canShoot();
 		void shoot();

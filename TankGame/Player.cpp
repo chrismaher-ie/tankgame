@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player() {
+Player::Player(BulletHandler* playerBulletHandler) {
 	body = sf::RectangleShape(sf::Vector2f(size, size));
 	body.setOrigin(sf::Vector2f(size / 2, size / 2));
 	body.setPosition(sf::Vector2f(0.f, 0.f));
@@ -15,6 +15,7 @@ Player::Player() {
 
 	turretTexture.loadFromFile("Textures/tankTurret.png");
 	turret.setTexture(&turretTexture);
+	this->playerBulletHandler = playerBulletHandler;
 }
 
 Player::~Player()
@@ -48,7 +49,7 @@ void Player::update(sf::RenderWindow& window)
 		if (canShoot()) shoot();
 	}
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)) {
-		if (bulletHandler.missileList.empty()) fireMissile();
+		if (playerBulletHandler->missileList.empty()) fireMissile();
 	}
 }
 
@@ -61,11 +62,6 @@ void Player::draw(sf::RenderWindow& window)
 sf::Vector2f Player::getPosition()
 {
 	return body.getPosition();
-}
-
-BulletHandler* Player::getBulletHandler()
-{
-	return &bulletHandler;
 }
 
 float Player::getRotation()
@@ -122,14 +118,14 @@ void Player::shoot()
 {
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size/2 * std::cosf(radian_angle)), turret.getPosition().y + (size/2 *std::sinf(radian_angle)));
-	bulletHandler.addBullet(bulletPos, turret.getRotation());
+	playerBulletHandler->addBullet(bulletPos, turret.getRotation());
 }
 
 void Player::fireMissile()
 {
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	bulletHandler.addMissile(bulletPos, turret.getRotation());
+	playerBulletHandler->addMissile(bulletPos, turret.getRotation());
 }
 
 void Player::moveForward()
