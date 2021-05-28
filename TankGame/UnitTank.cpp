@@ -3,7 +3,8 @@
 int UnitTank::idCount = 0;
 
 
-UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler* bullethandler)
+UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler& bullethandler)
+	: bulletHandler(bullethandler)
 {
 	_id = idCount;
 	idCount++;
@@ -27,9 +28,6 @@ UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler* 
 
 	turret.setPosition(pos);
 	turret.setRotation(rotation);
-
-	this->bulletHandler = bulletHandler;
-
 
 }
 
@@ -140,5 +138,5 @@ void UnitTank::shoot()
 	//Move code to bulletHandler->addBullet()
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	bulletHandler->addBullet(bulletPos, turret.getRotation());
+	bulletHandler.addBullet(bulletPos, turret.getRotation());
 }

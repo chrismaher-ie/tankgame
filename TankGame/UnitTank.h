@@ -7,7 +7,7 @@
 class UnitTank : public sf::Drawable
 {
 public:
-	UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler* handler);
+	UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler& handler);
 	virtual ~UnitTank();
 
 	int getTeam();
@@ -42,7 +42,7 @@ protected:
 	sf::Time fireInterval = sf::seconds(1 / fireRate);
 	sf::Time fireTimeDelta = sf::seconds(0.f);
 
-	BulletHandler* bulletHandler;
+	BulletHandler& bulletHandler;
 	UnitTank* target = nullptr;
 
 	sf::RectangleShape body;
