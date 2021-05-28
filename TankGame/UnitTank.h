@@ -4,7 +4,7 @@
 #include "BulletHandler.h"
 
 
-class UnitTank : sf::Drawable
+class UnitTank : public sf::Drawable
 {
 public:
 	UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler* handler);
@@ -18,13 +18,13 @@ public:
 	sf::Vector2f getPosition();
 
 	void takeDamage();
-	void die();
+	virtual void die();
 
 	void setTarget(UnitTank* target);
 	UnitTank* getTarget();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void update(sf::RenderWindow& window);
+	void update();
 
 protected:
 	int _id;
@@ -33,7 +33,8 @@ protected:
 	int teamId;
 	int health = 1;
 	float size = 40.0f;
-	float speed = 0.3f;
+	float maxSpeed = 0.3f;
+	float currentSpeed = 0.3f;
 	float turretSpeed = 0.1f;
 
 	float fireRate = 1.f; //bullets per second

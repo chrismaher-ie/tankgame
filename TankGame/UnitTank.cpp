@@ -54,7 +54,7 @@ float UnitTank::getSize()
 
 float UnitTank::getSpeed()
 {
-	return speed;
+	return currentSpeed;
 }
 
 float UnitTank::getRotation()
@@ -96,10 +96,12 @@ void UnitTank::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	target.draw(turret);
 }
 
-void UnitTank::update(sf::RenderWindow & window)
+void UnitTank::update()
 {
 	//Movement 
 	move();
+
+	turret.setPosition(body.getPosition());
 
 	//Shooting
 	if (aim()) {
@@ -136,7 +138,7 @@ bool UnitTank::canShoot()
 void UnitTank::shoot()
 {
 	//Move code to bulletHandler->addBullet()
-	float radian_angle = body.getRotation() * gutils::degreesToRads;
-	sf::Vector2f bulletPos(body.getPosition().x + (size / 2 * std::cosf(radian_angle)), body.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	bulletHandler->addBullet(bulletPos, body.getRotation());
+	float radian_angle = turret.getRotation() * gutils::degreesToRads;
+	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
+	bulletHandler->addBullet(bulletPos, turret.getRotation());
 }
