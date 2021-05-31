@@ -34,7 +34,7 @@ protected:
 	int health = 1;
 	float size = 40.0f;
 	float maxSpeed = 0.3f;
-	float currentSpeed = 0.3f;
+	float currentSpeed = 0.0f;
 	float turretSpeed = 0.1f;
 
 	float fireRate = 1.f; //bullets per second
