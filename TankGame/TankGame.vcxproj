@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BrownTank.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletHandler.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="UnitTank.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BrownTank.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletHandler.h" />
     <ClInclude Include="Enemy.h" />

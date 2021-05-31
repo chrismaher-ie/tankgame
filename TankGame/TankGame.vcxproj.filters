@@ -48,6 +48,9 @@
     <ClCompile Include="UnitTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BrownTank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UnitTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BrownTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
