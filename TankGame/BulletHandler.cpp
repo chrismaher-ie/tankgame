@@ -1,6 +1,6 @@
 #include "BulletHandler.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "UnitTank.h"
 #include <cmath>
 
 BulletHandler::BulletHandler()
@@ -90,16 +90,16 @@ void BulletHandler::hitDetection(Player * player)
 	}
 }
 
-void BulletHandler::hitDetection(std::list<Enemy>* enemyList)
+void BulletHandler::hitDetection(std::list<UnitTank*>* tankList)
 {
 	float e_size = 0;
 	sf::Vector2f e_pos(0.f, 0.f);
 	bool kill = false;
 
-	for (auto enemy_itr = enemyList->begin(); enemy_itr != enemyList->end(); ) {
+	for (auto tank_itr = tankList->begin(); tank_itr != tankList->end(); ) {
 		
-		e_size = enemy_itr->getSize();
-		e_pos = enemy_itr->getPosition();
+		e_size = (*tank_itr)->getSize();
+		e_pos = (*tank_itr)->getPosition();
 		
 		for (auto bullet_itr = bulletList.begin(); bullet_itr != bulletList.end(); ) {
 
@@ -107,11 +107,13 @@ void BulletHandler::hitDetection(std::list<Enemy>* enemyList)
 			if (distance < (e_size + (*bullet_itr)->getSize()) / 2) {
 
 				bullet_itr = bulletList.erase(bullet_itr);
-				if (enemy_itr->takeDamage()) {
-					//enemy dead
+
+				(*tank_itr)->takeDamage();
+				if (true /* tank->dead*/) {//enemy dead
 					kill = true;
 					break;
 				}
+
 			}
 			// elseif bullet colldes with enemy
 
@@ -122,11 +124,11 @@ void BulletHandler::hitDetection(std::list<Enemy>* enemyList)
 		}
 
 		if (kill) {
-			enemy_itr = enemyList->erase(enemy_itr);
+			tank_itr = tankList->erase(tank_itr);
 			kill = false;
 		}
 		else {
-			++enemy_itr;
+			++tank_itr;
 		}
 	}
 }

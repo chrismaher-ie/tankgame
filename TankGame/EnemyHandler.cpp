@@ -1,9 +1,8 @@
 #include "EnemyHandler.h"
 
-EnemyHandler::EnemyHandler(BulletHandler& bulletHandler)
-	: bulletHandler(bulletHandler)
+EnemyHandler::EnemyHandler(Player& playerTank, BulletHandler& bulletHandler)
+	:  playerTank(playerTank), bulletHandler(bulletHandler)
 {
-	enemyTexture.loadFromFile("Textures/enemy.png");
 }
 
 EnemyHandler::~EnemyHandler()
@@ -12,18 +11,18 @@ EnemyHandler::~EnemyHandler()
 
 void EnemyHandler::update(Player * player)
 {
-	for (auto enemy_itr = enemyList.begin(); enemy_itr != enemyList.end(); ) {
+	for (auto tank_itr = tankList.begin(); tank_itr != tankList.end(); ) {
 		//update enemy
-		enemy_itr->update(player);
+		(*tank_itr)->update();
 
 		//if enemy is to be destroyed, delete enemy
 		if (false) {
-			enemy_itr = enemyList.erase(enemy_itr);
+			tank_itr = tankList.erase(tank_itr);
 		}
 		// elseif more checks
 
 		else { //enemy was fine, increment iterator
-			++enemy_itr;
+			++tank_itr;
 		}
 
 	}
@@ -31,24 +30,27 @@ void EnemyHandler::update(Player * player)
 
 void EnemyHandler::draw(sf::RenderWindow & window)
 {
-	for (auto& enemy : enemyList) {
-		enemy.draw(window);
+	for (auto tank : tankList) {
+		window.draw((*tank));
 	}
 }
 
-void EnemyHandler::addEnemy(sf::Vector2f pos)
+void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 {
-	Enemy enemy = Enemy(pos, 0.f, enemyTexture, bulletHandler, 0);
-	enemyList.push_back(enemy);
+	UnitTank * tank;
+	switch (type)
+	{
+	case BROWNTANKTYPE :
+		tank = new BrownTank(pos, rotation, 1 /*teamId*/, playerTank, bulletHandler);
+		tankList.push_back(tank);
+		break;
+	default:
+		break;
+	}
+
 }
 
-void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int behaviour)
+std::list<UnitTank*>* EnemyHandler::getTankList()
 {
-	Enemy enemy = Enemy(pos, rotation, enemyTexture, bulletHandler, behaviour);
-	enemyList.push_back(enemy);
-}
-
-std::list<Enemy>* EnemyHandler::getEnemyList()
-{
-	return &enemyList;
+	return &tankList;
 }

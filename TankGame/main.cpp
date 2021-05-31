@@ -23,12 +23,12 @@ int main()
 	Framerate framerate = Framerate();
 	BulletHandler enemyBulletHandler = BulletHandler();
 	BulletHandler playerBulletHandler = BulletHandler();
-	Player player = Player(sf::Vector2f(0.0f, 0.0f), 135.f, 0, playerBulletHandler, window);
-	EnemyHandler eHandler = EnemyHandler(enemyBulletHandler);
-	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, 0);
-	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, 1);
-	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, 1);
-	eHandler.addEnemy(sf::Vector2f(-75.0f, -75.0f), 0.f, 2);
+	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, playerBulletHandler, window);
+	EnemyHandler eHandler = EnemyHandler(player,enemyBulletHandler);
+	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, BROWNTANKTYPE);
+	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
+	//eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, 1);
+	//eHandler.addEnemy(sf::Vector2f(-75.0f, -75.0f), 0.f, 2);
 	Map map = Map();
 	sf::FloatRect boundingBox = map.getBoundingBox();
 	sf::Clock clock;
@@ -47,7 +47,7 @@ int main()
 		player.update();
 
 		playerBulletHandler.update(window, boundingBox);
-		playerBulletHandler.hitDetection(eHandler.getEnemyList());
+		playerBulletHandler.hitDetection(eHandler.getTankList());
 
 		Draw(window, view, player, map, eHandler, framerate.text, playerBulletHandler, enemyBulletHandler);
 	}

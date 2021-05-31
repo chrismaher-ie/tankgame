@@ -1,25 +1,28 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <list>
-#include "Enemy.h"
+#include "UnitTank.h"
+#include "BrownTank.h"
+#include "Player.h"
 #include "BulletHandler.h"
+
+#define BROWNTANKTYPE 1
 
 class EnemyHandler
 {
 public:
 	
 
-	EnemyHandler(BulletHandler& bulletHandler);
+	EnemyHandler(Player& playerTank, BulletHandler& bulletHandler);
 	~EnemyHandler();
 	void update(/*sf::FloatRect boundingBox*/ Player * player);
 	void draw(sf::RenderWindow& window);
-	void addEnemy(sf::Vector2f pos);
-	void addEnemy(sf::Vector2f pos, float rotation, int behaviour);
-	std::list<Enemy>* getEnemyList();
+	void addEnemy(sf::Vector2f pos, float rotation, int type);
+	std::list<UnitTank*> *getTankList();
 
 private:
-	std::list<Enemy> enemyList;
-	sf::Texture enemyTexture;
+	std::list<UnitTank*> tankList;
+	Player& playerTank;
 	BulletHandler& bulletHandler;
 };
 

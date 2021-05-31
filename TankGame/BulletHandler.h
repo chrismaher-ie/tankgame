@@ -4,10 +4,10 @@
 #include "Bullet.h"
 #include "Missile.h"
 //#include "Player.h"
-//#include "Enemy.h"
+//#include "UnitTank.h"
 //Forward Declarations as BulletHandler needs Player and Player needs buller handler
 class Player;
-class Enemy;
+class UnitTank;
 
 class BulletHandler
 {
@@ -21,7 +21,7 @@ class BulletHandler
 		void addBullet(sf::Vector2f pos, float rotation);
 		void addMissile(sf::Vector2f pos, float rotation);
 		void hitDetection(Player* player);
-		void hitDetection(std::list<Enemy>* enemyList);
+		void hitDetection(std::list<UnitTank*>* enemyList);
 		void deleteBulletList();
 
 	private:
