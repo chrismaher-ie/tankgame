@@ -32,9 +32,9 @@ void Missile::update(sf::RenderWindow& window)
 	
 }
 
-void Missile::draw(sf::RenderWindow & window)
+void Missile::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	window.draw(body);
+	target.draw(body);
 }
 
 sf::Vector2f Missile::getPosition()

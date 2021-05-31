@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "GeometryUtils.h"
 
-class Missile
+class Missile : public sf::Drawable
 {
 public:
 	bool expired = false;
@@ -10,7 +10,7 @@ public:
 	Missile(sf::Vector2f pos, float rotation, sf::Texture& texture);
 	~Missile();
 	void update(sf::RenderWindow& window);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	sf::Vector2f getPosition();
 	float getSize();
 private:

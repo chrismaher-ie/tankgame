@@ -2,13 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "GeometryUtils.h"
 
-class Bullet
+class Bullet : public sf::Drawable
 {
 public:
 	Bullet(sf::Vector2f pos, float rotation, sf::Texture& texture);
 	~Bullet();
 	void update();
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	sf::Vector2f getPosition();
 	float getSize();
 private:

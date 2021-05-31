@@ -36,3 +36,13 @@ void Framerate::timer()
 	}
 	
 }
+
+void Framerate::draw(sf::RenderTarget & target, sf::RenderStates states) const
+{
+	target.draw(text);
+}
+
+void Framerate::setTextPos(sf::RenderWindow & window)
+{
+	text.setPosition(window.mapPixelToCoords(sf::Vector2i(5, 5)));
+}

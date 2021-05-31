@@ -45,14 +45,14 @@ void BulletHandler::update(sf::RenderWindow & window, sf::FloatRect boundingBox)
 	}
 }
 
-void BulletHandler::draw(sf::RenderWindow & window)
+void BulletHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (auto& bullet : bulletList) {
-		bullet->draw(window);
+	for (auto bullet : bulletList) {
+		target.draw((*bullet));
 	}
 
-	for (auto& missile : missileList) {
-		missile->draw(window);
+	for (auto missile : missileList) {
+		target.draw((*missile));
 	}
 }
 

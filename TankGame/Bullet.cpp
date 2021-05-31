@@ -19,9 +19,9 @@ void Bullet::update()
 	body.move(speed * std::cosf(angle), speed * std::sinf(angle));
 }
 
-void Bullet::draw(sf::RenderWindow & window)
+void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	window.draw(body);
+	target.draw(body);
 }
 
 sf::Vector2f Bullet::getPosition()

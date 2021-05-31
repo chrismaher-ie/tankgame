@@ -11,7 +11,7 @@ static const float SCREENWIDTH =  1200.0f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& handler, sf::Text& text, BulletHandler& playerBulletHandler , BulletHandler& enemyBulletHandler);
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, BulletHandler& playerBulletHandler , BulletHandler& enemyBulletHandler);
 
 int main()
 {
@@ -49,7 +49,7 @@ int main()
 		playerBulletHandler.update(window, boundingBox);
 		playerBulletHandler.hitDetection(eHandler.getTankList());
 
-		Draw(window, view, player, map, eHandler, framerate.text, playerBulletHandler, enemyBulletHandler);
+		Draw(window, view, player, map, eHandler, framerate, playerBulletHandler, enemyBulletHandler);
 	}
 
 	return 0;
@@ -76,18 +76,20 @@ void windowEventHandler(sf::RenderWindow& window, sf::View* view) {
 	}
 }
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& handler, sf::Text& text, BulletHandler& playerBulletHandler, BulletHandler& enemyBulletHandler)
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, BulletHandler& playerBulletHandler, BulletHandler& enemyBulletHandler)
 {
 	view.setCenter(player.getPosition());
 	window.setView(view);
 	window.clear();
-	map.draw(window);
+
+	window.draw(map);
 	window.draw(player);
-	playerBulletHandler.draw(window);
-	handler.draw(window);
-	enemyBulletHandler.draw(window);
-	text.setPosition(window.mapPixelToCoords(sf::Vector2i(5, 5)));
-	window.draw(text);
+	window.draw(playerBulletHandler);
+	window.draw(enemyHandler);
+	window.draw(enemyBulletHandler);
+
+	framerate.setTextPos(window);
+	window.draw(framerate);
 	window.display();
 }
 

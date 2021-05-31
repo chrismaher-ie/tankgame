@@ -14,9 +14,9 @@ Map::~Map()
 {
 }
 
-void Map::draw(sf::RenderWindow & window)
+void Map::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
-	window.draw(map);
+	target.draw(map);
 }
 
 sf::FloatRect Map::getBoundingBox()

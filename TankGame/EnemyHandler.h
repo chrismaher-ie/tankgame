@@ -8,7 +8,7 @@
 
 #define BROWNTANKTYPE 1
 
-class EnemyHandler
+class EnemyHandler : public sf::Drawable
 {
 public:
 	
@@ -16,7 +16,7 @@ public:
 	EnemyHandler(Player& playerTank, BulletHandler& bulletHandler);
 	~EnemyHandler();
 	void update(/*sf::FloatRect boundingBox*/ Player * player);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void addEnemy(sf::Vector2f pos, float rotation, int type);
 	std::list<UnitTank*> *getTankList();
 

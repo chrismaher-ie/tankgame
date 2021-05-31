@@ -28,10 +28,10 @@ void EnemyHandler::update(Player * player)
 	}
 }
 
-void EnemyHandler::draw(sf::RenderWindow & window)
+void EnemyHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (auto tank : tankList) {
-		window.draw((*tank));
+		target.draw((*tank));
 	}
 }
 

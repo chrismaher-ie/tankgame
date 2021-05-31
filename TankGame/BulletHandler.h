@@ -9,7 +9,7 @@
 class Player;
 class UnitTank;
 
-class BulletHandler
+class BulletHandler : public sf::Drawable
 {
 	public:
 		std::list<Bullet*> bulletList;
@@ -17,7 +17,7 @@ class BulletHandler
 		BulletHandler();
 		~BulletHandler();
 		void update(sf::RenderWindow & window, sf::FloatRect boundingBox);
-		void draw(sf::RenderWindow& window);
+		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		void addBullet(sf::Vector2f pos, float rotation);
 		void addMissile(sf::Vector2f pos, float rotation);
 		void hitDetection(Player* player);

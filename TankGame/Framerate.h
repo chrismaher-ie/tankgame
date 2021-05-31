@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 
-class Framerate
+class Framerate : public sf::Drawable
 {
 	public:
 		sf::Text text;
@@ -11,6 +11,8 @@ class Framerate
 		~Framerate();
 
 		void timer();
+		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		void setTextPos(sf::RenderWindow & window);
 
 	private:
 
