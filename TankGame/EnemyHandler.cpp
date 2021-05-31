@@ -1,6 +1,7 @@
 #include "EnemyHandler.h"
 
-EnemyHandler::EnemyHandler()
+EnemyHandler::EnemyHandler(BulletHandler& bulletHandler)
+	: bulletHandler(bulletHandler)
 {
 	enemyTexture.loadFromFile("Textures/enemy.png");
 }
@@ -37,19 +38,14 @@ void EnemyHandler::draw(sf::RenderWindow & window)
 
 void EnemyHandler::addEnemy(sf::Vector2f pos)
 {
-	Enemy enemy = Enemy(pos, 0.f, enemyTexture, &bulletHandler, 0);
+	Enemy enemy = Enemy(pos, 0.f, enemyTexture, bulletHandler, 0);
 	enemyList.push_back(enemy);
 }
 
 void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int behaviour)
 {
-	Enemy enemy = Enemy(pos, rotation, enemyTexture, &bulletHandler, behaviour);
+	Enemy enemy = Enemy(pos, rotation, enemyTexture, bulletHandler, behaviour);
 	enemyList.push_back(enemy);
-}
-
-BulletHandler * EnemyHandler::getBulletHandler()
-{
-	return &bulletHandler;
 }
 
 std::list<Enemy>* EnemyHandler::getEnemyList()

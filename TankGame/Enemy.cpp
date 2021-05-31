@@ -1,13 +1,13 @@
 #include "Enemy.h"
 
-Enemy::Enemy(sf::Vector2f pos, float rotation, sf::Texture & texture, BulletHandler* handler, int behaviour)
+Enemy::Enemy(sf::Vector2f pos, float rotation, sf::Texture & texture, BulletHandler& handler, int behaviour)
+	: bulletHandler(handler)
 {
 	body = sf::RectangleShape(sf::Vector2f(size, size));
 	body.setOrigin(sf::Vector2f(size / 2, size / 2));
 	body.setPosition(pos);
 	body.setRotation(rotation);
 	body.setTexture(&texture);
-	bulletHandler = handler;
 	this->behaviour = behaviour;
 }
 
@@ -85,5 +85,5 @@ void Enemy::shoot()
 	
 	float radian_angle = body.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(body.getPosition().x + (size / 2 * std::cosf(radian_angle)), body.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	bulletHandler->addBullet(bulletPos, body.getRotation());
+	bulletHandler.addBullet(bulletPos, body.getRotation());
 }

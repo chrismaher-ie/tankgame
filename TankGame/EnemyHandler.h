@@ -9,18 +9,17 @@ class EnemyHandler
 public:
 	
 
-	EnemyHandler();
+	EnemyHandler(BulletHandler& bulletHandler);
 	~EnemyHandler();
 	void update(/*sf::FloatRect boundingBox*/ Player * player);
 	void draw(sf::RenderWindow& window);
 	void addEnemy(sf::Vector2f pos);
 	void addEnemy(sf::Vector2f pos, float rotation, int behaviour);
-	BulletHandler* getBulletHandler();
 	std::list<Enemy>* getEnemyList();
 
 private:
 	std::list<Enemy> enemyList;
 	sf::Texture enemyTexture;
-	BulletHandler bulletHandler;
+	BulletHandler& bulletHandler;
 };
 

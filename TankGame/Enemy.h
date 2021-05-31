@@ -7,7 +7,7 @@
 class Enemy
 {
 public:
-	Enemy(sf::Vector2f pos, float rotation, sf::Texture& texture, BulletHandler* handler, int behaviour);
+	Enemy(sf::Vector2f pos, float rotation, sf::Texture& texture, BulletHandler& handler, int behaviour);
 	~Enemy();
 	void update(Player * player);
 	void draw(sf::RenderWindow& window);
@@ -27,7 +27,7 @@ private:
 	sf::Time fireTimeDelta = sf::seconds(0.f);
 
 
-	BulletHandler* bulletHandler;
+	BulletHandler& bulletHandler;
 	sf::RectangleShape body;
 
 	bool canShoot();
