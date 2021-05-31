@@ -2,11 +2,12 @@
 
 Map::Map()
 {
-	map = sf::RectangleShape(sf::Vector2f(1200.f, 2000.f));
+	map = sf::RectangleShape(sf::Vector2f(600.f, 1000.f));
 	map.setPosition(0.f, 0.f);
-	map.setOrigin(600.0f, 1200.0f);
+	map.setOrigin(300.0f, 600.0f);
 	mapTexture.loadFromFile("Textures/road.jpg");
 	map.setTexture(&mapTexture);
+	map.setRotation(90);
 }
 
 Map::~Map()

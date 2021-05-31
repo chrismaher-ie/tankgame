@@ -6,8 +6,8 @@
 #include "Framerate.h"
 #include "EnemyHandler.h"
 
-static const float SCREENHEIGHT = 512.0f;
-static const float SCREENWIDTH =  512.0f;
+static const float SCREENHEIGHT = 600.0f;
+static const float SCREENWIDTH =  1200.0f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
@@ -17,8 +17,8 @@ int main()
 {
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
-	sf::RenderWindow window(sf::VideoMode(static_cast<int>(SCREENHEIGHT), static_cast<int>(SCREENWIDTH)), "SFML Tutorial", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize, settings);
-	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(SCREENHEIGHT, SCREENHEIGHT));
+	sf::RenderWindow window(sf::VideoMode(static_cast<int>(SCREENWIDTH), static_cast<int>(SCREENHEIGHT)), "SFML Tutorial", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize, settings);
+	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(SCREENWIDTH, SCREENHEIGHT));
 	window.setFramerateLimit(144);
 	Framerate framerate = Framerate();
 	BulletHandler playerBulletHandler = BulletHandler();
