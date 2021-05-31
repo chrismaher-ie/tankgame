@@ -3,7 +3,6 @@
 #include "GeometryUtils.h"
 #include "BulletHandler.h"
 
-
 class UnitTank : public sf::Drawable
 {
 public:
@@ -19,9 +18,6 @@ public:
 
 	void takeDamage();
 	virtual void die();
-
-	void setTarget(UnitTank* target);
-	UnitTank* getTarget();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void update();
@@ -43,7 +39,6 @@ protected:
 	sf::Time fireTimeDelta = sf::seconds(0.f);
 
 	BulletHandler& bulletHandler;
-	UnitTank* target = nullptr;
 
 	sf::RectangleShape body;
 	sf::RectangleShape turret;

@@ -78,16 +78,6 @@ void UnitTank::die()
 	//maybe add id into death list
 }
 
-void UnitTank::setTarget(UnitTank * target)
-{
-	this->target = target;
-}
-
-UnitTank * UnitTank::getTarget()
-{
-	return target;
-}
-
 void UnitTank::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(body);
