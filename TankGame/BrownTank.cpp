@@ -3,8 +3,8 @@
 BrownTank::BrownTank(sf::Vector2f pos, float rotation, int teamId, Player& player, BulletHandler& bulletHandler)
 	: UnitTank(pos, rotation, teamId, bulletHandler), playerTank(player)
 {
-	body.setFillColor(sf::Color(165, 42, 42, 150));
-	turret.setFillColor(sf::Color(165, 42, 42, 150));
+	body.setFillColor(sf::Color(165, 42, 42));
+	turret.setFillColor(sf::Color(165, 42, 42));
 }
 
 BrownTank::~BrownTank()
@@ -18,10 +18,10 @@ void BrownTank::move()
 
 bool BrownTank::aim()
 {
-	body.rotate(0.5f);
-	float targetAngle = gutils::getAngle(body.getPosition(), playerTank.getPosition());
+	turret.rotate(rotationSpeed);
+	float targetAngle = gutils::getAngle(turret.getPosition(), playerTank.getPosition());
 	float turretAngle = turret.getRotation();
-	if (abs(gutils::getAngleDelta(targetAngle, turretAngle) < 2.0f)) {
+	if (abs(gutils::getAngleDelta(targetAngle, turretAngle)) < rotationSpeed) {
 		return true;
 	}
 	return false;
