@@ -132,7 +132,6 @@
     <ClCompile Include="BrownTank.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletHandler.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyHandler.cpp" />
     <ClCompile Include="Framerate.cpp" />
     <ClCompile Include="GeometryUtils.cpp" />
@@ -146,7 +145,6 @@
     <ClInclude Include="BrownTank.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletHandler.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyHandler.h" />
     <ClInclude Include="Framerate.h" />
     <ClInclude Include="GeometryUtils.h" />
