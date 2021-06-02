@@ -33,3 +33,13 @@ float Bullet::getSize()
 {
 	return size;
 }
+
+bool Bullet::shouldDelete()
+{
+	return expired;
+}
+
+void Bullet::hit()
+{
+	expired = true;
+}

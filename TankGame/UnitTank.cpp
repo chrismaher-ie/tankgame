@@ -74,8 +74,13 @@ void UnitTank::takeDamage()
 
 void UnitTank::die()
 {
-	//delete this unit
-	//maybe add id into death list
+	//to be implemented in child classes
+	return;
+}
+
+bool UnitTank::shouldDelete()
+{
+	return dead;
 }
 
 void UnitTank::draw(sf::RenderTarget & target, sf::RenderStates states) const

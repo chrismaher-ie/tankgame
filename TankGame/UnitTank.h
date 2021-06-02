@@ -18,6 +18,7 @@ public:
 
 	void takeDamage();
 	virtual void die();
+	bool shouldDelete();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void update();
@@ -28,6 +29,7 @@ protected:
 
 	int teamId;
 	int health = 1;
+	bool dead = false;
 	float size = 40.0f;
 	float maxSpeed = 0.3f;
 	float currentSpeed = 0.0f;

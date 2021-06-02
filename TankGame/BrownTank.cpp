@@ -11,6 +11,11 @@ BrownTank::~BrownTank()
 {
 }
 
+void BrownTank::die()
+{
+	dead = true;
+}
+
 void BrownTank::move()
 {
 	return;

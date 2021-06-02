@@ -47,6 +47,16 @@ float Missile::getSize()
 	return size;
 }
 
+bool Missile::shouldDelete()
+{
+	return expired;
+}
+
+void Missile::hit()
+{
+	expired = true;
+}
+
 sf::Vector2f Missile::getMousPos(sf::RenderWindow & window)
 {
 	return window.mapPixelToCoords(sf::Mouse::getPosition(window));
