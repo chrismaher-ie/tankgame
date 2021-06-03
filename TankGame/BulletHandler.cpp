@@ -13,7 +13,7 @@ BulletHandler::~BulletHandler()
 {
 }
 
-void BulletHandler::update(sf::RenderWindow & window, sf::FloatRect boundingBox)
+void BulletHandler::update(sf::FloatRect boundingBox)
 {
 	for (auto bullet : bulletList) {
 		bullet->update();
@@ -26,7 +26,7 @@ void BulletHandler::update(sf::RenderWindow & window, sf::FloatRect boundingBox)
 	bulletList.remove_if([&](Bullet* bullet) -> bool { return bullet->shouldDelete(); });
 
 	for (auto missile : missileList) {
-		missile->update(window);
+		missile->update();
 
 		if (!boundingBox.contains(missile->getPosition())) {
 			missile->hit();

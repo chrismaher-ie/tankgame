@@ -41,12 +41,12 @@ int main()
 
 
 		windowEventHandler(window, &view);
-		enemyBulletHandler.update(window, boundingBox);
+		enemyBulletHandler.update(boundingBox);
 		enemyBulletHandler.hitDetection(&player);
 		eHandler.update(&player);
 		player.update();
 
-		playerBulletHandler.update(window, boundingBox);
+		playerBulletHandler.update(boundingBox);
 		playerBulletHandler.hitDetection(eHandler.getTankList());
 
 		Draw(window, view, player, map, eHandler, framerate, playerBulletHandler, enemyBulletHandler);

@@ -16,7 +16,7 @@ class BulletHandler : public sf::Drawable
 		std::list<Missile*> missileList;
 		BulletHandler();
 		~BulletHandler();
-		void update(sf::RenderWindow & window, sf::FloatRect boundingBox);
+		void update(sf::FloatRect boundingBox);
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		void addBullet(sf::Vector2f pos, float rotation, int tankId);
 		void addMissile(sf::Vector2f pos, float rotation, int tankId);
