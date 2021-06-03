@@ -3,8 +3,8 @@
 int UnitTank::idCount = 0;
 
 
-UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler& bullethandler)
-	: bulletHandler(bullethandler)
+UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler)
+	: projectileHandler(projectileHandler)
 {
 	_id = idCount;
 	idCount++;
@@ -120,7 +120,7 @@ bool UnitTank::aim()
 
 bool UnitTank::canShoot()
 {
-	if (bulletHandler.countBulletsFromTank(_id) < this->maxBullets) {
+	if (projectileHandler.countBulletsFromTank(_id) < this->maxBullets) {
 
 		fireTimeDelta += fireRateClock.restart();
 		if (fireTimeDelta > fireInterval) {
@@ -133,8 +133,8 @@ bool UnitTank::canShoot()
 
 void UnitTank::shoot()
 {
-	//Move code to bulletHandler->addBullet()
+	//Move code to projectileHandler->addBullet()
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	bulletHandler.addBullet(bulletPos, turret.getRotation(), _id);
+	projectileHandler.addBullet(bulletPos, turret.getRotation(), _id);
 }

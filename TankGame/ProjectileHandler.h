@@ -5,17 +5,17 @@
 #include "Missile.h"
 //#include "Player.h"
 //#include "UnitTank.h"
-//Forward Declarations as BulletHandler needs Player and Player needs buller handler
+//Forward Declarations as ProjectileHandler needs Player and Player needs buller handler
 class Player;
 class UnitTank;
 
-class BulletHandler : public sf::Drawable
+class ProjectileHandler : public sf::Drawable
 {
 	public:
 		std::list<Bullet*> bulletList;
 		std::list<Missile*> missileList;
-		BulletHandler();
-		~BulletHandler();
+		ProjectileHandler();
+		~ProjectileHandler();
 		void update(sf::FloatRect boundingBox);
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		void addBullet(sf::Vector2f pos, float rotation, int tankId);

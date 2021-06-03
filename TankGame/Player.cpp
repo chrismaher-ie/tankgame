@@ -1,7 +1,7 @@
 #include "Player.h"
 
-Player::Player(sf::Vector2f pos, float rotation, int teamId, BulletHandler& bulletHandler, sf::RenderWindow& window)
-	: UnitTank(pos, rotation, teamId, bulletHandler), window(window)
+Player::Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, sf::RenderWindow& window)
+	: UnitTank(pos, rotation, teamId, projectileHandler), window(window)
 {
 	// override parent class members
 	health = 5;
@@ -26,7 +26,7 @@ void Player::update()
 	UnitTank::update();
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)) {
-		if (bulletHandler.countMissilesFromTank(_id) < maxMissiles ) fireMissile();
+		if (projectileHandler.countMissilesFromTank(_id) < maxMissiles ) fireMissile();
 	}
 }
 
@@ -79,5 +79,5 @@ void Player::fireMissile()
 {
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	bulletHandler.addMissile(bulletPos, turret.getRotation(), _id);
+	projectileHandler.addMissile(bulletPos, turret.getRotation(), _id);
 }

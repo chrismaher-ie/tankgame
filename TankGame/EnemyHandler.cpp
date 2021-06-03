@@ -1,7 +1,7 @@
 #include "EnemyHandler.h"
 
-EnemyHandler::EnemyHandler(Player& playerTank, BulletHandler& bulletHandler)
-	:  playerTank(playerTank), bulletHandler(bulletHandler)
+EnemyHandler::EnemyHandler(Player& playerTank, ProjectileHandler& projectileHandler)
+	:  playerTank(playerTank), projectileHandler(projectileHandler)
 {
 }
 
@@ -41,7 +41,7 @@ void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 	switch (type)
 	{
 	case BROWNTANKTYPE :
-		tank = new BrownTank(pos, rotation, 1 /*teamId*/, playerTank, bulletHandler);
+		tank = new BrownTank(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
 		tankList.push_back(tank);
 		break;
 	default:

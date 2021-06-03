@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GeometryUtils.h"
-#include "BulletHandler.h"
+#include "ProjectileHandler.h"
 
 class UnitTank : public sf::Drawable
 {
 public:
-	UnitTank(sf::Vector2f pos, float rotation, int teamId, BulletHandler& handler);
+	UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& handler);
 	virtual ~UnitTank();
 
 	int getTeam();
@@ -41,7 +41,7 @@ protected:
 	sf::Time fireInterval = sf::seconds(1 / fireRate);
 	sf::Time fireTimeDelta = fireInterval; //initialise the fireTimeDelta so that tanks dont wait for the first shot
 
-	BulletHandler& bulletHandler;
+	ProjectileHandler& projectileHandler;
 
 	sf::RectangleShape body;
 	sf::RectangleShape turret;

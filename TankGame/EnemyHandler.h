@@ -4,7 +4,7 @@
 #include "UnitTank.h"
 #include "BrownTank.h"
 #include "Player.h"
-#include "BulletHandler.h"
+#include "ProjectileHandler.h"
 
 #define BROWNTANKTYPE 1
 
@@ -13,7 +13,7 @@ class EnemyHandler : public sf::Drawable
 public:
 	
 
-	EnemyHandler(Player& playerTank, BulletHandler& bulletHandler);
+	EnemyHandler(Player& playerTank, ProjectileHandler& projectileHandler);
 	~EnemyHandler();
 	void update(/*sf::FloatRect boundingBox*/ Player * player);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -23,6 +23,6 @@ public:
 private:
 	std::list<UnitTank*> tankList;
 	Player& playerTank;
-	BulletHandler& bulletHandler;
+	ProjectileHandler& projectileHandler;
 };
 

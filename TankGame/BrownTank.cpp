@@ -1,7 +1,7 @@
 #include "BrownTank.h"
 
-BrownTank::BrownTank(sf::Vector2f pos, float rotation, int teamId, Player& player, BulletHandler& bulletHandler)
-	: UnitTank(pos, rotation, teamId, bulletHandler), playerTank(player)
+BrownTank::BrownTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler)
+	: UnitTank(pos, rotation, teamId, projectileHandler), playerTank(player)
 {
 	body.setFillColor(sf::Color(165, 42, 42));
 	turret.setFillColor(sf::Color(165, 42, 42));

@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Player.h"
 #include "Map.h"
-#include "BulletHandler.h"
+#include "ProjectileHandler.h"
 #include "Framerate.h"
 #include "EnemyHandler.h"
 
@@ -11,7 +11,7 @@ static const float SCREENWIDTH =  1200.0f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, BulletHandler& playerBulletHandler , BulletHandler& enemyBulletHandler);
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& playerProjectileHandler , ProjectileHandler& enemyProjectileHandler);
 
 int main()
 {
@@ -21,10 +21,10 @@ int main()
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(SCREENWIDTH, SCREENHEIGHT));
 	window.setFramerateLimit(144);
 	Framerate framerate = Framerate();
-	BulletHandler enemyBulletHandler = BulletHandler();
-	BulletHandler playerBulletHandler = BulletHandler();
-	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, playerBulletHandler, window);
-	EnemyHandler eHandler = EnemyHandler(player,enemyBulletHandler);
+	ProjectileHandler enemyProjectileHandler = ProjectileHandler();
+	ProjectileHandler playerProjectileHandler = ProjectileHandler();
+	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, playerProjectileHandler, window);
+	EnemyHandler eHandler = EnemyHandler(player,enemyProjectileHandler);
 	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, BROWNTANKTYPE);
 	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
 	//eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, 1);
@@ -41,15 +41,15 @@ int main()
 
 
 		windowEventHandler(window, &view);
-		enemyBulletHandler.update(boundingBox);
-		enemyBulletHandler.hitDetection(&player);
+		enemyProjectileHandler.update(boundingBox);
+		enemyProjectileHandler.hitDetection(&player);
 		eHandler.update(&player);
 		player.update();
 
-		playerBulletHandler.update(boundingBox);
-		playerBulletHandler.hitDetection(eHandler.getTankList());
+		playerProjectileHandler.update(boundingBox);
+		playerProjectileHandler.hitDetection(eHandler.getTankList());
 
-		Draw(window, view, player, map, eHandler, framerate, playerBulletHandler, enemyBulletHandler);
+		Draw(window, view, player, map, eHandler, framerate, playerProjectileHandler, enemyProjectileHandler);
 	}
 
 	return 0;
@@ -76,7 +76,7 @@ void windowEventHandler(sf::RenderWindow& window, sf::View* view) {
 	}
 }
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, BulletHandler& playerBulletHandler, BulletHandler& enemyBulletHandler)
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& playerProjectileHandler, ProjectileHandler& enemyProjectileHandler)
 {
 	view.setCenter(player.getPosition());
 	window.setView(view);
@@ -84,9 +84,9 @@ void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, En
 
 	window.draw(map);
 	window.draw(player);
-	window.draw(playerBulletHandler);
+	window.draw(playerProjectileHandler);
 	window.draw(enemyHandler);
-	window.draw(enemyBulletHandler);
+	window.draw(enemyProjectileHandler);
 
 	framerate.setTextPos(window);
 	window.draw(framerate);

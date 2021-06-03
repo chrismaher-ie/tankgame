@@ -1,13 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GeometryUtils.h"
-#include "BulletHandler.h"
+#include "ProjectileHandler.h"
 #include "UnitTank.h"
 
 class Player : public UnitTank
 {
 	public:
-		Player(sf::Vector2f pos, float rotation, int teamId, BulletHandler& bulletHandler, sf::RenderWindow& window);
+		Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, sf::RenderWindow& window);
 		~Player();
 
 		void die();
