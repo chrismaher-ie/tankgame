@@ -34,11 +34,12 @@ protected:
 	float maxSpeed = 0.3f;
 	float currentSpeed = 0.0f;
 	float turretSpeed = 0.1f;
-
+	
+	int maxBullets = 1;
 	float fireRate = 1.f; //bullets per second
 	sf::Clock fireRateClock;
 	sf::Time fireInterval = sf::seconds(1 / fireRate);
-	sf::Time fireTimeDelta = sf::seconds(0.f);
+	sf::Time fireTimeDelta = fireInterval; //initialise the fireTimeDelta so that tanks dont wait for the first shot
 
 	BulletHandler& bulletHandler;
 

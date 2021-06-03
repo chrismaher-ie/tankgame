@@ -47,15 +47,15 @@ void BulletHandler::draw(sf::RenderTarget& target, sf::RenderStates states) cons
 	}
 }
 
-void BulletHandler::addBullet(sf::Vector2f pos, float rotation)
+void BulletHandler::addBullet(sf::Vector2f pos, float rotation, int tankId)
 {
-	Bullet *bullet = new Bullet(pos, rotation, bulletTexture);
+	Bullet *bullet = new Bullet(pos, rotation, tankId, bulletTexture);
 	bulletList.push_back(bullet);
 }
 
-void BulletHandler::addMissile(sf::Vector2f pos, float rotation)
+void BulletHandler::addMissile(sf::Vector2f pos, float rotation, int tankId)
 {
-	Missile *missile = new Missile(pos, rotation, missileTexture);
+	Missile *missile = new Missile(pos, rotation, tankId, missileTexture);
 	missileList.push_back(missile);
 }
 
@@ -103,4 +103,22 @@ void BulletHandler::hitDetection(std::list<UnitTank*>* tankList)
 void BulletHandler::deleteBulletList()
 {
 	bulletList.clear();
+}
+
+int BulletHandler::countBulletsFromTank(int tankId)
+{
+	int count = 0;
+	for (auto bullet : bulletList) {
+		if (bullet->getTankId() == tankId) ++count;
+	}
+	return count;
+}
+
+int BulletHandler::countMissilesFromTank(int tankId)
+{
+	int count = 0;
+	for (auto missile : missileList) {
+		if (missile->getTankId() == tankId) ++count;
+	}
+	return count;
 }

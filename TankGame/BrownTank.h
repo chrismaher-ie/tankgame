@@ -12,7 +12,12 @@ class BrownTank : public UnitTank
 		void die();
 	private:
 		float rotationSpeed = 0.4f;
-		float fireRate = 0.2f; //bullets per second
+
+		//NOTE: redeclarations of parent variables as below are ignored in parent methods
+		// these variables have been set in the constructor
+		//float fireRate = 0.2f; //bullets per second
+
+
 		Player& playerTank;
 		void move();
 		bool aim();

@@ -6,7 +6,7 @@
 class Bullet : public sf::Drawable
 {
 public:
-	Bullet(sf::Vector2f pos, float rotation, sf::Texture& texture);
+	Bullet(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture);
 	~Bullet();
 	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -14,10 +14,15 @@ public:
 	float getSize();
 	bool shouldDelete();
 	void hit();
+	int getTankId();
+
 private:
-	bool expired = false;
 	float speed = 0.6f;
 	float size = 8.0f;
+
+	int tankId;
+	bool expired = false;
+
 	sf::RectangleShape body;
 
 };

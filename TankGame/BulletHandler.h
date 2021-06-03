@@ -18,12 +18,13 @@ class BulletHandler : public sf::Drawable
 		~BulletHandler();
 		void update(sf::RenderWindow & window, sf::FloatRect boundingBox);
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-		void addBullet(sf::Vector2f pos, float rotation);
-		void addMissile(sf::Vector2f pos, float rotation);
+		void addBullet(sf::Vector2f pos, float rotation, int tankId);
+		void addMissile(sf::Vector2f pos, float rotation, int tankId);
 		void hitDetection(Player* player);
 		void hitDetection(std::list<UnitTank*>* enemyList);
 		void deleteBulletList();
-
+		int countBulletsFromTank(int tankId);
+		int countMissilesFromTank(int tankId);
 	private:
 
 		sf::Texture bulletTexture;

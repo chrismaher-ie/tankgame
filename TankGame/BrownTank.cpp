@@ -5,6 +5,7 @@ BrownTank::BrownTank(sf::Vector2f pos, float rotation, int teamId, Player& playe
 {
 	body.setFillColor(sf::Color(165, 42, 42));
 	turret.setFillColor(sf::Color(165, 42, 42));
+	fireRate = 0.2f;
 }
 
 BrownTank::~BrownTank()

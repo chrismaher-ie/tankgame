@@ -15,9 +15,18 @@ class Player : public UnitTank
 		void update();
 
 	private:
-		int health = 5;
-		float maxSpeed = 0.3f;
+
+		//NOTE: redeclarations of parent variables as below are ignored in parent methods
+		// these variables have been set in the constructor
+		//int health = 5;
+		//float maxSpeed = 0.3f;
+		//int maxBullets = 3;
+		//float fireRate = 5.f;
+
+		int maxMissiles = 1;
+
 		
+
 		sf::RenderWindow& window;
 		
 		void move();

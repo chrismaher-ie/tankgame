@@ -120,10 +120,13 @@ bool UnitTank::aim()
 
 bool UnitTank::canShoot()
 {
-	fireTimeDelta += fireRateClock.restart();
-	if (fireTimeDelta > fireInterval) {
-		fireTimeDelta = sf::seconds(0.f);
-		return true;
+	if (bulletHandler.countBulletsFromTank(_id) < this->maxBullets) {
+
+		fireTimeDelta += fireRateClock.restart();
+		if (fireTimeDelta > fireInterval) {
+			fireTimeDelta = sf::seconds(0.f);
+			return true;
+		}
 	}
 	return false;
 }
@@ -133,5 +136,5 @@ void UnitTank::shoot()
 	//Move code to bulletHandler->addBullet()
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	bulletHandler.addBullet(bulletPos, turret.getRotation());
+	bulletHandler.addBullet(bulletPos, turret.getRotation(), _id);
 }

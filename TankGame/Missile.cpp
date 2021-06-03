@@ -1,6 +1,6 @@
 #include "Missile.h"
 
-Missile::Missile(sf::Vector2f pos, float rotation, sf::Texture& texture)
+Missile::Missile(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture)
 {
 	body = sf::RectangleShape(sf::Vector2f(size, size/2));
 	body.setOrigin(sf::Vector2f(size / 2, size / 4));
@@ -8,6 +8,7 @@ Missile::Missile(sf::Vector2f pos, float rotation, sf::Texture& texture)
 	body.setRotation(rotation);
 	body.setTexture(&texture);
 	lifeTimeclock.restart();
+	this->tankId = tankId;
 }
 
 Missile::~Missile()
@@ -55,6 +56,11 @@ bool Missile::shouldDelete()
 void Missile::hit()
 {
 	expired = true;
+}
+
+int Missile::getTankId()
+{
+	return tankId;
 }
 
 sf::Vector2f Missile::getMousPos(sf::RenderWindow & window)

@@ -1,12 +1,13 @@
 #include "Bullet.h"
 
-Bullet::Bullet(sf::Vector2f pos, float rotation, sf::Texture& texture)
+Bullet::Bullet(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture)
 {
 	body = sf::RectangleShape(sf::Vector2f(size, size));
 	body.setOrigin(sf::Vector2f(size / 2, size / 2));
 	body.setPosition(pos);
 	body.setRotation(rotation);
 	body.setTexture(&texture);
+	this->tankId = tankId;
 }
 
 Bullet::~Bullet()
@@ -42,4 +43,9 @@ bool Bullet::shouldDelete()
 void Bullet::hit()
 {
 	expired = true;
+}
+
+int Bullet::getTankId()
+{
+	return tankId;
 }
