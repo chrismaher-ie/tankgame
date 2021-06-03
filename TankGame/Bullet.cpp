@@ -1,51 +1,12 @@
 #include "Bullet.h"
 
 Bullet::Bullet(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture)
+	: Projectile(pos, rotation, tankId, texture)
 {
-	body = sf::RectangleShape(sf::Vector2f(size, size));
-	body.setOrigin(sf::Vector2f(size / 2, size / 2));
-	body.setPosition(pos);
-	body.setRotation(rotation);
-	body.setTexture(&texture);
-	this->tankId = tankId;
+	float speed = 0.6f;
+	float size = 8.0f;
 }
 
 Bullet::~Bullet()
 {
-}
-
-void Bullet::update()
-{
-	float angle = body.getRotation() * gutils::degreesToRads;
-	body.move(speed * std::cosf(angle), speed * std::sinf(angle));
-}
-
-void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	target.draw(body);
-}
-
-sf::Vector2f Bullet::getPosition()
-{
-	return body.getPosition();
-}
-
-float Bullet::getSize()
-{
-	return size;
-}
-
-bool Bullet::shouldDelete()
-{
-	return expired;
-}
-
-void Bullet::hit()
-{
-	expired = true;
-}
-
-int Bullet::getTankId()
-{
-	return tankId;
 }

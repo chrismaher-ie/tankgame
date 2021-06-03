@@ -1,29 +1,20 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GeometryUtils.h"
+#include "Projectile.h"
 
 //Todo inherit from projectile class
-class Bullet : public sf::Drawable
+class Bullet : public Projectile
 {
 public:
 	Bullet(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture);
 	~Bullet();
-	void update();
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	sf::Vector2f getPosition();
-	float getSize();
-	bool shouldDelete();
-	void hit();
-	int getTankId();
 
 private:
-	float speed = 0.6f;
-	float size = 8.0f;
-
-	int tankId;
-	bool expired = false;
-
-	sf::RectangleShape body;
+	//NOTE: redeclarations of parent variables as below are ignored in parent methods
+	// these variables have been set in the constructor
+	//float speed = 0.6f;
+	//float size = 8.0f;
 
 };
 
