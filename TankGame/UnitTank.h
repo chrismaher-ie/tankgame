@@ -6,7 +6,7 @@
 class UnitTank : public sf::Drawable
 {
 public:
-	UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& handler);
+	UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler);
 	virtual ~UnitTank();
 
 	int getTeam();
@@ -35,7 +35,8 @@ protected:
 	float currentSpeed = 0.0f;
 	float turretSpeed = 0.1f;
 	
-	int maxBullets = 1;
+	int projectileType = BULLETTYPE;
+	int maxProjectiles = 1;
 	float fireRate = 1.f; //bullets per second
 	sf::Clock fireRateClock;
 	sf::Time fireInterval = sf::seconds(1 / fireRate);
@@ -51,6 +52,6 @@ protected:
 	virtual void move();
 	virtual bool aim();
 	bool canShoot();
-	void shoot();
+	void shoot(int projectileType);
 };
 

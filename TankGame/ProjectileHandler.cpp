@@ -15,110 +15,99 @@ ProjectileHandler::~ProjectileHandler()
 
 void ProjectileHandler::update(sf::FloatRect boundingBox)
 {
-	for (auto bullet : bulletList) {
-		bullet->update();
+	for (auto projectile : projectileList) {
+		projectile->update();
 
-		if (!boundingBox.contains(bullet->getPosition())) {
-			bullet->hit();
+		if (!boundingBox.contains(projectile->getPosition())) {
+			projectile->hit();
 		}
 	}
 
-	bulletList.remove_if([&](Bullet* bullet) -> bool { return bullet->shouldDelete(); });
+	projectileList.remove_if([&](Projectile* projectile) -> bool { return projectile->shouldDelete(); });
 
-	for (auto missile : missileList) {
-		missile->update();
-
-		if (!boundingBox.contains(missile->getPosition())) {
-			missile->hit();
-		}
-	}
-
-	missileList.remove_if([&](Missile* missile) -> bool { return missile->shouldDelete(); });
 }
 
 void ProjectileHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (auto bullet : bulletList) {
-		target.draw((*bullet));
+	for (auto projectile : projectileList) {
+		target.draw((*projectile));
 	}
 
-	for (auto missile : missileList) {
-		target.draw((*missile));
+}
+
+void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int projectileType, int tankId)
+{
+	Projectile *projectile;
+	switch (projectileType)
+	{
+	case BULLETTYPE:
+		projectile = new Bullet(pos, rotation, tankId, bulletTexture);
+		projectileList.push_back(projectile);
+		break;
+
+	case MISSILETYPE:
+		projectile = new Missile(pos, rotation, tankId, missileTexture);
+		projectileList.push_back(projectile);
+		break;
+	default:
+		break;
 	}
-}
-
-void ProjectileHandler::addBullet(sf::Vector2f pos, float rotation, int tankId)
-{
-	Bullet *bullet = new Bullet(pos, rotation, tankId, bulletTexture);
-	bulletList.push_back(bullet);
-}
-
-void ProjectileHandler::addMissile(sf::Vector2f pos, float rotation, int tankId)
-{
-	Missile *missile = new Missile(pos, rotation, tankId, missileTexture);
-	missileList.push_back(missile);
 }
 
 void ProjectileHandler::hitDetection(Player * player)
 {
 	float distance;
-	float p_size = player->getSize();
-	sf::Vector2f p_pos = player->getPosition();
+	float tankSize = player->getSize();
+	sf::Vector2f tankPos = player->getPosition();
 
-	for (auto bullet : bulletList) {
-		distance = std::hypotf(p_pos.x - bullet->getPosition().x, p_pos.y - bullet->getPosition().y);
-		if (distance < (p_size + bullet->getSize()) / 2) {
-
-			bullet->hit();
+	for (auto projectile : projectileList) {
+		distance = std::hypotf(tankPos.x - projectile->getPosition().x, tankPos.y - projectile->getPosition().y);
+		if (distance < (tankSize + projectile->getSize()) / 2) {
+			projectile->hit();
 			player->takeDamage();
 		}
 	}
 
-	bulletList.remove_if([&](Bullet* bullet) -> bool { return bullet->shouldDelete(); });
+	projectileList.remove_if([&](Projectile* projectile) -> bool { return projectile->shouldDelete(); });
 }
 
 void ProjectileHandler::hitDetection(std::list<UnitTank*>* tankList)
 {
-	float e_size = 0;
-	sf::Vector2f e_pos(0.f, 0.f);
-	bool kill = false;
+	float distance;
+	float tankSize = 0;
+	sf::Vector2f tankPos(0.f, 0.f);
 
 	for (auto tank : (*tankList)) {
-		e_size = tank->getSize();
-		e_pos = tank->getPosition();
+		tankSize = tank->getSize();
+		tankPos = tank->getPosition();
 
-		for (auto bullet : bulletList) {
-			float distance = std::hypotf(e_pos.x - bullet->getPosition().x, e_pos.y - bullet->getPosition().y);
-			if (distance < (e_size + bullet->getSize()) / 2) {
-				bullet->hit();
+		for (auto projectile : projectileList) {
+			distance = std::hypotf(tankPos.x - projectile->getPosition().x, tankPos.y - projectile->getPosition().y);
+			if (distance < (tankSize + projectile->getSize()) / 2) {
+				projectile->hit();
 				tank->takeDamage();
 			}
 		}
 	}
 
-	bulletList.remove_if([&](Bullet* bullet) -> bool { return bullet->shouldDelete(); });
+	projectileList.remove_if([&](Projectile* projectile) -> bool { return projectile->shouldDelete(); });
 	tankList->remove_if([&](UnitTank* tank) -> bool { return tank->shouldDelete(); });
 }
 
-void ProjectileHandler::deleteBulletList()
+void ProjectileHandler::deleteProjectileList()
 {
-	bulletList.clear();
-}
-
-int ProjectileHandler::countBulletsFromTank(int tankId)
-{
-	int count = 0;
-	for (auto bullet : bulletList) {
-		if (bullet->getTankId() == tankId) ++count;
+	for (auto projectile : projectileList)
+	{
+		delete projectile;
 	}
-	return count;
+	projectileList.clear();
 }
 
-int ProjectileHandler::countMissilesFromTank(int tankId)
+int ProjectileHandler::countTankProjectiles(int tankId)
 {
 	int count = 0;
-	for (auto missile : missileList) {
-		if (missile->getTankId() == tankId) ++count;
+	for (auto projectile : projectileList) {
+		if (projectile->getTankId() == tankId) ++count;
 	}
 	return count;
 }

@@ -20,18 +20,13 @@ class Player : public UnitTank
 		// these variables have been set in the constructor
 		//int health = 5;
 		//float maxSpeed = 0.3f;
-		//int maxBullets = 3;
+		//int maxProjectiles = 3;
 		//float fireRate = 5.f;
-
-		int maxMissiles = 1;
-
-		
 
 		sf::RenderWindow& window;
 		
 		void move();
 		bool aim();
-		void fireMissile();
 
 };
 

@@ -99,7 +99,7 @@ void UnitTank::update()
 	//Shooting
 	if (aim()) {
 		if (canShoot()) {
-			shoot();
+			shoot(projectileType);
 		}
 	}
 }
@@ -120,7 +120,7 @@ bool UnitTank::aim()
 
 bool UnitTank::canShoot()
 {
-	if (projectileHandler.countBulletsFromTank(_id) < this->maxBullets) {
+	if (projectileHandler.countTankProjectiles(_id) < maxProjectiles) {
 
 		fireTimeDelta += fireRateClock.restart();
 		if (fireTimeDelta > fireInterval) {
@@ -131,10 +131,9 @@ bool UnitTank::canShoot()
 	return false;
 }
 
-void UnitTank::shoot()
+void UnitTank::shoot(int projectileType)
 {
-	//Move code to projectileHandler->addBullet()
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	projectileHandler.addBullet(bulletPos, turret.getRotation(), _id);
+	projectileHandler.addProjectile(bulletPos, turret.getRotation(), projectileType, _id);
 }

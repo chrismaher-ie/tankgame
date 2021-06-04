@@ -6,7 +6,7 @@ Player::Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& 
 	// override parent class members
 	health = 5;
 	maxSpeed = 0.3f;
-	maxBullets = 3;
+	maxProjectiles = 3;
 
 	fireRate = 5.f;
 }
@@ -26,7 +26,9 @@ void Player::update()
 	UnitTank::update();
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)) {
-		if (projectileHandler.countMissilesFromTank(_id) < maxMissiles ) fireMissile();
+		if (canShoot()) {
+			shoot(MISSILETYPE);
+		}
 	}
 }
 
@@ -73,11 +75,4 @@ bool Player::aim()
 		return true;
 	}
 	return false;
-}
-
-void Player::fireMissile()
-{
-	float radian_angle = turret.getRotation() * gutils::degreesToRads;
-	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
-	projectileHandler.addMissile(bulletPos, turret.getRotation(), _id);
 }
