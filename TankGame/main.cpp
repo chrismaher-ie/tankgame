@@ -26,8 +26,8 @@ int main()
 	EnemyHandler eHandler = EnemyHandler(player, projectileHandler);
 	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, BROWNTANKTYPE);
 	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
-	//eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, 1);
-	//eHandler.addEnemy(sf::Vector2f(-75.0f, -75.0f), 0.f, 2);
+	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, GREYTANK);
+	eHandler.addEnemy(sf::Vector2f( -75.0f,  -75.0f), 0.f, GREYTANK);
 	Map map = Map();
 	sf::FloatRect boundingBox = map.getBoundingBox();
 	sf::Clock clock;

@@ -3,10 +3,12 @@
 #include <list>
 #include "UnitTank.h"
 #include "BrownTank.h"
+#include "GreyTank.h"
 #include "Player.h"
 #include "ProjectileHandler.h"
 
 #define BROWNTANKTYPE 1
+#define GREYTANK 2
 
 class EnemyHandler : public sf::Drawable
 {

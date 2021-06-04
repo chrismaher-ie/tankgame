@@ -44,6 +44,12 @@ void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 		tank = new BrownTank(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
 		tankList.push_back(tank);
 		break;
+
+	case GREYTANK:
+		tank = new GreyTank(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		tankList.push_back(tank);
+		break;
+
 	default:
 		break;
 	}
