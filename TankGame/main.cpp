@@ -24,7 +24,7 @@ int main()
 	ProjectileHandler projectileHandler = ProjectileHandler();
 	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, window);
 	EnemyHandler eHandler = EnemyHandler(player, projectileHandler);
-	eHandler.addEnemy(sf::Vector2f(-100.0f, -100.0f), 0.f, BROWNTANKTYPE);
+	eHandler.addEnemy(sf::Vector2f(100.0f, -100.0f), 0.f, GREENTANK);
 	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
 	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, GREYTANK);
 	eHandler.addEnemy(sf::Vector2f( -75.0f,  -75.0f), 0.f, GREYTANK);

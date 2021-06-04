@@ -37,6 +37,7 @@ void EnemyHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 {
+	//TODO: add teamId functionallity or remove teamId
 	UnitTank * tank;
 	switch (type)
 	{
@@ -50,6 +51,10 @@ void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 		tankList.push_back(tank);
 		break;
 
+	case GREENTANK:
+		tank = new GreenTank(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		tankList.push_back(tank);
+		break;
 	default:
 		break;
 	}

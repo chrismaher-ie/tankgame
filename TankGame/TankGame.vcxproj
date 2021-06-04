@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="BrownTank.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="GreenTank.cpp" />
     <ClCompile Include="GreyTank.cpp" />
     <ClCompile Include="ProjectileHandler.cpp" />
     <ClCompile Include="EnemyHandler.cpp" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="BrownTank.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="GreenTank.h" />
     <ClInclude Include="GreyTank.h" />
     <ClInclude Include="ProjectileHandler.h" />
     <ClInclude Include="EnemyHandler.h" />
