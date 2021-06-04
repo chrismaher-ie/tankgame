@@ -54,37 +54,49 @@ void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int proj
 	}
 }
 
-void ProjectileHandler::hitDetection(Player * player)
+void ProjectileHandler::hitDetection(Player * player, std::list<UnitTank*>* tankList)
 {
-	float distance;
-	float tankSize = player->getSize();
-	sf::Vector2f tankPos = player->getPosition();
+	float proj1Size;
+	sf::Vector2f proj1Pos;
 
-	for (auto projectile : projectileList) {
-		distance = std::hypotf(tankPos.x - projectile->getPosition().x, tankPos.y - projectile->getPosition().y);
-		if (distance < (tankSize + projectile->getSize()) / 2) {
-			projectile->hit();
+	float proj2Size;
+	sf::Vector2f proj2Pos;
+
+	float tankSize;
+	sf::Vector2f tankPos;
+
+	for (auto proj_itr1 = projectileList.begin(); proj_itr1 != projectileList.end(); ++proj_itr1) {
+		proj1Size = (*proj_itr1)->getSize();
+		proj1Pos = (*proj_itr1)->getPosition();
+		
+		//check projectile to projectile collisions
+		//nested loop over single listprojectileList, no repeated checks or self comparision checks checks
+		for (auto proj_itr2 = std::next(proj_itr1, 1); proj_itr2 != projectileList.end(); ++proj_itr2) {
+			proj2Size = (*proj_itr2)->getSize();
+			proj2Pos = (*proj_itr2)->getPosition();
+
+			if (colliding(proj1Pos, proj2Pos, proj1Size, proj2Size)) {
+				(*proj_itr1)->hit();
+				(*proj_itr2)->hit();
+			}
+
+		}
+
+		//check projectile to player collisions
+		tankSize = player->getSize();
+		tankPos = player->getPosition();
+		if (colliding(proj1Pos, tankPos, proj1Size, tankSize)) {
+			(*proj_itr1)->hit();
 			player->takeDamage();
 		}
-	}
 
-	projectileList.remove_if([&](Projectile* projectile) -> bool { return projectile->shouldDelete(); });
-}
 
-void ProjectileHandler::hitDetection(std::list<UnitTank*>* tankList)
-{
-	float distance;
-	float tankSize = 0;
-	sf::Vector2f tankPos(0.f, 0.f);
-
-	for (auto tank : (*tankList)) {
-		tankSize = tank->getSize();
-		tankPos = tank->getPosition();
-
-		for (auto projectile : projectileList) {
-			distance = std::hypotf(tankPos.x - projectile->getPosition().x, tankPos.y - projectile->getPosition().y);
-			if (distance < (tankSize + projectile->getSize()) / 2) {
-				projectile->hit();
+		//check projectile to enemy collisions
+		for (auto tank : (*tankList)) {
+			tankSize = tank->getSize();
+			tankPos = tank->getPosition();
+			if (colliding(proj1Pos, tankPos, proj1Size, tankSize)) {
+				(*proj_itr1)->hit();
 				tank->takeDamage();
 			}
 		}
@@ -110,4 +122,17 @@ int ProjectileHandler::countTankProjectiles(int tankId)
 		if (projectile->getTankId() == tankId) ++count;
 	}
 	return count;
+}
+
+bool ProjectileHandler::colliding(sf::Vector2f pos1, sf::Vector2f pos2, float size1, float size2)
+{
+	//TODO: implement SAT collisions
+	float distance = std::hypotf(pos1.x - pos2.x, pos1.y - pos2.y);
+	if (distance < (size1 + size2) / 2) {
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

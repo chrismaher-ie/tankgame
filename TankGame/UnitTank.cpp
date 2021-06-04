@@ -133,7 +133,8 @@ bool UnitTank::canShoot()
 
 void UnitTank::shoot(int projectileType)
 {
+	//TODO: tune bullet spawn position so it doesn't instantly collide with origin tank
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
-	sf::Vector2f bulletPos(turret.getPosition().x + (size / 2 * std::cosf(radian_angle)), turret.getPosition().y + (size / 2 * std::sinf(radian_angle)));
+	sf::Vector2f bulletPos(turret.getPosition().x + (size * std::cosf(radian_angle)), turret.getPosition().y + (size * std::sinf(radian_angle)));
 	projectileHandler.addProjectile(bulletPos, turret.getRotation(), projectileType, _id);
 }

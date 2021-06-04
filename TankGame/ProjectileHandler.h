@@ -24,13 +24,14 @@ class ProjectileHandler : public sf::Drawable
 		void update(sf::FloatRect boundingBox);
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		void addProjectile(sf::Vector2f pos, float rotation, int projectileType, int tankId);
-		void hitDetection(Player* player);
-		void hitDetection(std::list<UnitTank*>* enemyList);
+		void hitDetection(Player* player, std::list<UnitTank*>* enemyList);
 		void deleteProjectileList();
 		int countTankProjectiles(int tankId);
 	private:
 
 		sf::Texture bulletTexture;
 		sf::Texture missileTexture;
+
+		bool colliding(sf::Vector2f pos1, sf::Vector2f pos2, float size1, float size2);
 };
 
