@@ -49,8 +49,12 @@ void Projectile::wallHit()
 {
 	if (wallBounces > 0) {
 		--wallBounces;
-		//TODO:
-		//reflect bullet off wall
+		//TODO: change direction based on angle of incidence
+		//temporary bounce implementation, rotate bullet 180 degrees
+		body.rotate(180);
+		float angle = body.getRotation() * gutils::degreesToRads;
+		body.move(speed * std::cosf(angle), speed * std::sinf(angle));
+		
 	}
 	else {
 		expired = true;

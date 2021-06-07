@@ -19,7 +19,9 @@ void ProjectileHandler::update(sf::FloatRect boundingBox)
 		projectile->update();
 
 		if (!boundingBox.contains(projectile->getPosition())) {
-			projectile->hit();
+			//TODO: calculate angle of wall that has been bit
+			//pass wall angle in as parameter
+			projectile->wallHit();
 		}
 	}
 
