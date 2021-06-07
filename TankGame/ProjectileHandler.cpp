@@ -15,7 +15,7 @@ ProjectileHandler::~ProjectileHandler()
 
 void ProjectileHandler::update(sf::FloatRect boundingBox)
 {
-	for (auto projectile : projectileList) {
+	for (auto& projectile : projectileList) {
 		projectile->update();
 
 		if (!boundingBox.contains(projectile->getPosition())) {
@@ -25,13 +25,13 @@ void ProjectileHandler::update(sf::FloatRect boundingBox)
 		}
 	}
 
-	projectileList.remove_if([&](Projectile* projectile) -> bool { return projectile->shouldDelete(); });
+	projectileList.remove_if([&](const std::unique_ptr<Projectile> &projectile) -> bool { return projectile->shouldDelete(); });
 
 }
 
 void ProjectileHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (auto projectile : projectileList) {
+	for (auto& projectile : projectileList) {
 		target.draw((*projectile));
 	}
 
@@ -39,18 +39,23 @@ void ProjectileHandler::draw(sf::RenderTarget& target, sf::RenderStates states) 
 
 void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int projectileType, int tankId)
 {
-	Projectile *projectile;
+	
 	switch (projectileType)
 	{
 	case BULLETTYPE:
-		projectile = new Bullet(pos, rotation, tankId, bulletTexture);
-		projectileList.push_back(projectile);
-		break;
+	{
+		std::unique_ptr<Projectile> projectile = std::make_unique<Bullet>(pos, rotation, tankId, bulletTexture);
 
-	case MISSILETYPE:
-		projectile = new Missile(pos, rotation, tankId, missileTexture);
-		projectileList.push_back(projectile);
+		projectileList.push_back(std::move(projectile));
 		break;
+	}
+	case MISSILETYPE:
+	{
+		std::unique_ptr<Projectile> projectile = std::make_unique<Missile>(pos, rotation, tankId, missileTexture);
+
+		projectileList.push_back(std::move(projectile));
+		break;
+	}
 	default:
 		break;
 	}
@@ -104,15 +109,15 @@ void ProjectileHandler::hitDetection(Player * player, std::list<UnitTank*>* tank
 		}
 	}
 
-	projectileList.remove_if([&](Projectile* projectile) -> bool { return projectile->shouldDelete(); });
+	projectileList.remove_if([&](const std::unique_ptr<Projectile>& projectile) -> bool { return projectile->shouldDelete(); });
 	tankList->remove_if([&](UnitTank* tank) -> bool { return tank->shouldDelete(); });
 }
 
 void ProjectileHandler::deleteProjectileList()
 {
-	for (auto projectile : projectileList)
+	for (auto& projectile : projectileList)
 	{
-		delete projectile;
+		projectile.reset();
 	}
 	projectileList.clear();
 }
@@ -120,7 +125,7 @@ void ProjectileHandler::deleteProjectileList()
 int ProjectileHandler::countTankProjectiles(int tankId)
 {
 	int count = 0;
-	for (auto projectile : projectileList) {
+	for (auto& projectile : projectileList) {
 		if (projectile->getTankId() == tankId) ++count;
 	}
 	return count;

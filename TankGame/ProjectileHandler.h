@@ -17,7 +17,7 @@ class UnitTank;
 class ProjectileHandler : public sf::Drawable
 {
 	public:
-		std::list<Projectile*> projectileList;
+		std::list<std::unique_ptr<Projectile>> projectileList;
 
 		ProjectileHandler();
 		~ProjectileHandler();
