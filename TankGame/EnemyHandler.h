@@ -22,10 +22,10 @@ public:
 	void update(/*sf::FloatRect boundingBox*/ Player * player);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void addEnemy(sf::Vector2f pos, float rotation, int type);
-	std::list<UnitTank*> *getTankList();
+	std::list<std::unique_ptr<UnitTank>> *getTankList();
 
 private:
-	std::list<UnitTank*> tankList;
+	std::list<std::unique_ptr<UnitTank>> tankList;
 	Player& playerTank;
 	ProjectileHandler& projectileHandler;
 };

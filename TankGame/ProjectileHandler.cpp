@@ -61,7 +61,7 @@ void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int proj
 	}
 }
 
-void ProjectileHandler::hitDetection(Player * player, std::list<UnitTank*>* tankList)
+void ProjectileHandler::hitDetection(Player * player, std::list<std::unique_ptr<UnitTank>>* tankList)
 {
 	float proj1Size;
 	sf::Vector2f proj1Pos;
@@ -99,7 +99,7 @@ void ProjectileHandler::hitDetection(Player * player, std::list<UnitTank*>* tank
 
 
 		//check projectile to enemy collisions
-		for (auto tank : (*tankList)) {
+		for (auto& tank : (*tankList)) {
 			tankSize = tank->getSize();
 			tankPos = tank->getPosition();
 			if (colliding(proj1Pos, tankPos, proj1Size, tankSize)) {
@@ -110,7 +110,7 @@ void ProjectileHandler::hitDetection(Player * player, std::list<UnitTank*>* tank
 	}
 
 	projectileList.remove_if([&](const std::unique_ptr<Projectile>& projectile) -> bool { return projectile->shouldDelete(); });
-	tankList->remove_if([&](UnitTank* tank) -> bool { return tank->shouldDelete(); });
+	tankList->remove_if([&](const std::unique_ptr<UnitTank>& tank) -> bool { return tank->shouldDelete(); });
 }
 
 void ProjectileHandler::deleteProjectileList()

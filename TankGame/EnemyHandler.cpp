@@ -11,10 +11,12 @@ EnemyHandler::~EnemyHandler()
 
 void EnemyHandler::update(Player * player)
 {
+	//TODO: remove erase from loop and change to range based loop
 	for (auto tank_itr = tankList.begin(); tank_itr != tankList.end(); ) {
 		//update enemy
 		(*tank_itr)->update();
 
+		
 		//if enemy is to be destroyed, delete enemy
 		if (false) {
 			tank_itr = tankList.erase(tank_itr);
@@ -30,7 +32,7 @@ void EnemyHandler::update(Player * player)
 
 void EnemyHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (auto tank : tankList) {
+	for (auto& tank : tankList) {
 		target.draw((*tank));
 	}
 }
@@ -38,30 +40,33 @@ void EnemyHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 {
 	//TODO: add teamId functionallity or remove teamId
-	UnitTank * tank;
 	switch (type)
 	{
 	case BROWNTANKTYPE :
-		tank = new BrownTank(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
-		tankList.push_back(tank);
+	{
+		std::unique_ptr<UnitTank> tank = std::make_unique<BrownTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		tankList.push_back(std::move(tank));
 		break;
-
+	}
 	case GREYTANK:
-		tank = new GreyTank(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
-		tankList.push_back(tank);
+	{
+		std::unique_ptr<UnitTank> tank = std::make_unique<GreyTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		tankList.push_back(std::move(tank));
 		break;
-
+	}
 	case GREENTANK:
-		tank = new GreenTank(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
-		tankList.push_back(tank);
+	{
+		std::unique_ptr<UnitTank> tank = std::make_unique<GreenTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		tankList.push_back(std::move(tank));
 		break;
+	}
 	default:
 		break;
 	}
 
 }
 
-std::list<UnitTank*>* EnemyHandler::getTankList()
+std::list<std::unique_ptr<UnitTank>>* EnemyHandler::getTankList()
 {
 	return &tankList;
 }
