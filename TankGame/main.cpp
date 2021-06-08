@@ -21,17 +21,23 @@ int main()
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(SCREENWIDTH, SCREENHEIGHT));
 	window.setFramerateLimit(144);
 	Framerate framerate = Framerate();
+
+	Map map = Map();
+	map.addWall(sf::Vector2f(-200.0f, -200.0f), 80.f, 40.f, true);
+	map.addWall(sf::Vector2f(60.0f, -80.0f), 40.f, 40.f, false);
+
 	ProjectileHandler projectileHandler = ProjectileHandler();
+
 	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, window);
+	
 	EnemyHandler eHandler = EnemyHandler(player, projectileHandler);
-	eHandler.addEnemy(sf::Vector2f(100.0f, -100.0f), 0.f, GREENTANK);
+	eHandler.addEnemy(sf::Vector2f(130.0f, -130.0f), 0.f, GREENTANK);
 	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
 	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, GREYTANK);
 	eHandler.addEnemy(sf::Vector2f( -75.0f,  -75.0f), 0.f, GREYTANK);
-	Map map = Map();
+	
 	sf::FloatRect boundingBox = map.getBoundingBox();
 	sf::Clock clock;
-
 
 	float count = 0;
 	while (window.isOpen())
