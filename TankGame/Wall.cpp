@@ -1,10 +1,10 @@
 #include "Wall.h"
 
-Wall::Wall(sf::Vector2f pos, float height, float width, bool fragile, sf::Texture& texture)
+Wall::Wall(sf::Vector2f pos, float width, float height, bool fragile, sf::Texture& texture)
 {
 	this->fragile = fragile;
-	body = sf::RectangleShape(sf::Vector2f(height, width));
-	body.setOrigin(sf::Vector2f(height / 2, width / 2));
+	body = sf::RectangleShape(sf::Vector2f(width, height));
+	body.setOrigin(sf::Vector2f(width / 2, height / 2));
 
 	body.setTexture(&texture);
 

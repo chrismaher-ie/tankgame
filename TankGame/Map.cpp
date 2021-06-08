@@ -2,15 +2,24 @@
 
 Map::Map()
 {
-	background = sf::RectangleShape(sf::Vector2f(600.f, 1000.f));
+	background = sf::RectangleShape(sf::Vector2f(1000.f, 600.f));
 	background.setPosition(0.f, 0.f);
-	background.setOrigin(300.0f, 600.0f);
+	background.setOrigin(500.0f, 300.0f);
 	backgroundTexture.loadFromFile("Textures/road.jpg");
 	background.setTexture(&backgroundTexture);
-	background.setRotation(90);
 
 	wallTexture.loadFromFile("Textures/Tempwall1.png");
 	fragileWallTexture.loadFromFile("Textures/Tempwall2.png");
+
+	//setup bounding walls
+	addWall(sf::Vector2f(0.0f, -310.0f), 1040.f, 20.f, false);
+	addWall(sf::Vector2f(-510.0f, 0.0f), 20.f, 640.f, false);
+	addWall(sf::Vector2f(0.0f, 310.0f), 1040.f, 20.f, false);
+	addWall(sf::Vector2f(510.0f, 0.0f), 20.f, 640.f, false);
+
+	//setup test walls
+	addWall(sf::Vector2f(-200.0f, -200.0f), 80.f, 40.f, true);
+	addWall(sf::Vector2f(60.0f, -80.0f), 40.f, 40.f, false);
 
 }
 
@@ -31,14 +40,14 @@ sf::FloatRect Map::getBoundingBox()
 	return background.getGlobalBounds();
 }
 
-void Map::addWall(sf::Vector2f pos, float height, float width, bool fragile)
+void Map::addWall(sf::Vector2f pos, float width, float height, bool fragile)
 {
 	if (fragile) {
-		wallList.push_back(Wall(pos, height, width, fragile, fragileWallTexture));
+		wallList.push_back(Wall(pos, width, height, fragile, fragileWallTexture));
 	}
 	else
 	{
-		wallList.push_back(Wall(pos, height, width, fragile, wallTexture));
+		wallList.push_back(Wall(pos, width, height, fragile, wallTexture));
 	}
 }
 
