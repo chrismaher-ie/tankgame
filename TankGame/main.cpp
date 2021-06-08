@@ -23,10 +23,8 @@ int main()
 	Framerate framerate = Framerate();
 
 	Map map = Map();
-	map.addWall(sf::Vector2f(-200.0f, -200.0f), 80.f, 40.f, true);
-	map.addWall(sf::Vector2f(60.0f, -80.0f), 40.f, 40.f, false);
 
-	ProjectileHandler projectileHandler = ProjectileHandler();
+	ProjectileHandler projectileHandler = ProjectileHandler(map);
 
 	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, window);
 	
@@ -46,7 +44,7 @@ int main()
 
 
 		windowEventHandler(window, &view);
-		projectileHandler.update(boundingBox);
+		projectileHandler.update();
 		projectileHandler.hitDetection(&player, eHandler.getTankList());
 		eHandler.update(&player);
 		player.update();

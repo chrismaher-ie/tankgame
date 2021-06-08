@@ -4,6 +4,7 @@
 #include "Projectile.h"
 #include "Bullet.h"
 #include "Missile.h"
+#include "Map.h"
 //#include "Player.h"
 //#include "UnitTank.h"
 
@@ -19,15 +20,16 @@ class ProjectileHandler : public sf::Drawable
 	public:
 		std::list<std::unique_ptr<Projectile>> projectileList;
 
-		ProjectileHandler();
+		ProjectileHandler(Map& map);
 		~ProjectileHandler();
-		void update(sf::FloatRect boundingBox);
+		void update();
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		void addProjectile(sf::Vector2f pos, float rotation, int projectileType, int tankId);
 		void hitDetection(Player* player, std::list<std::unique_ptr<UnitTank>>* enemyList);
 		void deleteProjectileList();
 		int countTankProjectiles(int tankId);
 	private:
+		Map &map;
 
 		sf::Texture bulletTexture;
 		sf::Texture missileTexture;

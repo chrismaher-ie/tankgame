@@ -3,7 +3,8 @@
 #include "UnitTank.h"
 #include <cmath>
 
-ProjectileHandler::ProjectileHandler()
+ProjectileHandler::ProjectileHandler(Map &map)
+	: map(map)
 {
 	bulletTexture.loadFromFile("Textures/bullet.png");
 	missileTexture.loadFromFile("Textures/missile.png");
@@ -13,20 +14,29 @@ ProjectileHandler::~ProjectileHandler()
 {
 }
 
-void ProjectileHandler::update(sf::FloatRect boundingBox)
+void ProjectileHandler::update()
 {
+	std::list<Wall> *wallList = map.getWallList();
+
 	for (auto& projectile : projectileList) {
 		projectile->update();
 
-		if (!boundingBox.contains(projectile->getPosition())) {
+		for (auto wall : (*wallList)) {
 			//TODO: calculate angle of wall that has been bit
-			//pass wall angle in as parameter
-			projectile->wallHit();
+			
+			if (wall.getBody().getGlobalBounds().contains(projectile->getPosition())) {
+				//pass wall angle in as parameter
+				projectile->wallHit();
+			}
+		}
+
+		if (!map.getBoundingBox().contains(projectile->getPosition())) {
+			//bullet is out of bounds, mark for deletion
+			projectile->hit();
 		}
 	}
 
 	projectileList.remove_if([&](const std::unique_ptr<Projectile> &projectile) -> bool { return projectile->shouldDelete(); });
-
 }
 
 void ProjectileHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
