@@ -11,6 +11,9 @@ Map::Map()
 	wallTexture.loadFromFile("Textures/Tempwall1.png");
 	fragileWallTexture.loadFromFile("Textures/Tempwall2.png");
 
+	barrierTexture.loadFromFile("Textures/Tempbarrier1.png");
+	fragileBarrierTexture.loadFromFile("Textures/Tempbarrier2.png");
+
 	//setup bounding walls
 	addWall(sf::Vector2f(0.0f, -310.0f), 1040.f, 20.f, false);
 	addWall(sf::Vector2f(-510.0f, 0.0f), 20.f, 640.f, false);
@@ -18,8 +21,14 @@ Map::Map()
 	addWall(sf::Vector2f(510.0f, 0.0f), 20.f, 640.f, false);
 
 	//setup test walls
-	addWall(sf::Vector2f(-200.0f, -200.0f), 80.f, 40.f, true);
+	addWall(sf::Vector2f(-200.0f, -200.0f), 40.f, 40.f, true);
 	addWall(sf::Vector2f(60.0f, -80.0f), 40.f, 40.f, false);
+
+	//Add test barriers
+
+	//setup test walls
+	addBarrier(sf::Vector2f(-250.0f, -200.0f), 40.f, 40.f, true);
+	addBarrier(sf::Vector2f(60.0f, 80.0f), 40.f, 40.f, false);
 
 }
 
@@ -30,8 +39,12 @@ Map::~Map()
 void Map::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(background);
+
 	for (auto wall : wallList) {
 		target.draw(wall);
+	}
+	for (auto barrier : barrierList) {
+		target.draw(barrier);
 	}
 }
 
@@ -51,7 +64,23 @@ void Map::addWall(sf::Vector2f pos, float width, float height, bool fragile)
 	}
 }
 
+void Map::addBarrier(sf::Vector2f pos, float height, float width, bool fragile)
+{
+	if (fragile) {
+		barrierList.push_back(Barrier(pos, width, height, fragile, fragileBarrierTexture));
+	}
+	else
+	{
+		barrierList.push_back(Barrier(pos, width, height, fragile, barrierTexture));
+	}
+}
+
 std::list<Wall>* Map::getWallList()
 {
 	return &wallList;
+}
+
+std::list<Barrier>* Map::getBarrierList()
+{
+	return &barrierList;
 }
