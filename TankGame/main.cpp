@@ -5,13 +5,14 @@
 #include "Projectiles/ProjectileHandler.h"
 #include "Utils/Framerate.h"
 #include "Tanks/EnemyHandler.h"
+#include "VisualEffects/VisualEffectsHandler.h"
 
 static const float SCREENHEIGHT = 600.0f;
 static const float SCREENWIDTH =  1200.0f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& projectileHandler);
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 
 int main()
 {
@@ -20,12 +21,15 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(static_cast<int>(SCREENWIDTH), static_cast<int>(SCREENHEIGHT)), "SFML Tutorial", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize, settings);
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(SCREENWIDTH, SCREENHEIGHT));
 	window.setFramerateLimit(144);
+
+	VisualEffectsHandler vfxHandler = VisualEffectsHandler();
+
 	Framerate framerate = Framerate();
 
 	Map map = Map();
 
 	ProjectileHandler projectileHandler = ProjectileHandler(map);
-
+	
 	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, window);
 	
 	EnemyHandler eHandler = EnemyHandler(player, projectileHandler);
@@ -48,8 +52,9 @@ int main()
 		projectileHandler.hitDetection(&player, eHandler.getTankList());
 		eHandler.update(&player);
 		player.update();
+		vfxHandler.update();
 
-		Draw(window, view, player, map, eHandler, framerate, projectileHandler);
+		Draw(window, view, player, map, eHandler, framerate, projectileHandler, vfxHandler);
 	}
 
 	return 0;
@@ -76,16 +81,19 @@ void windowEventHandler(sf::RenderWindow& window, sf::View* view) {
 	}
 }
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& projectileHandler)
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
 {
 	view.setCenter(player.getPosition());
 	window.setView(view);
 	window.clear();
 
 	window.draw(map);
+	vfxHandler.drawBottomEffects(window);
+
 	window.draw(player);
 	window.draw(projectileHandler);
 	window.draw(enemyHandler);
+	vfxHandler.drawTopEffects(window);
 
 	framerate.setTextPos(window);
 	window.draw(framerate);

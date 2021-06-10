@@ -150,6 +150,9 @@
     <ClCompile Include="src\Tanks\UnitTank.cpp" />
     <ClCompile Include="src\Utils\Framerate.cpp" />
     <ClCompile Include="src\Utils\GeometryUtils.cpp" />
+    <ClCompile Include="src\VisualEffects\Effect.cpp" />
+    <ClCompile Include="src\VisualEffects\Track.cpp" />
+    <ClCompile Include="src\VisualEffects\VisualEffectsHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Map\Barrier.h" />
@@ -167,6 +170,9 @@
     <ClInclude Include="src\Tanks\UnitTank.h" />
     <ClInclude Include="src\Utils\Framerate.h" />
     <ClInclude Include="src\Utils\GeometryUtils.h" />
+    <ClInclude Include="src\VisualEffects\Effect.h" />
+    <ClInclude Include="src\VisualEffects\Track.h" />
+    <ClInclude Include="src\VisualEffects\VisualEffectsHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

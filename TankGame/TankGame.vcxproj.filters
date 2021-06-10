@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{d32ec322-e824-468a-aa2c-17c422eda655}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\VisualEffects">
+      <UniqueIdentifier>{9286cb9b-f849-4858-a55a-9ab63b29f3d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualEffects">
+      <UniqueIdentifier>{eda04fd9-be42-455d-a339-7a7839b3d569}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +93,15 @@
     <ClCompile Include="src\Projectiles\ProjectileHandler.cpp">
       <Filter>Source Files\Projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="src\VisualEffects\Effect.cpp">
+      <Filter>Source Files\VisualEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VisualEffects\Track.cpp">
+      <Filter>Source Files\VisualEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VisualEffects\VisualEffectsHandler.cpp">
+      <Filter>Source Files\VisualEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Tanks\BrownTank.h">
@@ -133,6 +148,15 @@
     </ClInclude>
     <ClInclude Include="src\Projectiles\ProjectileHandler.h">
       <Filter>Header Files\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualEffects\Effect.h">
+      <Filter>Header Files\VisualEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualEffects\Track.h">
+      <Filter>Header Files\VisualEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualEffects\VisualEffectsHandler.h">
+      <Filter>Header Files\VisualEffects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
