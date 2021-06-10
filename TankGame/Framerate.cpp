@@ -5,7 +5,7 @@
 
 Framerate::Framerate()
 {
-	font.loadFromFile("Fonts/sansation.ttf");
+	font.loadFromFile("Assets/Fonts/sansation.ttf");
 	text.setFont(font);
 	text.setFillColor(sf::Color::Red);
 	text.setCharacterSize(24);

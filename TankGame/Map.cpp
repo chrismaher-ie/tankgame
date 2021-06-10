@@ -5,14 +5,14 @@ Map::Map()
 	background = sf::RectangleShape(sf::Vector2f(1000.f, 600.f));
 	background.setPosition(0.f, 0.f);
 	background.setOrigin(500.0f, 300.0f);
-	backgroundTexture.loadFromFile("Textures/road.jpg");
+	backgroundTexture.loadFromFile("Assets/Textures/road.jpg");
 	background.setTexture(&backgroundTexture);
 
-	wallTexture.loadFromFile("Textures/Tempwall1.png");
-	fragileWallTexture.loadFromFile("Textures/Tempwall2.png");
+	wallTexture.loadFromFile("Assets/Textures/Tempwall1.png");
+	fragileWallTexture.loadFromFile("Assets/Textures/Tempwall2.png");
 
-	barrierTexture.loadFromFile("Textures/Tempbarrier1.png");
-	fragileBarrierTexture.loadFromFile("Textures/Tempbarrier2.png");
+	barrierTexture.loadFromFile("Assets/Textures/Tempbarrier1.png");
+	fragileBarrierTexture.loadFromFile("Assets/Textures/Tempbarrier2.png");
 
 	//setup bounding walls
 	addWall(sf::Vector2f(0.0f, -310.0f), 1040.f, 20.f, false);

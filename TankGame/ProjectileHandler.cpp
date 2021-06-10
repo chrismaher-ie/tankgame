@@ -6,8 +6,8 @@
 ProjectileHandler::ProjectileHandler(Map &map)
 	: map(map)
 {
-	bulletTexture.loadFromFile("Textures/bullet.png");
-	missileTexture.loadFromFile("Textures/missile.png");
+	bulletTexture.loadFromFile("Assets/Textures/bullet.png");
+	missileTexture.loadFromFile("Assets/Textures/missile.png");
 }
 
 ProjectileHandler::~ProjectileHandler()

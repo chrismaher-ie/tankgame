@@ -13,14 +13,14 @@ UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandl
 	body = sf::RectangleShape(sf::Vector2f(size, size));
 	body.setOrigin(sf::Vector2f(size / 2, size / 2));
 
-	bodyTexture.loadFromFile("Textures/tankBase.png");
+	bodyTexture.loadFromFile("Assets/Textures/tankBase.png");
 	body.setTexture(&bodyTexture);
 
 	turret = sf::RectangleShape(sf::Vector2f(size, size));
 	turret.setOrigin(sf::Vector2f(size / 2, size / 2));
 	
 
-	turretTexture.loadFromFile("Textures/tankTurret.png");
+	turretTexture.loadFromFile("Assets/Textures/tankTurret.png");
 	turret.setTexture(&turretTexture);
 
 	body.setPosition(pos);
