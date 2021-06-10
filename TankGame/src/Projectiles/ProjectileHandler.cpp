@@ -1,6 +1,6 @@
-#include "ProjectileHandler.h"
-#include "Player.h"
-#include "UnitTank.h"
+#include "Projectiles/ProjectileHandler.h"
+#include "Tanks/Player.h"
+#include "Tanks/UnitTank.h"
 #include <cmath>
 
 ProjectileHandler::ProjectileHandler(Map &map)

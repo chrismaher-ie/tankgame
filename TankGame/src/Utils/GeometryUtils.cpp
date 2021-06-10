@@ -1,4 +1,4 @@
-﻿#include "GeometryUtils.h"
+﻿#include "Utils/GeometryUtils.h"
 
 float gutils::getAngle(sf::Vector2f v1, sf::Vector2f v2)
 {

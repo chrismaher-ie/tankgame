@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GeometryUtils.h"
+#include "Utils/GeometryUtils.h"
 
 class Projectile : public sf::Drawable
 {

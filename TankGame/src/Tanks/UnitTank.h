@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GeometryUtils.h"
-#include "ProjectileHandler.h"
+#include "Utils/GeometryUtils.h"
+#include "Projectiles/ProjectileHandler.h"
 
 class UnitTank : public sf::Drawable
 {

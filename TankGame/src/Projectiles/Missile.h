@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Projectile.h"
+#include "Projectiles/Projectile.h"
 
 //Todo, inherit from projectile class
 class Missile : public Projectile

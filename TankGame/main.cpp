@@ -1,10 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Player.h"
-#include "Map.h"
-#include "ProjectileHandler.h"
-#include "Framerate.h"
-#include "EnemyHandler.h"
+#include "Tanks/Player.h"
+#include "Map/Map.h"
+#include "Projectiles/ProjectileHandler.h"
+#include "Utils/Framerate.h"
+#include "Tanks/EnemyHandler.h"
 
 static const float SCREENHEIGHT = 600.0f;
 static const float SCREENWIDTH =  1200.0f;

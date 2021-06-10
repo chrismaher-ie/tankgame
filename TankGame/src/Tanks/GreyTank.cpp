@@ -1,4 +1,4 @@
-#include "GreyTank.h"
+#include "Tanks/GreyTank.h"
 
 GreyTank::GreyTank(sf::Vector2f pos, float rotation, int teamId, Player & player, ProjectileHandler & projectileHandler)
 	: UnitTank(pos, rotation, teamId, projectileHandler), playerTank(player)

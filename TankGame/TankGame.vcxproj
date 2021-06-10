@@ -69,7 +69,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Chris\source\repos\TankGame\TankGame\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Users\Chris\source\repos\TankGame\TankGame\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -129,39 +134,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Barrier.cpp" />
-    <ClCompile Include="BrownTank.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="GreenTank.cpp" />
-    <ClCompile Include="GreyTank.cpp" />
-    <ClCompile Include="ProjectileHandler.cpp" />
-    <ClCompile Include="EnemyHandler.cpp" />
-    <ClCompile Include="Framerate.cpp" />
-    <ClCompile Include="GeometryUtils.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Missile.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="UnitTank.cpp" />
-    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="src\Map\Barrier.cpp" />
+    <ClCompile Include="src\Map\Map.cpp" />
+    <ClCompile Include="src\Map\Wall.cpp" />
+    <ClCompile Include="src\Projectiles\Bullet.cpp" />
+    <ClCompile Include="src\Projectiles\Missile.cpp" />
+    <ClCompile Include="src\Projectiles\Projectile.cpp" />
+    <ClCompile Include="src\Projectiles\ProjectileHandler.cpp" />
+    <ClCompile Include="src\Tanks\BrownTank.cpp" />
+    <ClCompile Include="src\Tanks\EnemyHandler.cpp" />
+    <ClCompile Include="src\Tanks\GreenTank.cpp" />
+    <ClCompile Include="src\Tanks\GreyTank.cpp" />
+    <ClCompile Include="src\Tanks\Player.cpp" />
+    <ClCompile Include="src\Tanks\UnitTank.cpp" />
+    <ClCompile Include="src\Utils\Framerate.cpp" />
+    <ClCompile Include="src\Utils\GeometryUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Barrier.h" />
-    <ClInclude Include="BrownTank.h" />
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="GreenTank.h" />
-    <ClInclude Include="GreyTank.h" />
-    <ClInclude Include="ProjectileHandler.h" />
-    <ClInclude Include="EnemyHandler.h" />
-    <ClInclude Include="Framerate.h" />
-    <ClInclude Include="GeometryUtils.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Missile.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Projectile.h" />
-    <ClInclude Include="UnitTank.h" />
-    <ClInclude Include="Wall.h" />
+    <ClInclude Include="src\Map\Barrier.h" />
+    <ClInclude Include="src\Map\Map.h" />
+    <ClInclude Include="src\Map\Wall.h" />
+    <ClInclude Include="src\Projectiles\Bullet.h" />
+    <ClInclude Include="src\Projectiles\Missile.h" />
+    <ClInclude Include="src\Projectiles\Projectile.h" />
+    <ClInclude Include="src\Projectiles\ProjectileHandler.h" />
+    <ClInclude Include="src\Tanks\BrownTank.h" />
+    <ClInclude Include="src\Tanks\EnemyHandler.h" />
+    <ClInclude Include="src\Tanks\GreenTank.h" />
+    <ClInclude Include="src\Tanks\GreyTank.h" />
+    <ClInclude Include="src\Tanks\Player.h" />
+    <ClInclude Include="src\Tanks\UnitTank.h" />
+    <ClInclude Include="src\Utils\Framerate.h" />
+    <ClInclude Include="src\Utils\GeometryUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

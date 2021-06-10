@@ -1,4 +1,4 @@
-#include "Barrier.h"
+#include "Map/Barrier.h"
 
 Barrier::Barrier(sf::Vector2f pos, float width, float height, bool fragile, sf::Texture & texture)
 {

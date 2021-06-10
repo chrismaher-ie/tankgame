@@ -42,97 +42,97 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Wall.cpp">
+    <ClCompile Include="src\Tanks\BrownTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tanks\EnemyHandler.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tanks\GreenTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tanks\GreyTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tanks\Player.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tanks\UnitTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\Barrier.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="src\Map\Map.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Barrier.cpp">
+    <ClCompile Include="src\Map\Wall.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
-    <ClCompile Include="BrownTank.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
-    <ClCompile Include="GreenTank.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
-    <ClCompile Include="GreyTank.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
-    <ClCompile Include="UnitTank.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyHandler.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files\Projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Missile.cpp">
-      <Filter>Source Files\Projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Source Files\Projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjectileHandler.cpp">
-      <Filter>Source Files\Projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Framerate.cpp">
+    <ClCompile Include="src\Utils\Framerate.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="GeometryUtils.cpp">
+    <ClCompile Include="src\Utils\GeometryUtils.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Projectiles\Bullet.cpp">
+      <Filter>Source Files\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Projectiles\Missile.cpp">
+      <Filter>Source Files\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Projectiles\Projectile.cpp">
+      <Filter>Source Files\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Projectiles\ProjectileHandler.cpp">
+      <Filter>Source Files\Projectiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="src\Tanks\BrownTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tanks\EnemyHandler.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tanks\GreenTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tanks\GreyTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tanks\Player.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tanks\UnitTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\Barrier.h">
       <Filter>Header Files\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Wall.h">
+    <ClInclude Include="src\Map\Map.h">
       <Filter>Header Files\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Barrier.h">
+    <ClInclude Include="src\Map\Wall.h">
       <Filter>Header Files\Map</Filter>
     </ClInclude>
-    <ClInclude Include="BrownTank.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyHandler.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="GreenTank.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="GreyTank.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitTank.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files\Projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Missile.h">
-      <Filter>Header Files\Projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Header Files\Projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="ProjectileHandler.h">
-      <Filter>Header Files\Projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Framerate.h">
+    <ClInclude Include="src\Utils\Framerate.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="GeometryUtils.h">
+    <ClInclude Include="src\Utils\GeometryUtils.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Projectiles\Bullet.h">
+      <Filter>Header Files\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Projectiles\Missile.h">
+      <Filter>Header Files\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Projectiles\Projectile.h">
+      <Filter>Header Files\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Projectiles\ProjectileHandler.h">
+      <Filter>Header Files\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

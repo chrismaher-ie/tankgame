@@ -1,4 +1,4 @@
-#include "Missile.h"
+#include "Projectiles/Missile.h"
 
 Missile::Missile(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture)
 	: Projectile(pos, rotation, tankId, texture)

@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <list>
-#include "UnitTank.h"
-#include "BrownTank.h"
-#include "GreyTank.h"
-#include "GreenTank.h"
-#include "Player.h"
-#include "ProjectileHandler.h"
+#include "Tanks/UnitTank.h"
+#include "Tanks/BrownTank.h"
+#include "Tanks/GreyTank.h"
+#include "Tanks/GreenTank.h"
+#include "Tanks/Player.h"
+#include "Projectiles/ProjectileHandler.h"
 
 #define BROWNTANKTYPE 1
 #define GREYTANK 2

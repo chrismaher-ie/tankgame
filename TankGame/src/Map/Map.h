@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <list>
-#include "Wall.h"
-#include "Barrier.h"
+#include "Map/Wall.h"
+#include "Map/Barrier.h"
 
 
 class Map : public sf::Drawable

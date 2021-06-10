@@ -1,22 +1,22 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GeometryUtils.h"
-#include "UnitTank.h"
-#include "Player.h"
+#include "Utils/GeometryUtils.h"
+#include "Tanks/UnitTank.h"
+#include "Tanks/Player.h"
 
-class GreenTank :
+class GreyTank :
 	public UnitTank
 {
 public:
-	GreenTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler);
-	~GreenTank();
+	GreyTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler);
+	~GreyTank();
 	void die();
 private:
 	float rotationSpeed = 0.4f;
 
 	//NOTE: redeclarations of parent variables as below are ignored in parent methods
 	// these variables have been set in the constructor
-	//float fireRate = 0.2f; //bullets per second
+	//float fireRate = 0.5f; //bullets per second
 
 
 	Player& playerTank;

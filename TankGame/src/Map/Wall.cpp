@@ -1,4 +1,4 @@
-#include "Wall.h"
+#include "Map/Wall.h"
 
 Wall::Wall(sf::Vector2f pos, float width, float height, bool fragile, sf::Texture& texture)
 {

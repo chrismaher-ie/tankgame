@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <list>
-#include "Projectile.h"
-#include "Bullet.h"
-#include "Missile.h"
-#include "Map.h"
-//#include "Player.h"
-//#include "UnitTank.h"
+#include "Projectiles/Projectile.h"
+#include "Projectiles/Bullet.h"
+#include "Projectiles/Missile.h"
+#include "Map/Map.h"
+//#include "Tanks/Player.h"
+//#include "Tanks/UnitTank.h"
 
 #define BULLETTYPE 1
 #define MISSILETYPE 2

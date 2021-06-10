@@ -1,4 +1,4 @@
-#include "Bullet.h"
+#include "Projectiles/Bullet.h"
 
 Bullet::Bullet(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture)
 	: Projectile(pos, rotation, tankId, texture)

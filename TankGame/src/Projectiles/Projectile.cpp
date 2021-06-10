@@ -1,4 +1,4 @@
-#include "Projectile.h"
+#include "Projectiles/Projectile.h"
 
 Projectile::Projectile(sf::Vector2f pos, float rotation, int tankId, sf::Texture & texture)
 {

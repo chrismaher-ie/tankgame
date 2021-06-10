@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GeometryUtils.h"
-#include "UnitTank.h"
-#include "Player.h"
+#include "Utils/GeometryUtils.h"
+#include "Tanks/UnitTank.h"
+#include "Tanks/Player.h"
 
 class BrownTank : public UnitTank
 {

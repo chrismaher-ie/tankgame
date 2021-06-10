@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "GeometryUtils.h"
-#include "Projectile.h"
+#include "Utils/GeometryUtils.h"
+#include "Projectiles/Projectile.h"
 
 //Todo inherit from projectile class
 class Bullet : public Projectile
