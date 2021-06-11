@@ -2,11 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include "Utils/GeometryUtils.h"
 #include "Projectiles/ProjectileHandler.h"
+#include "VisualEffects/VisualEffectsHandler.h"
 
 class UnitTank : public sf::Drawable
 {
 public:
-	UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler);
+	UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	virtual ~UnitTank();
 
 	int getTeam();
@@ -42,7 +43,11 @@ protected:
 	sf::Time fireInterval = sf::seconds(1 / fireRate);
 	sf::Time fireTimeDelta = fireInterval; //initialise the fireTimeDelta so that tanks dont wait for the first shot
 
+	int trackEffectSpawnCounter = 0;
+	int trackEffectSpawnInterval = 20;
+
 	ProjectileHandler& projectileHandler;
+	VisualEffectsHandler& vfxHandler;
 
 	sf::RectangleShape body;
 	sf::RectangleShape turret;

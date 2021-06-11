@@ -7,7 +7,7 @@
 class BrownTank : public UnitTank
 {
 	public:
-		BrownTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler);
+		BrownTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 		~BrownTank();
 		void die();
 	private:

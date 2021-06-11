@@ -8,7 +8,7 @@ class GreyTank :
 	public UnitTank
 {
 public:
-	GreyTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler);
+	GreyTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	~GreyTank();
 	void die();
 private:

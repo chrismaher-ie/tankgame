@@ -8,7 +8,7 @@ class GreenTank :
 	public UnitTank
 {
 public:
-	GreenTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler);
+	GreenTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	~GreenTank();
 	void die();
 private:

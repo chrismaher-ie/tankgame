@@ -4,7 +4,6 @@ VisualEffectsHandler::VisualEffectsHandler()
 
 {
 	trackTexture.loadFromFile("Assets/Textures/Track.png");
-	addEffect(TRACKTYPE, sf::Vector2f(0.f, 0.f));
 }
 
 VisualEffectsHandler::~VisualEffectsHandler()

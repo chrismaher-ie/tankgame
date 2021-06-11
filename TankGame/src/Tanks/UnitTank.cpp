@@ -3,8 +3,8 @@
 int UnitTank::idCount = 0;
 
 
-UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler)
-	: projectileHandler(projectileHandler)
+UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
+	: projectileHandler(projectileHandler), vfxHandler(vfxHandler)
 {
 	_id = idCount;
 	idCount++;
@@ -93,7 +93,12 @@ void UnitTank::update()
 {
 	//Movement 
 	move();
-
+	if (currentSpeed != 0.0f) {
+		if (++trackEffectSpawnCounter > trackEffectSpawnInterval) {
+			trackEffectSpawnCounter = 0;
+			vfxHandler.addEffect(TRACKTYPE, body.getPosition(), body.getRotation());
+		}
+	}
 	turret.setPosition(body.getPosition());
 
 	//Shooting

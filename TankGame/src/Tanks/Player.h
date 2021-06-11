@@ -7,7 +7,7 @@
 class Player : public UnitTank
 {
 	public:
-		Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, sf::RenderWindow& window);
+		Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window);
 		~Player();
 
 		void die();

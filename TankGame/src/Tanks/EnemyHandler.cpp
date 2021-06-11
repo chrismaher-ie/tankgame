@@ -1,7 +1,7 @@
 #include "Tanks/EnemyHandler.h"
 
-EnemyHandler::EnemyHandler(Player& playerTank, ProjectileHandler& projectileHandler)
-	:  playerTank(playerTank), projectileHandler(projectileHandler)
+EnemyHandler::EnemyHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
+	:  playerTank(playerTank), projectileHandler(projectileHandler), vfxHandler(vfxHandler)
 {
 }
 
@@ -44,19 +44,19 @@ void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 	{
 	case BROWNTANKTYPE :
 	{
-		std::unique_ptr<UnitTank> tank = std::make_unique<BrownTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		std::unique_ptr<UnitTank> tank = std::make_unique<BrownTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler, vfxHandler);
 		tankList.push_back(std::move(tank));
 		break;
 	}
 	case GREYTANK:
 	{
-		std::unique_ptr<UnitTank> tank = std::make_unique<GreyTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		std::unique_ptr<UnitTank> tank = std::make_unique<GreyTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler, vfxHandler);
 		tankList.push_back(std::move(tank));
 		break;
 	}
 	case GREENTANK:
 	{
-		std::unique_ptr<UnitTank> tank = std::make_unique<GreenTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler);
+		std::unique_ptr<UnitTank> tank = std::make_unique<GreenTank>(pos, rotation, 1 /*teamId*/, playerTank, projectileHandler, vfxHandler);
 		tankList.push_back(std::move(tank));
 		break;
 	}

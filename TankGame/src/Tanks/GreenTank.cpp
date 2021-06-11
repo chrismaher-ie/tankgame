@@ -1,7 +1,7 @@
 #include "Tanks/GreenTank.h"
 
-GreenTank::GreenTank(sf::Vector2f pos, float rotation, int teamId, Player & player, ProjectileHandler & projectileHandler)
-	: UnitTank(pos, rotation, teamId, projectileHandler), playerTank(player)
+GreenTank::GreenTank(sf::Vector2f pos, float rotation, int teamId, Player & player, ProjectileHandler & projectileHandler, VisualEffectsHandler& vfxHandler)
+	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), playerTank(player)
 {
 	body.setFillColor(sf::Color(0, 128, 0));
 	turret.setFillColor(sf::Color(0, 128, 0));

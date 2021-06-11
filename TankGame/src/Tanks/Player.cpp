@@ -1,7 +1,7 @@
 #include "Tanks/Player.h"
 
-Player::Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, sf::RenderWindow& window)
-	: UnitTank(pos, rotation, teamId, projectileHandler), window(window)
+Player::Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window)
+	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), window(window)
 {
 	// override parent class members
 	health = 5;

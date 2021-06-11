@@ -30,9 +30,9 @@ int main()
 
 	ProjectileHandler projectileHandler = ProjectileHandler(map);
 	
-	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, window);
+	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, vfxHandler, window);
 	
-	EnemyHandler eHandler = EnemyHandler(player, projectileHandler);
+	EnemyHandler eHandler = EnemyHandler(player, projectileHandler, vfxHandler);
 	eHandler.addEnemy(sf::Vector2f(130.0f, -130.0f), 0.f, GREENTANK);
 	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
 	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, GREYTANK);
