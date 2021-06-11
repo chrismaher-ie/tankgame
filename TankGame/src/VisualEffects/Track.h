@@ -11,8 +11,8 @@ public:
 	void update();
 
 private:
-	float width = 40.f;
-	float heigth = 10.f;
+	float width = 34.f;
+	float heigth = 2.f;
 
 	sf::Clock clock;
 	sf::Time elapsedTime = sf::Time::Zero;
