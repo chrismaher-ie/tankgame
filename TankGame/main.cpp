@@ -28,7 +28,7 @@ int main()
 
 	Map map = Map();
 
-	ProjectileHandler projectileHandler = ProjectileHandler(map);
+	ProjectileHandler projectileHandler = ProjectileHandler(map, vfxHandler);
 	
 	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, vfxHandler, window);
 	

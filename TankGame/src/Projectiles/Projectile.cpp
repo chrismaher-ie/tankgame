@@ -1,6 +1,7 @@
 #include "Projectiles/Projectile.h"
 
-Projectile::Projectile(sf::Vector2f pos, float rotation, int tankId, sf::Texture & texture)
+Projectile::Projectile(sf::Vector2f pos, float rotation, int tankId, sf::Texture & texture, VisualEffectsHandler& vfxHandler)
+	: vfxHandler(vfxHandler)
 {
 	body = sf::RectangleShape(sf::Vector2f(size, size / 2));
 	body.setOrigin(sf::Vector2f(size / 2, size / 4));
@@ -18,6 +19,7 @@ void Projectile::update()
 {
 	float angle = body.getRotation() * gutils::degreesToRads;
 	body.move(speed * std::cosf(angle), speed * std::sinf(angle));
+	spawnTrail();
 }
 
 void Projectile::draw(sf::RenderTarget & target, sf::RenderStates states) const
@@ -64,4 +66,9 @@ void Projectile::wallHit()
 int Projectile::getTankId()
 {
 	return tankId;
+}
+
+void Projectile::spawnTrail()
+{
+	//To be implemented by child classes
 }

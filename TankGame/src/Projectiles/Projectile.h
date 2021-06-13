@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Utils/GeometryUtils.h"
+#include "VisualEffects/VisualEffectsHandler.h"
 
 class Projectile : public sf::Drawable
 {
 public:
-	Projectile(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture);
+	Projectile(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture, VisualEffectsHandler& vfxHandler);
 	virtual ~Projectile();
 	virtual void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -25,5 +26,9 @@ protected:
 	bool expired = false;
 
 	sf::RectangleShape body;
+
+	VisualEffectsHandler& vfxHandler;
+
+	virtual void spawnTrail();
 };
 

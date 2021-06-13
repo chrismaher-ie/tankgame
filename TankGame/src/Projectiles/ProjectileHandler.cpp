@@ -3,8 +3,8 @@
 #include "Tanks/UnitTank.h"
 #include <cmath>
 
-ProjectileHandler::ProjectileHandler(Map &map)
-	: map(map)
+ProjectileHandler::ProjectileHandler(Map &map, VisualEffectsHandler& vfxHandler)
+	: map(map), vfxHandler(vfxHandler)
 {
 	bulletTexture.loadFromFile("Assets/Textures/bullet.png");
 	missileTexture.loadFromFile("Assets/Textures/missile.png");
@@ -54,14 +54,14 @@ void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int proj
 	{
 	case BULLETTYPE:
 	{
-		std::unique_ptr<Projectile> projectile = std::make_unique<Bullet>(pos, rotation, tankId, bulletTexture);
+		std::unique_ptr<Projectile> projectile = std::make_unique<Bullet>(pos, rotation, tankId, bulletTexture, vfxHandler);
 
 		projectileList.push_back(std::move(projectile));
 		break;
 	}
 	case MISSILETYPE:
 	{
-		std::unique_ptr<Projectile> projectile = std::make_unique<Missile>(pos, rotation, tankId, missileTexture);
+		std::unique_ptr<Projectile> projectile = std::make_unique<Missile>(pos, rotation, tankId, missileTexture, vfxHandler);
 
 		projectileList.push_back(std::move(projectile));
 		break;

@@ -7,7 +7,7 @@
 class Bullet : public Projectile
 {
 public:
-	Bullet(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture);
+	Bullet(sf::Vector2f pos, float rotation, int tankId, sf::Texture& texture, VisualEffectsHandler& vfxHandler);
 	~Bullet();
 
 private:
