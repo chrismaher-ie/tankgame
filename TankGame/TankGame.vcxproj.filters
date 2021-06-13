@@ -102,6 +102,9 @@
     <ClCompile Include="src\VisualEffects\VisualEffectsHandler.cpp">
       <Filter>Source Files\VisualEffects</Filter>
     </ClCompile>
+    <ClCompile Include="src\VisualEffects\Smoke.cpp">
+      <Filter>Source Files\VisualEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Tanks\BrownTank.h">
@@ -156,6 +159,9 @@
       <Filter>Header Files\VisualEffects</Filter>
     </ClInclude>
     <ClInclude Include="src\VisualEffects\VisualEffectsHandler.h">
+      <Filter>Header Files\VisualEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VisualEffects\Smoke.h">
       <Filter>Header Files\VisualEffects</Filter>
     </ClInclude>
   </ItemGroup>

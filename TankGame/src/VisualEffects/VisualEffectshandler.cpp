@@ -4,6 +4,7 @@ VisualEffectsHandler::VisualEffectsHandler()
 
 {
 	trackTexture.loadFromFile("Assets/Textures/Track.png");
+	smokeTexture.loadFromFile("Assets/Textures/Smoke.png");
 }
 
 VisualEffectsHandler::~VisualEffectsHandler()
@@ -47,6 +48,12 @@ void VisualEffectsHandler::addEffect(int effectType, sf::Vector2f pos, float rot
 	{
 		std::unique_ptr<Effect> effect = std::make_unique<Track>(pos, rotation, trackTexture);
 		bottomEffectList.push_back(std::move(effect));
+		break;
+	}
+	case SMOKETYPE:
+	{
+		std::unique_ptr<Effect> effect = std::make_unique<Smoke>(pos, rotation, speed, smokeTexture);
+		topEffectList.push_back(std::move(effect));
 		break;
 	}
 	default:

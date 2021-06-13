@@ -3,9 +3,11 @@
 #include <list>
 #include "VisualEffects/Effect.h"
 #include "VisualEffects/Track.h"
+#include "VisualEffects/Smoke.h"
 
 
-#define TRACKTYPE 1 
+#define TRACKTYPE 1
+#define SMOKETYPE 2
 
 class VisualEffectsHandler
 {
@@ -25,5 +27,6 @@ private:
 
 	//Textures
 	sf::Texture trackTexture;
+	sf::Texture smokeTexture;
 };
 
