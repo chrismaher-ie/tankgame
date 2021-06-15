@@ -36,6 +36,10 @@ float Projectile::getSize()
 	return size;
 }
 
+sf::Sprite Projectile::getSprite() {
+	return body;
+}
+
 bool Projectile::shouldDelete()
 {
 	return expired;

@@ -43,6 +43,9 @@
     <Filter Include="Source Files\VisualEffects">
       <UniqueIdentifier>{eda04fd9-be42-455d-a339-7a7839b3d569}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Third Party">
+      <UniqueIdentifier>{afc72fef-a860-4fef-af7d-89a7a31dcb2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -105,6 +108,9 @@
     <ClCompile Include="src\VisualEffects\Smoke.cpp">
       <Filter>Source Files\VisualEffects</Filter>
     </ClCompile>
+    <ClCompile Include="third-party-src\Collision.cpp">
+      <Filter>Third Party</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Tanks\BrownTank.h">
@@ -163,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="src\VisualEffects\Smoke.h">
       <Filter>Header Files\VisualEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="third-party-src\Collision.h">
+      <Filter>Third Party</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

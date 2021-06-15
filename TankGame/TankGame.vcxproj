@@ -81,7 +81,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Chris\source\repos\TankGame\Third-Party\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src;$(ProjectDir)\third-party-src;$(SolutionDir)\Third-Party\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,7 +108,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Chris\source\repos\TankGame\Third-Party\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\src;$(ProjectDir)\third-party-src;$(SolutionDir)\Third-Party\sfml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,6 +154,7 @@
     <ClCompile Include="src\VisualEffects\Smoke.cpp" />
     <ClCompile Include="src\VisualEffects\Track.cpp" />
     <ClCompile Include="src\VisualEffects\VisualEffectsHandler.cpp" />
+    <ClCompile Include="third-party-src\Collision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Map\Barrier.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="src\VisualEffects\Smoke.h" />
     <ClInclude Include="src\VisualEffects\Track.h" />
     <ClInclude Include="src\VisualEffects\VisualEffectsHandler.h" />
+    <ClInclude Include="third-party-src\Collision.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

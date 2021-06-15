@@ -53,6 +53,11 @@ float UnitTank::getRotation()
 	return body.getRotation();
 }
 
+sf::Sprite UnitTank::getSprite()
+{
+	return body;
+}
+
 sf::Vector2f UnitTank::getPosition()
 {
 	return body.getPosition();

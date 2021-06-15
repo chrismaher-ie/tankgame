@@ -15,6 +15,7 @@ public:
 	float getSize();
 	float getSpeed();
 	float getRotation();
+	sf::Sprite getSprite();
 	sf::Vector2f getPosition();
 
 	void takeDamage();

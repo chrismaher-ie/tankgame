@@ -12,6 +12,7 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	sf::Vector2f getPosition();
 	float getSize();
+	sf::Sprite getSprite();
 	bool shouldDelete();
 	void hit();
 	void wallHit();

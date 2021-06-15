@@ -6,6 +6,7 @@
 #include "Projectiles/Missile.h"
 #include "Map/Map.h"
 #include "VisualEffects/VisualEffectsHandler.h"
+#include "Collision.h"
 //#include "Tanks/Player.h"
 //#include "Tanks/UnitTank.h"
 
@@ -35,7 +36,5 @@ class ProjectileHandler : public sf::Drawable
 
 		sf::Texture bulletTexture;
 		sf::Texture missileTexture;
-
-		bool colliding(sf::Vector2f pos1, sf::Vector2f pos2, float size1, float size2);
 };
 
