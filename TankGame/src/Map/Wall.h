@@ -8,7 +8,7 @@ public:
 	~Wall();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	bool isFragile();
-	sf::Sprite getBody();
+	sf::Sprite getSprite();
 
 private:
 

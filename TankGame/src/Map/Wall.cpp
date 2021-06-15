@@ -25,7 +25,7 @@ bool Wall::isFragile()
 	return fragile;
 }
 
-sf::Sprite Wall::getBody()
+sf::Sprite Wall::getSprite()
 {
 	return body;
 }

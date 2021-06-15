@@ -17,14 +17,19 @@ ProjectileHandler::~ProjectileHandler()
 void ProjectileHandler::update()
 {
 	std::list<Wall> *wallList = map.getWallList();
+	sf::Sprite projectileSprite;
+	sf::Sprite wallSprite;
 
 	for (auto& projectile : projectileList) {
 		projectile->update();
+		projectileSprite = projectile->getSprite();
 
 		for (auto wall : (*wallList)) {
+			wallSprite = wall.getSprite();
+
 			//TODO: calculate angle of wall that has been bit
 			
-			if (wall.getBody().getGlobalBounds().contains(projectile->getPosition())) {
+			if (Collision::BoundingBoxTest(projectileSprite,wallSprite)) {
 				//pass wall angle in as parameter
 				projectile->wallHit();
 			}
@@ -73,19 +78,19 @@ void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int proj
 
 void ProjectileHandler::hitDetection(Player * player, std::list<std::unique_ptr<UnitTank>>* tankList)
 {
-	sf::Sprite projectile1;
-	sf::Sprite projectile2;
-	sf::Sprite tank;
+	sf::Sprite projectile1_sprite;
+	sf::Sprite projectile2_sprite;
+	sf::Sprite tankSprite;
 
 	for (auto proj_itr1 = projectileList.begin(); proj_itr1 != projectileList.end(); ++proj_itr1) {
-		projectile1 = (*proj_itr1)->getSprite();
+		projectile1_sprite = (*proj_itr1)->getSprite();
 		
 		//check projectile to projectile collisions
 		//nested loop over single listprojectileList, no repeated checks or self comparision checks checks
 		for (auto proj_itr2 = std::next(proj_itr1, 1); proj_itr2 != projectileList.end(); ++proj_itr2) {
-			projectile2 = (*proj_itr2)->getSprite();
+			projectile2_sprite = (*proj_itr2)->getSprite();
 			
-			if (Collision::BoundingBoxTest(projectile1, projectile2)) {
+			if (Collision::BoundingBoxTest(projectile1_sprite, projectile2_sprite)) {
 				(*proj_itr1)->hit();
 				(*proj_itr2)->hit();
 			}
@@ -93,19 +98,19 @@ void ProjectileHandler::hitDetection(Player * player, std::list<std::unique_ptr<
 		}
 
 		//check projectile to player collisions
-		tank = player->getSprite();
+		tankSprite = player->getSprite();
 		
-		if (Collision::BoundingBoxTest(projectile1, tank)) {
+		if (Collision::BoundingBoxTest(projectile1_sprite, tankSprite)) {
 			(*proj_itr1)->hit();
 			player->takeDamage();
 		}
 
 		//check projectile to enemy collisions
-		for (auto& enemyTank : (*tankList)) {
-			tank = enemyTank->getSprite();
-			if (Collision::BoundingBoxTest(projectile1, tank)) {
+		for (auto& tank : (*tankList)) {
+			tankSprite = tank->getSprite();
+			if (Collision::BoundingBoxTest(projectile1_sprite, tankSprite)) {
 				(*proj_itr1)->hit();
-				enemyTank->takeDamage();
+				tank->takeDamage();
 			}
 		}
 	}

@@ -24,7 +24,7 @@ bool Barrier::isFragile()
 	return fragile;
 }
 
-sf::Sprite Barrier::getBody()
+sf::Sprite Barrier::getSprite()
 {
 	return body;
 }
