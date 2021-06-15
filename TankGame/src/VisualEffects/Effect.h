@@ -14,7 +14,7 @@ public:
 
 protected:
 
-	sf::RectangleShape body;
+	sf::Sprite body;
 	
 	bool expired = false;
 };

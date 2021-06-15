@@ -10,22 +10,15 @@ UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandl
 	idCount++;
 	this->teamId = teamId;
 
-	body = sf::RectangleShape(sf::Vector2f(size, size));
-	body.setOrigin(sf::Vector2f(size / 2, size / 2));
-
 	bodyTexture.loadFromFile("Assets/Textures/tankBase.png");
-	body.setTexture(&bodyTexture);
-
-	turret = sf::RectangleShape(sf::Vector2f(size, size));
-	turret.setOrigin(sf::Vector2f(size / 2, size / 2));
-	
-
-	turretTexture.loadFromFile("Assets/Textures/tankTurret.png");
-	turret.setTexture(&turretTexture);
-
+	body.setTexture(bodyTexture);
+	body.setOrigin(sf::Vector2f(body.getTexture()->getSize().x * 0.5f, body.getTexture()->getSize().y  * 0.5f));
 	body.setPosition(pos);
 	body.setRotation(rotation);
 
+	turretTexture.loadFromFile("Assets/Textures/tankTurret.png");
+	turret.setTexture(turretTexture);
+	turret.setOrigin(sf::Vector2f(turret.getTexture()->getSize().x * 0.5f, turret.getTexture()->getSize().y  * 0.5f));
 	turret.setPosition(pos);
 	turret.setRotation(rotation);
 

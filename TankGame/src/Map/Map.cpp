@@ -2,11 +2,12 @@
 
 Map::Map()
 {
-	background = sf::RectangleShape(sf::Vector2f(1000.f, 600.f));
-	background.setPosition(0.f, 0.f);
-	background.setOrigin(500.0f, 300.0f);
+	//Setup background Srite
 	backgroundTexture.loadFromFile("Assets/Textures/road.jpg");
-	background.setTexture(&backgroundTexture);
+	background.setTexture(backgroundTexture);
+	background.setPosition(0.f, 0.f);
+	background.setOrigin(sf::Vector2f(background.getTexture()->getSize().x * 0.5f, background.getTexture()->getSize().y  * 0.5f));
+	background.setScale(sf::Vector2f(1000.f / background.getTexture()->getSize().x, 600.f / background.getTexture()->getSize().y));
 
 	wallTexture.loadFromFile("Assets/Textures/Tempwall1.png");
 	fragileWallTexture.loadFromFile("Assets/Textures/Tempwall2.png");
@@ -25,8 +26,6 @@ Map::Map()
 	addWall(sf::Vector2f(60.0f, -80.0f), 40.f, 40.f, false);
 
 	//Add test barriers
-
-	//setup test walls
 	addBarrier(sf::Vector2f(-250.0f, -200.0f), 40.f, 40.f, true);
 	addBarrier(sf::Vector2f(60.0f, 80.0f), 40.f, 40.f, false);
 

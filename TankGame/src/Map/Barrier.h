@@ -8,12 +8,12 @@ public:
 	~Barrier();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	bool isFragile();
-	sf::RectangleShape getBody();
+	sf::Sprite getBody();
 
 private:
 
 	bool fragile;
-	sf::RectangleShape body;
+	sf::Sprite body;
 
 };
 

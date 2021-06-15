@@ -3,11 +3,10 @@
 Projectile::Projectile(sf::Vector2f pos, float rotation, int tankId, sf::Texture & texture, VisualEffectsHandler& vfxHandler)
 	: vfxHandler(vfxHandler)
 {
-	body = sf::RectangleShape(sf::Vector2f(size, size / 2));
-	body.setOrigin(sf::Vector2f(size / 2, size / 4));
+	body.setTexture(texture);
+	body.setOrigin(sf::Vector2f(body.getTexture()->getSize().x * 0.5f, body.getTexture()->getSize().y  * 0.5f));
 	body.setPosition(pos);
 	body.setRotation(rotation);
-	body.setTexture(&texture);
 	this->tankId = tankId;
 }
 

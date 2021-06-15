@@ -25,7 +25,7 @@ protected:
 	int wallBounces = 1;
 	bool expired = false;
 
-	sf::RectangleShape body;
+	sf::Sprite body;
 
 	VisualEffectsHandler& vfxHandler;
 

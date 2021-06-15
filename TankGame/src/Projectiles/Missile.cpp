@@ -5,7 +5,7 @@ Missile::Missile(sf::Vector2f pos, float rotation, int tankId, sf::Texture& text
 {
 	speed = 1.2f;
 	wallBounces = 0;
-	body.scale(1.5f, 1.5f);
+	body.setScale(sf::Vector2f(0.1f, 0.1f));
 	size *= 1.5f;
 }
 

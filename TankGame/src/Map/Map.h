@@ -20,7 +20,7 @@ class Map : public sf::Drawable
 		std::list<Barrier> *getBarrierList();
 	private:
 		
-		sf::RectangleShape background;
+		sf::Sprite background;
 
 		sf::Texture backgroundTexture;
 		sf::Texture wallTexture;

@@ -49,8 +49,8 @@ protected:
 	ProjectileHandler& projectileHandler;
 	VisualEffectsHandler& vfxHandler;
 
-	sf::RectangleShape body;
-	sf::RectangleShape turret;
+	sf::Sprite body;
+	sf::Sprite turret;
 	sf::Texture bodyTexture;
 	sf::Texture turretTexture;
 

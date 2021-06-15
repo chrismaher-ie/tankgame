@@ -9,6 +9,9 @@ Player::Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& 
 	maxProjectiles = 3;
 
 	fireRate = 5.f;
+
+	body.setColor(sf::Color::Blue);
+	turret.setColor(sf::Color::Blue);
 }
 
 Player::~Player()

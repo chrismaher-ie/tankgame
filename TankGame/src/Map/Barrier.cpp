@@ -3,12 +3,11 @@
 Barrier::Barrier(sf::Vector2f pos, float width, float height, bool fragile, sf::Texture & texture)
 {
 	this->fragile = fragile;
-	body = sf::RectangleShape(sf::Vector2f(width, height));
-	body.setOrigin(sf::Vector2f(width / 2, height / 2));
-
-	body.setTexture(&texture);
-
+	body.setTexture(texture);
+	body.setOrigin(sf::Vector2f(body.getTexture()->getSize().x * 0.5f, body.getTexture()->getSize().y  * 0.5f));
 	body.setPosition(pos);
+
+	body.setScale(sf::Vector2f(width / body.getTexture()->getSize().x, height / body.getTexture()->getSize().y));
 }
 
 Barrier::~Barrier()
@@ -25,7 +24,7 @@ bool Barrier::isFragile()
 	return fragile;
 }
 
-sf::RectangleShape Barrier::getBody()
+sf::Sprite Barrier::getBody()
 {
 	return body;
 }

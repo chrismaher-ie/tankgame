@@ -12,8 +12,6 @@ public:
 	void update();
 
 private:
-	float width = 10.f;
-	float heigth = 10.f;
 	float angle;
 	float speed;
 

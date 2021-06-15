@@ -2,11 +2,11 @@
 
 Track::Track(sf::Vector2f pos, float rotation, sf::Texture& texture)
 {
-	body = sf::RectangleShape(sf::Vector2f(heigth, width));
-	body.setOrigin(sf::Vector2f(heigth / 2, width / 2));
+	body.setTexture(texture);
+	body.setOrigin(sf::Vector2f(body.getTexture()->getSize().x * 0.5f, body.getTexture()->getSize().y  * 0.5f));
 	body.setPosition(pos);
 	body.setRotation(rotation);
-	body.setTexture(&texture);
+	
 }
 
 Track::~Track()
