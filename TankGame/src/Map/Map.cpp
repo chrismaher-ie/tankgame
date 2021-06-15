@@ -3,17 +3,16 @@
 Map::Map()
 {
 	//Setup background Srite
-	backgroundTexture.loadFromFile("Assets/Textures/road.jpg");
+	backgroundTexture.loadFromFile("Assets/Textures/background.png");
 	background.setTexture(backgroundTexture);
 	background.setPosition(0.f, 0.f);
 	background.setOrigin(sf::Vector2f(background.getTexture()->getSize().x * 0.5f, background.getTexture()->getSize().y  * 0.5f));
-	background.setScale(sf::Vector2f(1000.f / background.getTexture()->getSize().x, 600.f / background.getTexture()->getSize().y));
 
-	wallTexture.loadFromFile("Assets/Textures/Tempwall1.png");
-	fragileWallTexture.loadFromFile("Assets/Textures/Tempwall2.png");
+	wallTexture.loadFromFile("Assets/Textures/wall.png");
+	fragileWallTexture.loadFromFile("Assets/Textures/wallFragile.png");
 
-	barrierTexture.loadFromFile("Assets/Textures/Tempbarrier1.png");
-	fragileBarrierTexture.loadFromFile("Assets/Textures/Tempbarrier2.png");
+	barrierTexture.loadFromFile("Assets/Textures/barrier.png");
+	fragileBarrierTexture.loadFromFile("Assets/Textures/barrierFragile.png");
 
 	//setup bounding walls
 	addWall(sf::Vector2f(0.0f, -310.0f), 1040.f, 20.f, false);

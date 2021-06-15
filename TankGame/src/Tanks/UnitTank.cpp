@@ -10,7 +10,7 @@ UnitTank::UnitTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandl
 	idCount++;
 	this->teamId = teamId;
 
-	bodyTexture.loadFromFile("Assets/Textures/tankBase.png");
+	bodyTexture.loadFromFile("Assets/Textures/tankBody.png");
 	body.setTexture(bodyTexture);
 	body.setOrigin(sf::Vector2f(body.getTexture()->getSize().x * 0.5f, body.getTexture()->getSize().y  * 0.5f));
 	body.setPosition(pos);
