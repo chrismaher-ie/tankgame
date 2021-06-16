@@ -13,16 +13,16 @@
 #define GREYTANK 2
 #define GREENTANK 3
 
-class EnemyHandler : public sf::Drawable
+class TankHandler : public sf::Drawable
 {
 public:
 	
 
-	EnemyHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
-	~EnemyHandler();
+	TankHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+	~TankHandler();
 	void update(/*sf::FloatRect boundingBox*/ Player * player);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void addEnemy(sf::Vector2f pos, float rotation, int type);
+	void addTank(sf::Vector2f pos, float rotation, int type);
 	std::list<std::unique_ptr<UnitTank>> *getTankList();
 
 private:

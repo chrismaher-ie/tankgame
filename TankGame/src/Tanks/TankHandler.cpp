@@ -1,43 +1,43 @@
-#include "Tanks/EnemyHandler.h"
+#include "Tanks/TankHandler.h"
 
-EnemyHandler::EnemyHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
+TankHandler::TankHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
 	:  playerTank(playerTank), projectileHandler(projectileHandler), vfxHandler(vfxHandler)
 {
 }
 
-EnemyHandler::~EnemyHandler()
+TankHandler::~TankHandler()
 {
 }
 
-void EnemyHandler::update(Player * player)
+void TankHandler::update(Player * player)
 {
 	//TODO: remove erase from loop and change to range based loop
 	for (auto tank_itr = tankList.begin(); tank_itr != tankList.end(); ) {
-		//update enemy
+		//update tank
 		(*tank_itr)->update();
 
 		
-		//if enemy is to be destroyed, delete enemy
+		//if tank is to be destroyed, delete tank
 		if (false) {
 			tank_itr = tankList.erase(tank_itr);
 		}
 		// elseif more checks
 
-		else { //enemy was fine, increment iterator
+		else { //tank was fine, increment iterator
 			++tank_itr;
 		}
 
 	}
 }
 
-void EnemyHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void TankHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	for (auto& tank : tankList) {
 		target.draw((*tank));
 	}
 }
 
-void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
+void TankHandler::addTank(sf::Vector2f pos, float rotation, int type)
 {
 	//TODO: add teamId functionallity or remove teamId
 	switch (type)
@@ -66,7 +66,7 @@ void EnemyHandler::addEnemy(sf::Vector2f pos, float rotation, int type)
 
 }
 
-std::list<std::unique_ptr<UnitTank>>* EnemyHandler::getTankList()
+std::list<std::unique_ptr<UnitTank>>* TankHandler::getTankList()
 {
 	return &tankList;
 }

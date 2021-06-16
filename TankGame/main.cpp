@@ -4,7 +4,7 @@
 #include "Map/Map.h"
 #include "Projectiles/ProjectileHandler.h"
 #include "Utils/Framerate.h"
-#include "Tanks/EnemyHandler.h"
+#include "Tanks/TankHandler.h"
 #include "VisualEffects/VisualEffectsHandler.h"
 
 static const float SCREENHEIGHT = 600.0f;
@@ -12,7 +12,7 @@ static const float SCREENWIDTH =  1200.0f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, TankHandler& tankHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 
 int main()
 {
@@ -32,11 +32,11 @@ int main()
 	
 	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, vfxHandler, window);
 	
-	EnemyHandler eHandler = EnemyHandler(player, projectileHandler, vfxHandler);
-	eHandler.addEnemy(sf::Vector2f(130.0f, -130.0f), 0.f, GREENTANK);
-	eHandler.addEnemy(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
-	eHandler.addEnemy(sf::Vector2f(-100.0f, -150.0f), 0.f, GREYTANK);
-	eHandler.addEnemy(sf::Vector2f( -75.0f,  -75.0f), 0.f, GREYTANK);
+	TankHandler tankHandler = TankHandler(player, projectileHandler, vfxHandler);
+	tankHandler.addTank(sf::Vector2f(130.0f, -130.0f), 0.f, GREENTANK);
+	tankHandler.addTank(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
+	tankHandler.addTank(sf::Vector2f(-100.0f, -150.0f), 0.f, GREYTANK);
+	tankHandler.addTank(sf::Vector2f( -75.0f,  -75.0f), 0.f, GREYTANK);
 	
 	sf::FloatRect boundingBox = map.getBoundingBox();
 	sf::Clock clock;
@@ -49,12 +49,12 @@ int main()
 
 		windowEventHandler(window, &view);
 		projectileHandler.update();
-		projectileHandler.hitDetection(&player, eHandler.getTankList());
-		eHandler.update(&player);
+		projectileHandler.hitDetection(&player, tankHandler.getTankList());
+		tankHandler.update(&player);
 		player.update();
 		vfxHandler.update();
 
-		Draw(window, view, player, map, eHandler, framerate, projectileHandler, vfxHandler);
+		Draw(window, view, player, map, tankHandler, framerate, projectileHandler, vfxHandler);
 	}
 
 	return 0;
@@ -81,7 +81,7 @@ void windowEventHandler(sf::RenderWindow& window, sf::View* view) {
 	}
 }
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, EnemyHandler& enemyHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
+void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, TankHandler& tankHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
 {
 	view.setCenter(player.getPosition());
 	window.setView(view);
@@ -92,7 +92,7 @@ void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, En
 
 	window.draw(player);
 	window.draw(projectileHandler);
-	window.draw(enemyHandler);
+	window.draw(tankHandler);
 	vfxHandler.drawTopEffects(window);
 
 	framerate.setTextPos(window);

@@ -143,7 +143,7 @@
     <ClCompile Include="src\Projectiles\Projectile.cpp" />
     <ClCompile Include="src\Projectiles\ProjectileHandler.cpp" />
     <ClCompile Include="src\Tanks\BrownTank.cpp" />
-    <ClCompile Include="src\Tanks\EnemyHandler.cpp" />
+    <ClCompile Include="src\Tanks\TankHandler.cpp" />
     <ClCompile Include="src\Tanks\GreenTank.cpp" />
     <ClCompile Include="src\Tanks\GreyTank.cpp" />
     <ClCompile Include="src\Tanks\Player.cpp" />
@@ -165,7 +165,7 @@
     <ClInclude Include="src\Projectiles\Projectile.h" />
     <ClInclude Include="src\Projectiles\ProjectileHandler.h" />
     <ClInclude Include="src\Tanks\BrownTank.h" />
-    <ClInclude Include="src\Tanks\EnemyHandler.h" />
+    <ClInclude Include="src\Tanks\TankHandler.h" />
     <ClInclude Include="src\Tanks\GreenTank.h" />
     <ClInclude Include="src\Tanks\GreyTank.h" />
     <ClInclude Include="src\Tanks\Player.h" />

@@ -105,7 +105,7 @@ void ProjectileHandler::hitDetection(Player * player, std::list<std::unique_ptr<
 			player->takeDamage();
 		}
 
-		//check projectile to enemy collisions
+		//check projectile to tank collisions
 		for (auto& tank : (*tankList)) {
 			tankSprite = tank->getSprite();
 			if (Collision::BoundingBoxTest(projectile1_sprite, tankSprite)) {

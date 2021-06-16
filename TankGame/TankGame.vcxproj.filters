@@ -54,9 +54,6 @@
     <ClCompile Include="src\Tanks\BrownTank.cpp">
       <Filter>Source Files\Tanks</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tanks\EnemyHandler.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
     <ClCompile Include="src\Tanks\GreenTank.cpp">
       <Filter>Source Files\Tanks</Filter>
     </ClCompile>
@@ -111,12 +108,12 @@
     <ClCompile Include="third-party-src\Collision.cpp">
       <Filter>Third Party</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tanks\TankHandler.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Tanks\BrownTank.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tanks\EnemyHandler.h">
       <Filter>Header Files\Tanks</Filter>
     </ClInclude>
     <ClInclude Include="src\Tanks\GreenTank.h">
@@ -172,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="third-party-src\Collision.h">
       <Filter>Third Party</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tanks\TankHandler.h">
+      <Filter>Header Files\Tanks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
