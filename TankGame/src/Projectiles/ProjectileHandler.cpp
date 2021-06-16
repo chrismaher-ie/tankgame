@@ -1,6 +1,5 @@
 #include "Projectiles/ProjectileHandler.h"
-#include "Tanks/PlayerTank.h"
-#include "Tanks/UnitTank.h"
+#include "Tanks/TankHandler.h"
 #include <cmath>
 
 ProjectileHandler::ProjectileHandler(Map &map, VisualEffectsHandler& vfxHandler)
@@ -76,11 +75,10 @@ void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int proj
 	}
 }
 
-void ProjectileHandler::hitDetection(std::shared_ptr<PlayerTank> playerTank, std::list<std::unique_ptr<UnitTank>>* tankList)
+void ProjectileHandler::hitDetection()
 {
 	sf::Sprite projectile1_sprite;
 	sf::Sprite projectile2_sprite;
-	sf::Sprite tankSprite;
 
 	for (auto proj_itr1 = projectileList.begin(); proj_itr1 != projectileList.end(); ++proj_itr1) {
 		projectile1_sprite = (*proj_itr1)->getSprite();
@@ -98,17 +96,14 @@ void ProjectileHandler::hitDetection(std::shared_ptr<PlayerTank> playerTank, std
 		}
 
 		//check projectile to playerTank collisions
-		tankSprite = playerTank->getSprite();
-		
-		if (Collision::BoundingBoxTest(projectile1_sprite, tankSprite)) {
+		if (Collision::BoundingBoxTest(projectile1_sprite, tankHandler->getPlayerTank()->getSprite())) {
 			(*proj_itr1)->hit();
-			playerTank->takeDamage();
+			tankHandler->getPlayerTank()->takeDamage();
 		}
 
 		//check projectile to tank collisions
-		for (auto& tank : (*tankList)) {
-			tankSprite = tank->getSprite();
-			if (Collision::BoundingBoxTest(projectile1_sprite, tankSprite)) {
+		for (auto& tank : *(tankHandler->getTankList())) {
+			if (Collision::BoundingBoxTest(projectile1_sprite, tank->getSprite())) {
 				(*proj_itr1)->hit();
 				tank->takeDamage();
 			}
@@ -116,7 +111,7 @@ void ProjectileHandler::hitDetection(std::shared_ptr<PlayerTank> playerTank, std
 	}
 
 	projectileList.remove_if([&](const std::unique_ptr<Projectile>& projectile) -> bool { return projectile->shouldDelete(); });
-	tankList->remove_if([&](const std::unique_ptr<UnitTank>& tank) -> bool { return tank->shouldDelete(); });
+	tankHandler->getTankList()->remove_if([&](const std::unique_ptr<UnitTank>& tank) -> bool { return tank->shouldDelete(); });
 }
 
 void ProjectileHandler::deleteProjectileList()
@@ -135,4 +130,9 @@ int ProjectileHandler::countTankProjectiles(int tankId)
 		if (projectile->getTankId() == tankId) ++count;
 	}
 	return count;
+}
+
+void ProjectileHandler::setTankHandler(TankHandler & tankHandler)
+{
+	this->tankHandler = & tankHandler;
 }

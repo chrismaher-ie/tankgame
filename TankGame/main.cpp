@@ -31,6 +31,7 @@ int main()
 	ProjectileHandler projectileHandler = ProjectileHandler(map, vfxHandler);
 	
 	TankHandler tankHandler = TankHandler(projectileHandler, vfxHandler, window);
+	projectileHandler.setTankHandler(tankHandler);
 	
 	tankHandler.addTank(sf::Vector2f(130.0f, -130.0f), 0.f, GREENTANK);
 	tankHandler.addTank(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANK);
@@ -48,7 +49,7 @@ int main()
 
 		windowEventHandler(window, view);
 		projectileHandler.update();
-		projectileHandler.hitDetection(tankHandler.getPlayerTank(), tankHandler.getTankList());
+		projectileHandler.hitDetection();
 		tankHandler.update();
 		vfxHandler.update();
 

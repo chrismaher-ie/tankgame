@@ -7,15 +7,13 @@
 #include "Map/Map.h"
 #include "VisualEffects/VisualEffectsHandler.h"
 #include "Collision.h"
-//#include "Tanks/PlayerTank.h"
-//#include "Tanks/UnitTank.h"
+//#include "Tanks/TankHandler.h"
 
 #define BULLETTYPE 1
 #define MISSILETYPE 2
 
-//Forward Declarations as ProjectileHandler needs PlayerTank and PlayerTank needs ProjectileHandler
-class PlayerTank;
-class UnitTank;
+//Forward Declarations as ProjectileHandler needs TankHandler and TankHandler needs ProjectileHandler
+class TankHandler;
 
 class ProjectileHandler : public sf::Drawable
 {
@@ -27,13 +25,14 @@ class ProjectileHandler : public sf::Drawable
 		void update();
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		void addProjectile(sf::Vector2f pos, float rotation, int projectileType, int tankId);
-		void hitDetection(std::shared_ptr<PlayerTank> playerTank, std::list<std::unique_ptr<UnitTank>>* tankList);
+		void hitDetection();
 		void deleteProjectileList();
 		int countTankProjectiles(int tankId);
+		void setTankHandler(TankHandler& tankHandler);
 	private:
 		Map &map;
 		VisualEffectsHandler& vfxHandler;
-
+		TankHandler* tankHandler;
 		sf::Texture bulletTexture;
 		sf::Texture missileTexture;
 };
