@@ -1,6 +1,6 @@
-#include "Tanks/Player.h"
+#include "Tanks/PlayerTank.h"
 
-Player::Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window)
+PlayerTank::PlayerTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window)
 	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), window(window)
 {
 	// override parent class members
@@ -14,17 +14,17 @@ Player::Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& 
 	turret.setColor(sf::Color::Blue);
 }
 
-Player::~Player()
+PlayerTank::~PlayerTank()
 {
 }
 
-void Player::die()
+void PlayerTank::die()
 {
 	body.setPosition(200.f, 200.f);
 	health = 5;
 }
 
-void Player::update()
+void PlayerTank::update()
 {
 	UnitTank::update();
 
@@ -35,7 +35,7 @@ void Player::update()
 	}
 }
 
-void Player::move()
+void PlayerTank::move()
 {
 	//Turning
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) 
@@ -68,7 +68,7 @@ void Player::move()
 	}
 }
 
-bool Player::aim()
+bool PlayerTank::aim()
 {
 	//twist turret to mouse
 	sf::Vector2f mouseWorldPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));

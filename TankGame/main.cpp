@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Tanks/Player.h"
+#include "Tanks/PlayerTank.h"
 #include "Map/Map.h"
 #include "Projectiles/ProjectileHandler.h"
 #include "Utils/Framerate.h"
@@ -12,7 +12,7 @@ static const float SCREENWIDTH =  1200.0f;
 
 void windowEventHandler(sf::RenderWindow& window, sf::View* view);
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, TankHandler& tankHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+void Draw(sf::RenderWindow& window, sf::View& view, PlayerTank& playerTank, Map& map, TankHandler& tankHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 
 int main()
 {
@@ -30,9 +30,9 @@ int main()
 
 	ProjectileHandler projectileHandler = ProjectileHandler(map, vfxHandler);
 	
-	Player player = Player(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, vfxHandler, window);
+	PlayerTank playerTank = PlayerTank(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, vfxHandler, window);
 	
-	TankHandler tankHandler = TankHandler(player, projectileHandler, vfxHandler);
+	TankHandler tankHandler = TankHandler(playerTank, projectileHandler, vfxHandler);
 	tankHandler.addTank(sf::Vector2f(130.0f, -130.0f), 0.f, GREENTANK);
 	tankHandler.addTank(sf::Vector2f(-150.0f, -100.0f), 0.f, BROWNTANKTYPE);
 	tankHandler.addTank(sf::Vector2f(-100.0f, -150.0f), 0.f, GREYTANK);
@@ -49,12 +49,12 @@ int main()
 
 		windowEventHandler(window, &view);
 		projectileHandler.update();
-		projectileHandler.hitDetection(&player, tankHandler.getTankList());
+		projectileHandler.hitDetection(&playerTank, tankHandler.getTankList());
 		tankHandler.update();
-		player.update();
+		playerTank.update();
 		vfxHandler.update();
 
-		Draw(window, view, player, map, tankHandler, framerate, projectileHandler, vfxHandler);
+		Draw(window, view, playerTank, map, tankHandler, framerate, projectileHandler, vfxHandler);
 	}
 
 	return 0;
@@ -81,16 +81,16 @@ void windowEventHandler(sf::RenderWindow& window, sf::View* view) {
 	}
 }
 
-void Draw(sf::RenderWindow& window, sf::View& view, Player& player, Map& map, TankHandler& tankHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
+void Draw(sf::RenderWindow& window, sf::View& view, PlayerTank& playerTank, Map& map, TankHandler& tankHandler, Framerate& framerate, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
 {
-	view.setCenter(player.getPosition());
+	view.setCenter(playerTank.getPosition());
 	window.setView(view);
 	window.clear();
 
 	window.draw(map);
 	vfxHandler.drawBottomEffects(window);
 
-	window.draw(player);
+	window.draw(playerTank);
 	window.draw(projectileHandler);
 	window.draw(tankHandler);
 	vfxHandler.drawTopEffects(window);

@@ -1,7 +1,7 @@
 #include "Tanks/GreyTank.h"
 
-GreyTank::GreyTank(sf::Vector2f pos, float rotation, int teamId, Player & player, ProjectileHandler & projectileHandler, VisualEffectsHandler& vfxHandler)
-	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), playerTank(player)
+GreyTank::GreyTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank & playerTank, ProjectileHandler & projectileHandler, VisualEffectsHandler& vfxHandler)
+	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), playerTank(playerTank)
 {
 	body.setColor(sf::Color(70, 70, 70));
 	turret.setColor(sf::Color(80, 80, 80));

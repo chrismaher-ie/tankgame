@@ -146,7 +146,7 @@
     <ClCompile Include="src\Tanks\TankHandler.cpp" />
     <ClCompile Include="src\Tanks\GreenTank.cpp" />
     <ClCompile Include="src\Tanks\GreyTank.cpp" />
-    <ClCompile Include="src\Tanks\Player.cpp" />
+    <ClCompile Include="src\Tanks\PlayerTank.cpp" />
     <ClCompile Include="src\Tanks\UnitTank.cpp" />
     <ClCompile Include="src\Utils\Framerate.cpp" />
     <ClCompile Include="src\Utils\GeometryUtils.cpp" />
@@ -168,7 +168,7 @@
     <ClInclude Include="src\Tanks\TankHandler.h" />
     <ClInclude Include="src\Tanks\GreenTank.h" />
     <ClInclude Include="src\Tanks\GreyTank.h" />
-    <ClInclude Include="src\Tanks\Player.h" />
+    <ClInclude Include="src\Tanks\PlayerTank.h" />
     <ClInclude Include="src\Tanks\UnitTank.h" />
     <ClInclude Include="src\Utils\Framerate.h" />
     <ClInclude Include="src\Utils\GeometryUtils.h" />

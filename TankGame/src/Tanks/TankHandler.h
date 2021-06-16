@@ -5,7 +5,7 @@
 #include "Tanks/BrownTank.h"
 #include "Tanks/GreyTank.h"
 #include "Tanks/GreenTank.h"
-#include "Tanks/Player.h"
+#include "Tanks/PlayerTank.h"
 #include "Projectiles/ProjectileHandler.h"
 #include "VisualEffects/VisualEffectsHandler.h"
 
@@ -18,7 +18,7 @@ class TankHandler : public sf::Drawable
 public:
 	
 
-	TankHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+	TankHandler(PlayerTank& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	~TankHandler();
 	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -27,7 +27,7 @@ public:
 
 private:
 	std::list<std::unique_ptr<UnitTank>> tankList;
-	Player& playerTank;
+	PlayerTank& playerTank;
 	ProjectileHandler& projectileHandler;
 	VisualEffectsHandler& vfxHandler;
 };

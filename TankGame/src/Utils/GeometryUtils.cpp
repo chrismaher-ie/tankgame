@@ -30,7 +30,7 @@ float gutils::getTargetLeadAngle(sf::Vector2f originPos,  sf::Vector2f targetPos
 {
 	float worldAngle = getAngle(originPos, targetPos);
 	
-	float bulletSpeedRatio = projectileSpeed / targetSpeed; //make a ratio of bullet speed/ player speed
+	float bulletSpeedRatio = projectileSpeed / targetSpeed; //make a ratio of bullet speed/ playerTank speed
 
 	float relativeAngleRadians = (targetRot - worldAngle) * degreesToRads;
 	float angleDelta = std::asin(sinf(relativeAngleRadians) / bulletSpeedRatio) * radsToDegrees;

@@ -60,9 +60,6 @@
     <ClCompile Include="src\Tanks\GreyTank.cpp">
       <Filter>Source Files\Tanks</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tanks\Player.cpp">
-      <Filter>Source Files\Tanks</Filter>
-    </ClCompile>
     <ClCompile Include="src\Tanks\UnitTank.cpp">
       <Filter>Source Files\Tanks</Filter>
     </ClCompile>
@@ -111,6 +108,9 @@
     <ClCompile Include="src\Tanks\TankHandler.cpp">
       <Filter>Source Files\Tanks</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tanks\PlayerTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Tanks\BrownTank.h">
@@ -120,9 +120,6 @@
       <Filter>Header Files\Tanks</Filter>
     </ClInclude>
     <ClInclude Include="src\Tanks\GreyTank.h">
-      <Filter>Header Files\Tanks</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tanks\Player.h">
       <Filter>Header Files\Tanks</Filter>
     </ClInclude>
     <ClInclude Include="src\Tanks\UnitTank.h">
@@ -171,6 +168,9 @@
       <Filter>Third Party</Filter>
     </ClInclude>
     <ClInclude Include="src\Tanks\TankHandler.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tanks\PlayerTank.h">
       <Filter>Header Files\Tanks</Filter>
     </ClInclude>
   </ItemGroup>

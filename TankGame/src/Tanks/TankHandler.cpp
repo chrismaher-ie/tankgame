@@ -1,6 +1,6 @@
 #include "Tanks/TankHandler.h"
 
-TankHandler::TankHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
+TankHandler::TankHandler(PlayerTank& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
 	:  playerTank(playerTank), projectileHandler(projectileHandler), vfxHandler(vfxHandler)
 {
 }

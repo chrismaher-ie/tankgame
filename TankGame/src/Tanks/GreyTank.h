@@ -2,13 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "Utils/GeometryUtils.h"
 #include "Tanks/UnitTank.h"
-#include "Tanks/Player.h"
+#include "Tanks/PlayerTank.h"
 
 class GreyTank :
 	public UnitTank
 {
 public:
-	GreyTank(sf::Vector2f pos, float rotation, int teamId, Player& player, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+	GreyTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	~GreyTank();
 	void die();
 private:
@@ -19,7 +19,7 @@ private:
 	//float fireRate = 0.5f; //bullets per second
 
 
-	Player& playerTank;
+	PlayerTank& playerTank;
 	void move();
 	bool aim();
 };

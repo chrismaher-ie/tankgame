@@ -1,5 +1,5 @@
 #include "Projectiles/ProjectileHandler.h"
-#include "Tanks/Player.h"
+#include "Tanks/PlayerTank.h"
 #include "Tanks/UnitTank.h"
 #include <cmath>
 
@@ -76,7 +76,7 @@ void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int proj
 	}
 }
 
-void ProjectileHandler::hitDetection(Player * player, std::list<std::unique_ptr<UnitTank>>* tankList)
+void ProjectileHandler::hitDetection(PlayerTank * playerTank, std::list<std::unique_ptr<UnitTank>>* tankList)
 {
 	sf::Sprite projectile1_sprite;
 	sf::Sprite projectile2_sprite;
@@ -97,12 +97,12 @@ void ProjectileHandler::hitDetection(Player * player, std::list<std::unique_ptr<
 
 		}
 
-		//check projectile to player collisions
-		tankSprite = player->getSprite();
+		//check projectile to playerTank collisions
+		tankSprite = playerTank->getSprite();
 		
 		if (Collision::BoundingBoxTest(projectile1_sprite, tankSprite)) {
 			(*proj_itr1)->hit();
-			player->takeDamage();
+			playerTank->takeDamage();
 		}
 
 		//check projectile to tank collisions

@@ -4,11 +4,11 @@
 #include "Projectiles/ProjectileHandler.h"
 #include "Tanks/UnitTank.h"
 
-class Player : public UnitTank
+class PlayerTank : public UnitTank
 {
 	public:
-		Player(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window);
-		~Player();
+		PlayerTank(sf::Vector2f pos, float rotation, int teamId, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window);
+		~PlayerTank();
 
 		void die();
 
