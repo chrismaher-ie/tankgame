@@ -50,7 +50,7 @@ int main()
 		windowEventHandler(window, &view);
 		projectileHandler.update();
 		projectileHandler.hitDetection(&player, tankHandler.getTankList());
-		tankHandler.update(&player);
+		tankHandler.update();
 		player.update();
 		vfxHandler.update();
 

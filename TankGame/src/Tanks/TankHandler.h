@@ -20,7 +20,7 @@ public:
 
 	TankHandler(Player& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	~TankHandler();
-	void update(/*sf::FloatRect boundingBox*/ Player * player);
+	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void addTank(sf::Vector2f pos, float rotation, int type);
 	std::list<std::unique_ptr<UnitTank>> *getTankList();

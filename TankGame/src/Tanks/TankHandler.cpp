@@ -9,25 +9,15 @@ TankHandler::~TankHandler()
 {
 }
 
-void TankHandler::update(Player * player)
+void TankHandler::update()
 {
-	//TODO: remove erase from loop and change to range based loop
-	for (auto tank_itr = tankList.begin(); tank_itr != tankList.end(); ) {
+	for (auto& tank : tankList) {
 		//update tank
-		(*tank_itr)->update();
-
-		
-		//if tank is to be destroyed, delete tank
-		if (false) {
-			tank_itr = tankList.erase(tank_itr);
-		}
-		// elseif more checks
-
-		else { //tank was fine, increment iterator
-			++tank_itr;
-		}
+		tank->update();
 
 	}
+	tankList.remove_if([&](const std::unique_ptr<UnitTank>& tank) -> bool { return tank->shouldDelete(); });
+
 }
 
 void TankHandler::draw(sf::RenderTarget& target, sf::RenderStates states) const
