@@ -25,13 +25,10 @@ void GreenTank::move()
 
 bool GreenTank::aim()
 {
-	//TODO: get this dynamically from Missile
-	float projectileSpeed = 1.2f;
-
 	float angle = gutils::getTargetLeadAngle
 	(
 		turret.getPosition(), playerTank->getPosition(), 
-		playerTank->getRotation(), playerTank->getSpeed(), projectileSpeed
+		playerTank->getRotation(), playerTank->getSpeed(), Missile::getSpeed()
 	);
 
 	float delta = gutils::getAngleDelta(angle, turret.getRotation());
