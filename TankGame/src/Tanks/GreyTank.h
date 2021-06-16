@@ -8,7 +8,7 @@ class GreyTank :
 	public UnitTank
 {
 public:
-	GreyTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+	GreyTank(sf::Vector2f pos, float rotation, int teamId, std::shared_ptr<PlayerTank> playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	~GreyTank();
 	void die();
 private:
@@ -19,7 +19,7 @@ private:
 	//float fireRate = 0.5f; //bullets per second
 
 
-	PlayerTank& playerTank;
+	std::shared_ptr<PlayerTank> playerTank;
 	void move();
 	bool aim();
 };

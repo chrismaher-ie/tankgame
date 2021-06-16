@@ -1,6 +1,6 @@
 #include "Tanks/GreyTank.h"
 
-GreyTank::GreyTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank & playerTank, ProjectileHandler & projectileHandler, VisualEffectsHandler& vfxHandler)
+GreyTank::GreyTank(sf::Vector2f pos, float rotation, int teamId, std::shared_ptr<PlayerTank> playerTank, ProjectileHandler & projectileHandler, VisualEffectsHandler& vfxHandler)
 	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), playerTank(playerTank)
 {
 	body.setColor(sf::Color(70, 70, 70));
@@ -26,7 +26,7 @@ void GreyTank::move()
 
 bool GreyTank::aim()
 {
-	float angle = gutils::getAngle(turret.getPosition(), playerTank.getPosition());
+	float angle = gutils::getAngle(turret.getPosition(), playerTank->getPosition());
 
 	float delta = gutils::getAngleDelta(angle, turret.getRotation());
 

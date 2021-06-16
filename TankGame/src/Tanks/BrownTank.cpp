@@ -1,6 +1,6 @@
 #include "Tanks/BrownTank.h"
 
-BrownTank::BrownTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
+	BrownTank::BrownTank(sf::Vector2f pos, float rotation, int teamId, std::shared_ptr<PlayerTank> playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler)
 	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), playerTank(playerTank)
 {
 	body.setColor(sf::Color(165, 42, 42));
@@ -25,7 +25,7 @@ void BrownTank::move()
 bool BrownTank::aim()
 {
 	turret.rotate(rotationSpeed);
-	float targetAngle = gutils::getAngle(turret.getPosition(), playerTank.getPosition());
+	float targetAngle = gutils::getAngle(turret.getPosition(), playerTank->getPosition());
 	float turretAngle = turret.getRotation();
 	if (abs(gutils::getAngleDelta(targetAngle, turretAngle)) < rotationSpeed) {
 		return true;

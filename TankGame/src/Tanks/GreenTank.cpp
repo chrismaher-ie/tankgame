@@ -1,6 +1,6 @@
 #include "Tanks/GreenTank.h"
 
-GreenTank::GreenTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank & playerTank, ProjectileHandler & projectileHandler, VisualEffectsHandler& vfxHandler)
+GreenTank::GreenTank(sf::Vector2f pos, float rotation, int teamId, std::shared_ptr<PlayerTank> playerTank, ProjectileHandler & projectileHandler, VisualEffectsHandler& vfxHandler)
 	: UnitTank(pos, rotation, teamId, projectileHandler, vfxHandler), playerTank(playerTank)
 {
 	body.setColor(sf::Color(0, 128, 0));
@@ -30,8 +30,8 @@ bool GreenTank::aim()
 
 	float angle = gutils::getTargetLeadAngle
 	(
-		turret.getPosition(), playerTank.getPosition(), 
-		playerTank.getRotation(), playerTank.getSpeed(), projectileSpeed
+		turret.getPosition(), playerTank->getPosition(), 
+		playerTank->getRotation(), playerTank->getSpeed(), projectileSpeed
 	);
 
 	float delta = gutils::getAngleDelta(angle, turret.getRotation());

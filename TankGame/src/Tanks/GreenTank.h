@@ -8,7 +8,7 @@ class GreenTank :
 	public UnitTank
 {
 public:
-	GreenTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+	GreenTank(sf::Vector2f pos, float rotation, int teamId, std::shared_ptr<PlayerTank> playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 	~GreenTank();
 	void die();
 private:
@@ -19,7 +19,7 @@ private:
 	//float fireRate = 0.2f; //bullets per second
 
 
-	PlayerTank& playerTank;
+	std::shared_ptr<PlayerTank> playerTank;
 	void move();
 	bool aim();
 };

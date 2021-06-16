@@ -27,7 +27,7 @@ class ProjectileHandler : public sf::Drawable
 		void update();
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 		void addProjectile(sf::Vector2f pos, float rotation, int projectileType, int tankId);
-		void hitDetection(PlayerTank* playerTank, std::list<std::unique_ptr<UnitTank>>* tankList);
+		void hitDetection(std::shared_ptr<PlayerTank> playerTank, std::list<std::unique_ptr<UnitTank>>* tankList);
 		void deleteProjectileList();
 		int countTankProjectiles(int tankId);
 	private:

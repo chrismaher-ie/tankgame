@@ -76,7 +76,7 @@ void ProjectileHandler::addProjectile(sf::Vector2f pos, float rotation, int proj
 	}
 }
 
-void ProjectileHandler::hitDetection(PlayerTank * playerTank, std::list<std::unique_ptr<UnitTank>>* tankList)
+void ProjectileHandler::hitDetection(std::shared_ptr<PlayerTank> playerTank, std::list<std::unique_ptr<UnitTank>>* tankList)
 {
 	sf::Sprite projectile1_sprite;
 	sf::Sprite projectile2_sprite;

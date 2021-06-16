@@ -7,7 +7,7 @@
 class BrownTank : public UnitTank
 {
 	public:
-		BrownTank(sf::Vector2f pos, float rotation, int teamId, PlayerTank& playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
+		BrownTank(sf::Vector2f pos, float rotation, int teamId, std::shared_ptr<PlayerTank> playerTank, ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler);
 		~BrownTank();
 		void die();
 	private:
@@ -18,7 +18,7 @@ class BrownTank : public UnitTank
 		//float fireRate = 0.2f; //bullets per second
 
 
-		PlayerTank& playerTank;
+		std::shared_ptr<PlayerTank> playerTank;
 		void move();
 		bool aim();
 
