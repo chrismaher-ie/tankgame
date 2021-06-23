@@ -21,6 +21,7 @@ public:
 	void takeDamage();
 	virtual void die();
 	bool shouldDelete();
+	void rollBack();
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void update();
@@ -36,6 +37,9 @@ protected:
 	float maxSpeed = 0.3f;
 	float currentSpeed = 0.0f;
 	float turretSpeed = 0.1f;
+
+	float previousRotation;
+	sf::Vector2f previousPosition;
 	
 	int projectileType = BULLETTYPE;
 	int maxProjectiles = 1;

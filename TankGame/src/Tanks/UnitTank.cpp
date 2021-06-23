@@ -81,6 +81,13 @@ bool UnitTank::shouldDelete()
 	return dead;
 }
 
+void UnitTank::rollBack()
+{
+	body.setRotation(previousRotation);
+	body.setPosition(previousPosition);
+	turret.setPosition(previousPosition);
+}
+
 void UnitTank::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(body);
@@ -89,8 +96,13 @@ void UnitTank::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 void UnitTank::update()
 {
-	//Movement 
+	//Movement
+	//Store previous state incase of rollback
+	previousRotation = body.getRotation();
+	previousPosition = body.getPosition();
 	move();
+
+	//Spawn track effects
 	if (currentSpeed != 0.0f) {
 		if (++trackEffectSpawnCounter > trackEffectSpawnInterval) {
 			trackEffectSpawnCounter = 0;
