@@ -38,5 +38,7 @@ private:
 	Map& map;
 	VisualEffectsHandler& vfxHandler;
 	sf::RenderWindow& window;
+
+	void tankWallCollisionCheck(UnitTank *tank);
 };
 

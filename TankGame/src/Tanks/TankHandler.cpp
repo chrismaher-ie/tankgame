@@ -20,40 +20,19 @@ void TankHandler::update()
 	//TODO improve collisions
 
 	playerTank->update();
-	for (auto& wall : *map.getWallList()) {
-		if (Collision::BoundingBoxTest(playerTank->getSprite(), wall.getSprite())) {
-			playerTank->rollBack();
-			break;
-		}
-	}
-	for (auto& barrier : *map.getBarrierList()) {
-		if (Collision::BoundingBoxTest(playerTank->getSprite(), barrier.getSprite())) {
-			playerTank->rollBack();
-			break;
-		}
-	}
+	//playerTank has type std::shared_ptr<PlayerTank>. calling get() returns the raw pointer
+	tankWallCollisionCheck(playerTank.get());
 
 	for (auto& tank : tankList) {
 		//update tank
 		tank->update();
-
-		for (auto& wall : *map.getWallList()) {
-			if (Collision::BoundingBoxTest(tank->getSprite(), wall.getSprite())) {
-				tank->rollBack();
-				break;
-			}
-		}
-		for (auto& barrier : *map.getBarrierList()) {
-			if (Collision::BoundingBoxTest(tank->getSprite(), barrier.getSprite())) {
-				tank->rollBack();
-				break;
-			}
-		}
+		//tank has type std::unique_ptr<UnitTank>. calling get() returns the raw pointer
+		tankWallCollisionCheck(tank.get());
 	}
 
-	
-	//TODO add tank tank collisions
 
+	//TODO add tank tank collisions
+	
 	//TODO: check if this is ever needed
 	tankList.remove_if([&](const std::unique_ptr<UnitTank>& tank) -> bool { return tank->shouldDelete(); });
 
@@ -107,4 +86,20 @@ std::shared_ptr<PlayerTank> TankHandler::getPlayerTank()
 std::list<std::unique_ptr<UnitTank>>* TankHandler::getTankList()
 {
 	return &tankList;
+}
+
+void TankHandler::tankWallCollisionCheck(UnitTank * tank)
+{
+	for (auto& wall : *map.getWallList()) {
+		if (Collision::BoundingBoxTest(tank->getSprite(), wall.getSprite())) {
+			tank->rollBack();
+			return;
+		}
+	}
+	for (auto& barrier : *map.getBarrierList()) {
+		if (Collision::BoundingBoxTest(tank->getSprite(), barrier.getSprite())) {
+			tank->rollBack();
+			return;
+		}
+	}
 }
