@@ -22,6 +22,7 @@ public:
 	virtual void die();
 	bool shouldDelete();
 	void rollBack();
+	void push(float deltaX, float deltaY);
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void update();
@@ -63,5 +64,6 @@ protected:
 	virtual bool aim();
 	bool canShoot();
 	void shoot(int projectileType);
+	void storePos();
 };
 

@@ -88,6 +88,13 @@ void UnitTank::rollBack()
 	turret.setPosition(previousPosition);
 }
 
+void UnitTank::push(float deltaX, float deltaY)
+{
+	storePos();
+	body.move(deltaX, deltaY);
+	turret.move(deltaX, deltaY);
+}
+
 void UnitTank::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(body);
@@ -98,8 +105,7 @@ void UnitTank::update()
 {
 	//Movement
 	//Store previous state incase of rollback
-	previousRotation = body.getRotation();
-	previousPosition = body.getPosition();
+	storePos();
 	move();
 
 	//Spawn track effects
@@ -152,4 +158,10 @@ void UnitTank::shoot(int projectileType)
 	float radian_angle = turret.getRotation() * gutils::degreesToRads;
 	sf::Vector2f bulletPos(turret.getPosition().x + (size * std::cosf(radian_angle)), turret.getPosition().y + (size * std::sinf(radian_angle)));
 	projectileHandler.addProjectile(bulletPos, turret.getRotation(), projectileType, _id);
+}
+
+void UnitTank::storePos()
+{
+	previousRotation = body.getRotation();
+	previousPosition = body.getPosition();
 }
