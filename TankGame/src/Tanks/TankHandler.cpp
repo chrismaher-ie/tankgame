@@ -28,11 +28,29 @@ void TankHandler::update()
 		tank->update();
 		//tank has type std::unique_ptr<UnitTank>. calling get() returns the raw pointer
 		tankWallCollisionCheck(tank.get());
+		
 	}
 
+	//check tank to tank collisions
+	for (auto tank_itr1 = tankList.begin(); tank_itr1 != tankList.end(); ++tank_itr1) {
+		
+		tankTankCollisionCheck(tank_itr1->get(), playerTank.get());
+		//nested loop over single tankList, no repeated checks or self comparision checks
+		for (auto tank_itr2 = std::next(tank_itr1, 1); tank_itr2 != tankList.end(); ++tank_itr2) {
+			tankTankCollisionCheck(tank_itr1->get(), tank_itr2->get());
 
-	//TODO add tank tank collisions
-	
+			//NOTE: this can cause wall sandwhiching if multiple collisions happen to the sametank
+			// as each tank->push() resets the rollback position
+			tankTankCollisionCheck(tank_itr1->get(), tank_itr2->get());
+		}
+	}
+
+	tankWallCollisionCheck(playerTank.get());
+
+	for (auto& tank : tankList) {
+
+		tankWallCollisionCheck(tank.get());
+	}
 	//TODO: check if this is ever needed
 	tankList.remove_if([&](const std::unique_ptr<UnitTank>& tank) -> bool { return tank->shouldDelete(); });
 
@@ -101,5 +119,26 @@ void TankHandler::tankWallCollisionCheck(UnitTank * tank)
 			tank->rollBack();
 			return;
 		}
+	}
+}
+
+void TankHandler::tankTankCollisionCheck(UnitTank * tank1, UnitTank * tank2)
+{
+	float tankSize = 20.f; //TODO: make dynamic
+	float deltaX, deltaY;
+
+	if (Collision::BoundingBoxTest(tank1->getSprite(), tank2->getSprite())) {
+		sf::Vector2f dist = tank1->getPosition() - tank2->getPosition();
+		float scaler = (2 * tankSize) / std::hypotf(dist.x, dist.y);
+		if (scaler <= 1.f) {
+			return;
+		}
+		//TODO: scale scale by relative rotations between 1.0f and 1.12f
+
+		sf::Vector2f idealDist = dist * scaler;
+		sf::Vector2f delta = idealDist - dist;
+
+		tank1->push(delta.x, delta.y);
+		tank2->push(-delta.x, -delta.y);
 	}
 }

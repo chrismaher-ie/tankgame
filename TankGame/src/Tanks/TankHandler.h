@@ -40,5 +40,6 @@ private:
 	sf::RenderWindow& window;
 
 	void tankWallCollisionCheck(UnitTank *tank);
+	void tankTankCollisionCheck(UnitTank *tank1, UnitTank *tank2);
 };
 
