@@ -9,6 +9,7 @@
 #include "Projectiles/ProjectileHandler.h"
 #include "VisualEffects/VisualEffectsHandler.h"
 #include "Map/Map.h"
+#include "Collision.h"
 
 #define PLAYERTANK 0
 #define BROWNTANK 1

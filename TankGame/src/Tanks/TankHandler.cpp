@@ -17,15 +17,41 @@ void TankHandler::update()
 		//if the player tank does not exist we should not update any tanks
 		return;
 	}
-	//TODO add tank - wall collisions
+	//TODO improve collisions
 
 	playerTank->update();
-	
+	for (auto& wall : *map.getWallList()) {
+		if (Collision::BoundingBoxTest(playerTank->getSprite(), wall.getSprite())) {
+			playerTank->rollBack();
+			break;
+		}
+	}
+	for (auto& barrier : *map.getBarrierList()) {
+		if (Collision::BoundingBoxTest(playerTank->getSprite(), barrier.getSprite())) {
+			playerTank->rollBack();
+			break;
+		}
+	}
+
 	for (auto& tank : tankList) {
 		//update tank
 		tank->update();
 
+		for (auto& wall : *map.getWallList()) {
+			if (Collision::BoundingBoxTest(tank->getSprite(), wall.getSprite())) {
+				tank->rollBack();
+				break;
+			}
+		}
+		for (auto& barrier : *map.getBarrierList()) {
+			if (Collision::BoundingBoxTest(tank->getSprite(), barrier.getSprite())) {
+				tank->rollBack();
+				break;
+			}
+		}
 	}
+
+	
 	//TODO add tank tank collisions
 
 	//TODO: check if this is ever needed
