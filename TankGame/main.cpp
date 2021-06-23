@@ -30,7 +30,7 @@ int main()
 
 	ProjectileHandler projectileHandler = ProjectileHandler(map, vfxHandler);
 	
-	TankHandler tankHandler = TankHandler(projectileHandler, vfxHandler, window);
+	TankHandler tankHandler = TankHandler(projectileHandler, map, vfxHandler, window);
 	projectileHandler.setTankHandler(tankHandler);
 	
 	tankHandler.addTank(sf::Vector2f(130.0f, -130.0f), 0.f, GREENTANK);

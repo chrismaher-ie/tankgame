@@ -1,7 +1,7 @@
 #include "Tanks/TankHandler.h"
 
-TankHandler::TankHandler(ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window)
-	:  projectileHandler(projectileHandler), vfxHandler(vfxHandler), window(window)
+TankHandler::TankHandler(ProjectileHandler& projectileHandler, Map& map, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window)
+	:  projectileHandler(projectileHandler), map(map), vfxHandler(vfxHandler), window(window)
 {
 	playerTank = std::make_shared<PlayerTank>(sf::Vector2f(0.0f, 0.0f), 225.f, 0, projectileHandler, vfxHandler, window);
 
@@ -17,14 +17,18 @@ void TankHandler::update()
 		//if the player tank does not exist we should not update any tanks
 		return;
 	}
+	//TODO add tank - wall collisions
 
 	playerTank->update();
-
+	
 	for (auto& tank : tankList) {
 		//update tank
 		tank->update();
 
 	}
+	//TODO add tank tank collisions
+
+	//TODO: check if this is ever needed
 	tankList.remove_if([&](const std::unique_ptr<UnitTank>& tank) -> bool { return tank->shouldDelete(); });
 
 }

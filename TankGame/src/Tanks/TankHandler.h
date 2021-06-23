@@ -8,6 +8,7 @@
 #include "Tanks/PlayerTank.h"
 #include "Projectiles/ProjectileHandler.h"
 #include "VisualEffects/VisualEffectsHandler.h"
+#include "Map/Map.h"
 
 #define PLAYERTANK 0
 #define BROWNTANK 1
@@ -19,7 +20,7 @@ class TankHandler : public sf::Drawable
 public:
 	
 
-	TankHandler(ProjectileHandler& projectileHandler, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window);
+	TankHandler(ProjectileHandler& projectileHandler, Map& map, VisualEffectsHandler& vfxHandler, sf::RenderWindow& window);
 	~TankHandler();
 	void update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -33,6 +34,7 @@ private:
 	std::list<std::unique_ptr<UnitTank>> tankList;
 	
 	ProjectileHandler& projectileHandler;
+	Map& map;
 	VisualEffectsHandler& vfxHandler;
 	sf::RenderWindow& window;
 };
